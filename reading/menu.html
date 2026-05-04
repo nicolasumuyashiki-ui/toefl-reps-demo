@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+<title>Reading — TOEFL Reps Demo</title>
+<link rel="stylesheet" href="../css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-en),var(--font-jp);background:var(--cream);min-height:100vh;color:var(--ink-900);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+.header{background:var(--cream);border-bottom:1px solid var(--paper);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.header-left{display:flex;align-items:center;gap:14px}
+.demo-pill{font-family:var(--font-en);font-size:.6em;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--terracotta);padding:3px 8px 2px;border-radius:3px;line-height:1}
+.logo-mark{display:inline-flex;align-items:center;gap:8px}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.logo{font-family:var(--font-en);font-size:.72em;font-weight:800;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
+.header-divider{width:1px;height:16px;background:var(--ink-200)}
+.header-title{font-size:.88em;color:var(--ink-500);font-weight:500}
+.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.upgrade-link{font-family:var(--font-jp);font-size:.78em;color:var(--green-dark);text-decoration:none;padding:7px 14px;border:1.5px solid var(--green);border-radius:999px;font-weight:700;transition:all .15s}
+.upgrade-link:hover{background:var(--green);color:#fff}
+.user-pill{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--paper);padding:5px 12px 5px 5px;border-radius:999px;font-size:.78em;color:var(--ink-900);font-weight:500}
+.avatar{width:24px;height:24px;border-radius:50%;background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.72em;font-weight:700;font-family:var(--font-en)}
+.btn-logout{background:transparent;border:none;font-size:.74em;font-weight:500;color:var(--ink-500);cursor:pointer;font-family:var(--font-en);padding:6px 10px;border-radius:8px;transition:color .15s}
+.btn-logout:hover{color:var(--green-dark)}
+
+.back-row{max-width:980px;margin:0 auto;padding:24px 28px 0}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--green);border-radius:999px;padding:8px 16px;text-decoration:none;color:var(--green-dark);font-family:var(--font-jp);font-size:.86em;font-weight:600;transition:all .15s}
+.back-btn:hover{background:var(--green);color:#fff}
+
+.hero{max-width:980px;margin:0 auto;padding:32px 28px 16px}
+.hero-kicker{font-family:var(--font-en);font-size:.72em;font-weight:700;color:var(--green);letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.hero h1{font-family:var(--font-en);font-size:3.4em;font-weight:800;color:var(--green-deep);line-height:1;letter-spacing:-0.02em;margin-bottom:8px}
+.hero-sub{font-size:.95em;color:var(--ink-500);max-width:600px;line-height:1.7}
+
+.tip{max-width:980px;margin:24px auto 28px;padding:0 28px}
+.tip-inner{background:var(--paper);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:flex-start;gap:14px}
+.tip-label{font-family:var(--font-en);font-size:.68em;font-weight:700;color:var(--green-dark);letter-spacing:.16em;text-transform:uppercase;flex-shrink:0;margin-top:2px}
+.tip-text{font-size:.88em;color:var(--ink-900);line-height:1.75}
+.tip-text strong{color:var(--green-dark);font-weight:700}
+
+.task-section{max-width:980px;margin:0 auto 28px;padding:0 28px}
+.task-header{margin-bottom:14px}
+.task-name{font-family:var(--font-en);font-size:1.45em;font-weight:800;color:var(--green-deep);letter-spacing:-0.01em;margin-bottom:4px}
+.task-subtitle{font-size:.86em;color:var(--ink-500);line-height:1.55}
+.practice-row{display:flex;gap:14px;flex-wrap:wrap;align-items:stretch}
+.practice-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--white);border:1.5px solid var(--paper);border-radius:14px;padding:18px 30px;text-decoration:none;color:inherit;transition:all .15s;min-width:128px;cursor:pointer}
+.practice-btn:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,118,70,.1)}
+.practice-num{font-family:var(--font-en);font-size:1.6em;font-weight:800;color:var(--green-deep);letter-spacing:-0.02em;line-height:1}
+.practice-label{font-family:var(--font-en);font-size:.7em;font-weight:600;color:var(--ink-500);letter-spacing:.06em;text-transform:uppercase}
+.practice-btn .demo-tag{font-family:var(--font-en);font-size:.6em;font-weight:800;letter-spacing:.1em;color:#fff;background:var(--green);padding:2px 7px 1px;border-radius:3px;line-height:1;margin-top:6px;text-transform:uppercase}
+.practice-locked{display:flex;align-items:center;gap:10px;background:var(--cream);border:1.5px dashed var(--ink-200);border-radius:14px;padding:18px 22px;font-size:.86em;color:var(--ink-500);line-height:1.55;flex:1;min-width:240px}
+.practice-locked .lock-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--paper);color:var(--green-dark);display:flex;align-items:center;justify-content:center;font-size:.85em}
+.practice-locked strong{color:var(--green-dark);font-weight:700}
+.practice-locked a{color:var(--green-dark);font-weight:700;text-decoration:none;border-bottom:1px solid var(--green-dark)}
+
+.upgrade-banner{max-width:980px;margin:36px auto;padding:0 28px}
+.upgrade-card{display:flex;align-items:center;gap:22px;padding:22px 26px;background:linear-gradient(135deg,var(--green-deep),var(--green-dark));color:#fff;border-radius:var(--radius);text-decoration:none;box-shadow:0 8px 24px rgba(0,40,23,.16);transition:transform .2s ease,box-shadow .2s ease}
+.upgrade-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,40,23,.22)}
+.upgrade-eyebrow{font-family:var(--font-en);font-size:.7em;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.upgrade-title{font-family:var(--font-en);font-size:1.3em;font-weight:800;letter-spacing:-0.01em;line-height:1.15;margin-bottom:4px}
+.upgrade-sub{font-size:.88em;color:rgba(255,255,255,.78);line-height:1.55}
+.upgrade-arrow{font-family:var(--font-en);font-size:1.3em;color:var(--gold);transition:transform .2s}
+.upgrade-card:hover .upgrade-arrow{transform:translateX(4px)}
+
+.footer{max-width:980px;margin:30px auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.78em;color:var(--ink-500);font-family:var(--font-en)}
+</style>
+</head>
+<body data-lang="jp">
+
+<div class="header">
+  <div class="header-left">
+    <img class="brand-logo" src="../assets/tck-logo.png" alt="TCK Workshop">
+    <div class="logo-mark">
+      <span class="logo-dot"></span>
+      <span class="logo">TCK Workshop</span>
+      <span class="demo-pill">Demo</span>
+    </div>
+    <span class="header-divider"></span>
+    <span class="header-title"><span class="jp">体験版</span><span class="en">Trial</span></span>
+  </div>
+  <div class="header-right">
+    <div class="tck-lang-toggle">
+      <button type="button" data-lang-btn="jp" class="active">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+    <a class="upgrade-link" href="../index.html#pricing"><span class="jp">本サブスクを見る →</span><span class="en">Subscribe →</span></a>
+    <div class="user-pill"><span class="avatar" id="avatarInit">?</span><span id="userName">---</span></div>
+    <button class="btn-logout" onclick="doLogout()"><span class="jp">ログアウト</span><span class="en">Log out</span></button>
+  </div>
+</div>
+
+<div class="back-row">
+  <a class="back-btn" href="../menu.html">← <span class="jp">メニューに戻る</span><span class="en">Back to menu</span></a>
+</div>
+
+<div class="hero">
+  <div class="hero-kicker"><span class="jp">体験版 · 1 セット</span><span class="en">Trial · 1 set</span></div>
+  <h1>Reading</h1>
+  <p class="hero-sub">
+    <span class="jp">3 つのリーディング タスクを 1 セットずつ体験できます。CTW (空欄補充)、RDL (日常文書)、Academic Passage (学術長文)。</span>
+    <span class="en">Three Reading tasks, one practice each: CTW (fill-in-the-blank), RDL (everyday texts), and Academic Passage (long-form scholarly reading).</span>
+  </p>
+</div>
+
+<div class="tip">
+  <div class="tip-inner">
+    <span class="tip-label">Reading Tip</span>
+    <div class="tip-text">
+      <span class="jp"><strong>正解の選択肢は本文の言い換え</strong>。本文と同じ単語をそのまま使った選択肢は罠であることが多い。</span>
+      <span class="en"><strong>Correct answers paraphrase the passage.</strong> Options that copy exact wording are often traps.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTW ===== -->
+<div class="task-section">
+  <div class="task-header">
+    <div class="task-name">Complete the Words</div>
+    <div class="task-subtitle">
+      <span class="jp">空欄の文字を入力して単語を完成させる（2 セット構成 · 標準 + Harder Module）</span>
+      <span class="en">Fill in the missing letters to complete each word (2 sets — standard + Harder Module)</span>
+    </div>
+  </div>
+  <div class="practice-row">
+    <a class="practice-btn" href="ctw/practice-1-set-1.html">
+      <span class="practice-num">1</span>
+      <span class="practice-label">Practice</span>
+      <span class="demo-tag"><span class="jp">体験可</span><span class="en">Trial</span></span>
+    </a>
+    <div class="practice-locked">
+      <span class="lock-icon">🔒</span>
+      <div>
+        <strong><span class="jp">+ 9 Practice</span><span class="en">+ 9 more practices</span></strong>
+        <span class="jp">は<a href="../index.html#pricing">本サブスク</a>で開放</span>
+        <span class="en"> unlocked in the <a href="../index.html#pricing">full subscription</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RDL ===== -->
+<div class="task-section">
+  <div class="task-header">
+    <div class="task-name">Read in Daily Life</div>
+    <div class="task-subtitle">
+      <span class="jp">メール・通知など日常文書の読解（短文 + 長文の 2 問構成）</span>
+      <span class="en">Everyday reading: emails, notices, short documents (1 short + 1 long passage)</span>
+    </div>
+  </div>
+  <div class="practice-row">
+    <a class="practice-btn" href="rdl/practice-1.html">
+      <span class="practice-num">1</span>
+      <span class="practice-label">Practice</span>
+      <span class="demo-tag"><span class="jp">体験可</span><span class="en">Trial</span></span>
+    </a>
+    <div class="practice-locked">
+      <span class="lock-icon">🔒</span>
+      <div>
+        <strong><span class="jp">+ 9 Practice</span><span class="en">+ 9 more practices</span></strong>
+        <span class="jp">は<a href="../index.html#pricing">本サブスク</a>で開放</span>
+        <span class="en"> unlocked in the <a href="../index.html#pricing">full subscription</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Academic ===== -->
+<div class="task-section">
+  <div class="task-header">
+    <div class="task-name">Read an Academic Passage</div>
+    <div class="task-subtitle">
+      <span class="jp">学術的な長文の読解（標準 + Harder Module の 2 問構成）</span>
+      <span class="en">Long-form academic reading (standard + Harder Module question)</span>
+    </div>
+  </div>
+  <div class="practice-row">
+    <a class="practice-btn" href="academic/practice-1.html">
+      <span class="practice-num">1</span>
+      <span class="practice-label">Practice</span>
+      <span class="demo-tag"><span class="jp">体験可</span><span class="en">Trial</span></span>
+    </a>
+    <div class="practice-locked">
+      <span class="lock-icon">🔒</span>
+      <div>
+        <strong><span class="jp">+ 9 Practice</span><span class="en">+ 9 more practices</span></strong>
+        <span class="jp">は<a href="../index.html#pricing">本サブスク</a>で開放</span>
+        <span class="en"> unlocked in the <a href="../index.html#pricing">full subscription</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="upgrade-banner">
+  <a class="upgrade-card" href="../index.html#pricing">
+    <div class="upgrade-body">
+      <div class="upgrade-eyebrow"><span class="jp">本サブスクで全機能を解放</span><span class="en">Unlock everything</span></div>
+      <div class="upgrade-title">TOEFL Reps Monthly · ¥3,980/月</div>
+      <div class="upgrade-sub">
+        <span class="jp">残り 9 セット × 12 タスク・採点機能・録音保存・月1コンサル付き</span>
+        <span class="en">9 more sets × 12 tasks · grading · recording archive · monthly coaching</span>
+      </div>
+    </div>
+    <span class="upgrade-arrow">→</span>
+  </a>
+</div>
+
+<div class="footer">
+  <span>© TCK Workshop · TOEFL Reps Demo</span>
+  <a href="../menu.html" style="color:var(--green-dark);text-decoration:none"><span class="jp">他の技能を見る →</span><span class="en">Other skills →</span></a>
+</div>
+
+<script src="../js/auth.js"></script>
+<script>
+(function(){
+  var stored = localStorage.getItem('tck_lang') || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); }); });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    localStorage.setItem('tck_lang', l);
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang-btn') === l); });
+  }
+})();
+if (typeof Auth !== 'undefined') {
+  Auth.require();
+  var u = Auth.getUser();
+  if (u && u.userName) {
+    document.getElementById('userName').textContent = u.userName;
+    document.getElementById('avatarInit').textContent = u.userName.charAt(0).toUpperCase();
+  }
+}
+function doLogout(){ if (typeof Auth !== 'undefined') Auth.logout(); }
+</script>
+</body>
+</html>

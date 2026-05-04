@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<title>TOEFL Reps Demo — メニュー</title>
+<link rel="stylesheet" href="css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--font-en),var(--font-jp);background:var(--cream);min-height:100vh;color:var(--ink-900);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+.header{background:var(--cream);border-bottom:1px solid var(--paper);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo-mark{display:inline-flex;align-items:center;gap:8px}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.logo{font-family:var(--font-en);font-size:.72em;font-weight:800;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
+.demo-pill{font-family:var(--font-en);font-size:.6em;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--terracotta);padding:3px 8px 2px;border-radius:3px;line-height:1}
+.header-divider{width:1px;height:16px;background:var(--ink-200)}
+.header-title{font-size:.88em;color:var(--ink-500);font-weight:500}
+.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.upgrade-link{font-family:var(--font-jp);font-size:.78em;color:var(--green-dark);text-decoration:none;padding:7px 14px;border:1.5px solid var(--green);border-radius:999px;font-weight:700;transition:all .15s}
+.upgrade-link:hover{background:var(--green);color:#fff}
+.user-pill{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--paper);padding:5px 12px 5px 5px;border-radius:999px;font-size:.78em;color:var(--ink-900);font-weight:500}
+.avatar{width:24px;height:24px;border-radius:50%;background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.72em;font-weight:700;font-family:var(--font-en)}
+.btn-logout{background:transparent;border:none;font-size:.74em;font-weight:500;color:var(--ink-500);cursor:pointer;font-family:var(--font-en);padding:6px 10px;border-radius:8px;transition:color .15s}
+.btn-logout:hover{color:var(--green-dark)}
+
+.hero{max-width:980px;margin:0 auto;padding:48px 28px 24px}
+.hero-kicker{font-family:var(--font-en);font-size:.72em;font-weight:700;color:var(--green);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:2em;font-weight:700;color:var(--green-deep);line-height:1.25;margin-bottom:10px;letter-spacing:-0.01em}
+.hero h1 .en{font-weight:700;letter-spacing:-0.02em}
+.hero-sub{font-size:.98em;color:var(--ink-500);max-width:600px;line-height:1.7}
+
+.skill-grid{max-width:980px;margin:24px auto 40px;padding:0 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:720px){.skill-grid{grid-template-columns:1fr}.hero h1{font-size:1.6em}}
+.skill-card{background:var(--white);border:1px solid var(--paper);border-radius:var(--radius);padding:26px 26px 22px;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.skill-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,118,70,.08)}
+.skill-card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--green);opacity:0;transition:opacity .2s}
+.skill-card:hover::before{opacity:1}
+.skill-head{display:flex;justify-content:flex-end}
+.skill-count{font-family:var(--font-en);font-size:.72em;color:var(--ink-500);font-weight:500}
+.skill-count strong{color:var(--ink-900);font-weight:700}
+.skill-title{font-family:var(--font-en);font-size:2.1em;font-weight:800;color:var(--green-deep);line-height:1.1;letter-spacing:-0.02em;margin-top:4px}
+.skill-tasks{font-size:1em;font-weight:500;color:var(--ink-900);line-height:1.55;margin-top:10px}
+.skill-tasks .task-item{display:block;padding:3px 0}
+.skill-tasks .task-item::before{content:"·";color:var(--green);font-weight:700;margin-right:8px}
+.skill-foot{display:flex;justify-content:flex-end;padding-top:4px}
+.skill-arrow{font-family:var(--font-en);font-size:1.2em;color:var(--green);transition:transform .2s}
+.skill-card:hover .skill-arrow{transform:translateX(4px)}
+
+.extras-section{max-width:980px;margin:32px auto 24px;padding:0 28px}
+.extras-label{font-family:var(--font-en);font-size:.72em;font-weight:700;color:var(--green);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.extras-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:720px){.extras-grid{grid-template-columns:1fr}}
+.extras-card{background:var(--white);border:1px solid var(--paper);border-radius:var(--radius);padding:22px 26px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:18px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.extras-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,118,70,.08)}
+.extras-icon{flex-shrink:0;width:44px;height:44px;border-radius:10px;background:var(--paper);display:flex;align-items:center;justify-content:center}
+.extras-body{flex:1;min-width:0}
+.extras-eyebrow{font-family:var(--font-en);font-size:.7em;font-weight:700;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.extras-title{font-size:1em;font-weight:700;color:var(--green-deep);margin-bottom:3px}
+.extras-sub{font-size:.86em;color:var(--ink-500);line-height:1.55}
+.extras-arrow{font-family:var(--font-en);font-size:1.2em;color:var(--green)}
+
+.upgrade-banner{max-width:980px;margin:36px auto;padding:0 28px}
+.upgrade-card{display:flex;align-items:center;gap:22px;padding:24px 28px;background:linear-gradient(135deg,var(--green-deep),var(--green-dark));color:#fff;border-radius:var(--radius);text-decoration:none;box-shadow:0 8px 24px rgba(0,40,23,.16);transition:transform .2s ease,box-shadow .2s ease;position:relative;overflow:hidden}
+.upgrade-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,40,23,.22)}
+.upgrade-card::before{content:"";position:absolute;top:0;right:0;width:200px;height:100%;background:radial-gradient(circle at top right,rgba(201,169,97,.18),transparent 70%);pointer-events:none}
+.upgrade-icon{flex-shrink:0;width:54px;height:54px;border-radius:12px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+.upgrade-body{flex:1;min-width:0;position:relative;z-index:1}
+.upgrade-eyebrow{font-family:var(--font-en);font-size:.7em;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.upgrade-title{font-family:var(--font-en);font-size:1.4em;font-weight:800;letter-spacing:-0.01em;line-height:1.15;margin-bottom:4px}
+.upgrade-sub{font-size:.9em;color:rgba(255,255,255,.78);line-height:1.55}
+.upgrade-arrow{font-family:var(--font-en);font-size:1.4em;color:var(--gold);position:relative;z-index:1;transition:transform .2s}
+.upgrade-card:hover .upgrade-arrow{transform:translateX(4px)}
+
+.footer{max-width:980px;margin:40px auto 30px;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.78em;color:var(--ink-500);font-family:var(--font-en)}
+.footer-left{font-weight:500}
+</style>
+</head>
+<body data-lang="jp">
+
+<div class="header">
+  <div class="header-left">
+    <img class="brand-logo" src="assets/tck-logo.png" alt="TCK Workshop">
+    <div class="logo-mark">
+      <span class="logo-dot"></span>
+      <span class="logo">TCK Workshop</span>
+      <span class="demo-pill">Demo</span>
+    </div>
+    <span class="header-divider"></span>
+    <span class="header-title"><span class="jp">体験版メニュー</span><span class="en">Trial menu</span></span>
+  </div>
+  <div class="header-right">
+    <div class="tck-lang-toggle">
+      <button type="button" data-lang-btn="jp" class="active">日本語</button>
+      <button type="button" data-lang-btn="en">EN</button>
+    </div>
+    <a class="upgrade-link" href="index.html#pricing">
+      <span class="jp">本サブスクを見る →</span><span class="en">Subscribe →</span>
+    </a>
+    <div class="user-pill"><span class="avatar" id="avatarInit">?</span><span id="userName">---</span></div>
+    <button class="btn-logout" onclick="doLogout()"><span class="jp">ログアウト</span><span class="en">Log out</span></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-kicker"><span class="jp">無料体験版</span><span class="en">Free Trial</span></div>
+  <h1>
+    <span class="jp">どこから始めますか?</span>
+    <span class="en">Where do you want to start?</span>
+  </h1>
+  <p class="hero-sub">
+    <span class="jp">4 つのスキル領域、計 12 タスクを 1 セットずつ体験いただけます。気になる領域から自由にお試しください。</span>
+    <span class="en">Four skill areas, twelve tasks total — one practice set each. Pick whichever area interests you most.</span>
+  </p>
+</div>
+
+<div class="skill-grid">
+  <a class="skill-card" href="reading/menu.html">
+    <div class="skill-head"><span class="skill-count"><strong>3</strong> <span class="jp">タスク</span><span class="en">tasks</span></span></div>
+    <div class="skill-title">Reading</div>
+    <div class="skill-tasks">
+      <span class="task-item">Complete the Words</span>
+      <span class="task-item">Read in Daily Life</span>
+      <span class="task-item">Read an Academic Passage</span>
+    </div>
+    <div class="skill-foot"><span class="skill-arrow">→</span></div>
+  </a>
+
+  <a class="skill-card" href="listening/menu.html">
+    <div class="skill-head"><span class="skill-count"><strong>4</strong> <span class="jp">タスク</span><span class="en">tasks</span></span></div>
+    <div class="skill-title">Listening</div>
+    <div class="skill-tasks">
+      <span class="task-item">Listen and Choose a Response</span>
+      <span class="task-item">Listen to a Conversation</span>
+      <span class="task-item">Listen to an Announcement</span>
+      <span class="task-item">Listen to an Academic Talk</span>
+    </div>
+    <div class="skill-foot"><span class="skill-arrow">→</span></div>
+  </a>
+
+  <a class="skill-card" href="writing/menu.html">
+    <div class="skill-head"><span class="skill-count"><strong>3</strong> <span class="jp">タスク</span><span class="en">tasks</span></span></div>
+    <div class="skill-title">Writing</div>
+    <div class="skill-tasks">
+      <span class="task-item">Build a Sentence</span>
+      <span class="task-item">Write an Email</span>
+      <span class="task-item">Academic Discussion</span>
+    </div>
+    <div class="skill-foot"><span class="skill-arrow">→</span></div>
+  </a>
+
+  <a class="skill-card" href="speaking/menu.html">
+    <div class="skill-head"><span class="skill-count"><strong>2</strong> <span class="jp">タスク</span><span class="en">tasks</span></span></div>
+    <div class="skill-title">Speaking</div>
+    <div class="skill-tasks">
+      <span class="task-item">Listen and Repeat</span>
+      <span class="task-item">Take an Interview</span>
+    </div>
+    <div class="skill-foot"><span class="skill-arrow">→</span></div>
+  </a>
+</div>
+
+<!-- ========== Progress (paywall preview) ========== -->
+<div class="extras-section">
+  <div class="extras-label"><span class="jp">進捗確認</span><span class="en">Progress</span></div>
+  <div class="extras-grid">
+    <a class="extras-card" href="my-score.html">
+      <div class="extras-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#007646" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
+      <div class="extras-body">
+        <div class="extras-eyebrow">My Progress</div>
+        <div class="extras-title">My Score</div>
+        <div class="extras-sub">
+          <span class="jp">予測スコアの算出は本サブスク版でご利用いただけます</span>
+          <span class="en">Predicted scores available in the full subscription</span>
+        </div>
+      </div>
+      <span class="extras-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- ========== Upgrade banner ========== -->
+<div class="upgrade-banner">
+  <a class="upgrade-card" href="index.html#pricing">
+    <div class="upgrade-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <div class="upgrade-body">
+      <div class="upgrade-eyebrow"><span class="jp">本サブスクで全機能を解放</span><span class="en">Unlock everything</span></div>
+      <div class="upgrade-title">TOEFL Reps Monthly · ¥3,980/月</div>
+      <div class="upgrade-sub">
+        <span class="jp">残り 9 セット × 12 タスク・採点機能・録音保存・月1コンサル付き</span>
+        <span class="en">9 more sets × 12 tasks · grading · recording archive · monthly coaching</span>
+      </div>
+    </div>
+    <span class="upgrade-arrow">→</span>
+  </a>
+</div>
+
+<div class="footer">
+  <span class="footer-left">© TCK Workshop · TOEFL Reps Demo</span>
+  <span><span class="jp">不具合のご報告は</span><span class="en">Issues:</span> <a href="mailto:support@tckworkshop.co.jp" style="color:var(--green-dark)">support@tckworkshop.co.jp</a></span>
+</div>
+
+<script src="js/auth.js"></script>
+<script>
+(function(){
+  var stored = localStorage.getItem('tck_lang') || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    localStorage.setItem('tck_lang', l);
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === l);
+    });
+  }
+})();
+
+if (typeof Auth !== 'undefined') {
+  Auth.require();
+  var u = Auth.getUser();
+  if (u && u.userName) {
+    document.getElementById('userName').textContent = u.userName;
+    document.getElementById('avatarInit').textContent = u.userName.charAt(0).toUpperCase();
+  }
+}
+
+function doLogout(){ if (typeof Auth !== 'undefined') Auth.logout(); }
+</script>
+</body>
+</html>
