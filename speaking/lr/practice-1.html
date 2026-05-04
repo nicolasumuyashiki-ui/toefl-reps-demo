@@ -2,6 +2,7 @@
 <!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="en">
+<!-- toefl-reps-demo: bilingualized -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,11 +80,12 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 .btn-next-section:hover{background:#4a5568}
 </style>
 </head>
-<body>
+<body data-lang="jp">
+<div class="tck-lang-toggle" data-bilingual-toggle style="position:fixed;top:12px;right:12px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:3px;font-family:Manrope,system-ui,sans-serif;font-size:.72em;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08)"><button type="button" data-lang-btn="jp" class="active" style="border:none;background:#007646;color:#fff;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">日本語</button><button type="button" data-lang-btn="en" style="border:none;background:transparent;color:#5A6861;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">EN</button></div>
 
 <div class="top-nav">
   <div class="top-nav-left">
-    <span><strong>Speaking</strong></span>
+    <span><strong><span class="jp">スピーキング</span><span class="en">Speaking</span></strong></span>
     <span>|</span>
     <span id="qIndicator">Listen and Repeat</span>
   </div>
@@ -99,10 +101,10 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
     <p>Listen carefully and then repeat what you have heard. The clock will indicate how much time you have to speak.</p>
     <p class="warning-text">No time for preparation will be provided.</p>
     <table class="task-table">
-      <tr><th>Task</th><th>Number of Sentences</th><th>Response Time</th></tr>
+      <tr><th>Task</th><th><span class="jp">文の数</span><span class="en">Number of Sentences</span></th><th><span class="jp">解答時間</span><span class="en">Response Time</span></th></tr>
       <tr><td>Listen and Repeat</td><td>7 sentences</td><td>8-12 seconds each</td></tr>
     </table>
-    <button class="btn-start" onclick="startTask()">Start</button>
+    <button class="btn-start" onclick="startTask()"><span class="jp">スタート</span><span class="en">Start</span></button>
   </div>
 </div>
 
@@ -124,7 +126,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
       <div class="image-placeholder" id="imagePlaceholder">&#x1F686;</div>
     </div>
     <div class="response-timer" id="responseTimer">
-      <div class="timer-label">Response Time</div>
+      <div class="timer-label"><span class="jp">解答時間</span><span class="en">Response Time</span></div>
       <div class="timer-display">
         <span class="timer-icon">&#x1F399;&#xFE0F;</span>
         <span class="countdown" id="countdown">00:00:08</span>
@@ -136,9 +138,9 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 <!-- COMPLETE PAGE -->
 <div class="main-area" id="completePage" style="display:none">
   <div class="complete-page" style="display:block">
-    <h2>Section Complete!</h2>
+    <h2><span class="jp">セクション完了！</span><span class="en">Section Complete!</span></h2>
     <p>You have completed the Listen and Repeat section.</p>
-    <button class="btn-next-section" onclick="location.href='practice-1-tips.html'">View Tips &amp; Review &#8594;</button>
+    <button class="btn-next-section" onclick="location.href='practice-1-tips.html'">View Tips &amp; <span class="jp">レビュー</span><span class="en">Review</span> &#8594;</button>
   </div>
 </div>
 
@@ -271,5 +273,28 @@ function showComplete() {
 if (typeof Auth !== 'undefined') { Auth.require(); Auth.showBadge('userBadge'); }
 </script>
 <script src="../../js/auth.js"></script>
+
+<script>
+(function(){
+  if (window.__bilingualBooted) return;
+  window.__bilingualBooted = true;
+  var stored = (typeof localStorage!=='undefined' && localStorage.getItem('tck_lang')) || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    try { localStorage.setItem('tck_lang', l); } catch(e){}
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      var on = b.getAttribute('data-lang-btn') === l;
+      b.classList.toggle('active', on);
+      b.style.background = on ? '#007646' : 'transparent';
+      b.style.color = on ? '#fff' : '#5A6861';
+    });
+  }
+})();
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="en">
+<!-- toefl-reps-demo: bilingualized -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,14 +79,15 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 .retry-btn:hover{background:#3a7cc0;}
 </style>
 </head>
-<body>
+<body data-lang="jp">
+<div class="tck-lang-toggle" data-bilingual-toggle style="position:fixed;top:12px;right:12px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:3px;font-family:Manrope,system-ui,sans-serif;font-size:.72em;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08)"><button type="button" data-lang-btn="jp" class="active" style="border:none;background:#007646;color:#fff;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">日本語</button><button type="button" data-lang-btn="en" style="border:none;background:transparent;color:#5A6861;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">EN</button></div>
 
 <!-- START OVERLAY -->
 <div class="start-overlay" id="startOverlay">
 <div class="start-card">
 <h2>🎧 Listen and Choose a Response</h2>
 <p>You will hear a short statement or question.<br>Choose the best response from four options.<br>The audio will play <strong>only once</strong>.</p>
-<button class="btn-start" onclick="startQuiz()">Start Listening</button>
+<button class="btn-start" onclick="startQuiz()"><span class="jp">聴き取り開始</span><span class="en">Start Listening</span></button>
 </div>
 </div>
 
@@ -94,11 +96,11 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <div class="nav-left">
 <span class="q-num" id="qNum">Question 1 of 8</span>
 <span class="divider">|</span>
-<span class="section-label">Listening</span>
+<span class="section-label"><span class="jp">リスニング</span><span class="en">Listening</span></span>
 </div>
 <div class="nav-right">
 <span class="timer-display" id="timer">--:--</span>
-<button class="btn-toggle" id="btnTime" onclick="toggleTimer()">Hide Time</button>
+<button class="btn-toggle" id="btnTime" onclick="toggleTimer()"><span class="jp">時間を隠す</span><span class="en">Hide Time</span></button>
 <div class="user-badge" id="userBadge">?</div>
 </div>
 </div>
@@ -439,6 +441,29 @@ function goNext(){
         document.getElementById('resultSummary').innerHTML = html;
     }
 }
+</script>
+
+<script>
+(function(){
+  if (window.__bilingualBooted) return;
+  window.__bilingualBooted = true;
+  var stored = (typeof localStorage!=='undefined' && localStorage.getItem('tck_lang')) || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    try { localStorage.setItem('tck_lang', l); } catch(e){}
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      var on = b.getAttribute('data-lang-btn') === l;
+      b.classList.toggle('active', on);
+      b.style.background = on ? '#007646' : 'transparent';
+      b.style.color = on ? '#fff' : '#5A6861';
+    });
+  }
+})();
 </script>
 </body>
 </html>

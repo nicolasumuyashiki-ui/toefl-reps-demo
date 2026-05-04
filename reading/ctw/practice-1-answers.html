@@ -2,6 +2,7 @@
 <!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="ja">
+<!-- toefl-reps-demo: bilingualized -->
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Complete the Words 解答解説</title>
@@ -60,10 +61,11 @@
 .scoring-reminder .text p{font-size:.82em;color:#a16207;line-height:1.6}
 </style>
 </head>
-<body>
+<body data-lang="jp">
+<div class="tck-lang-toggle" data-bilingual-toggle style="position:fixed;top:12px;right:12px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:3px;font-family:Manrope,system-ui,sans-serif;font-size:.72em;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08)"><button type="button" data-lang-btn="jp" class="active" style="border:none;background:#007646;color:#fff;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">日本語</button><button type="button" data-lang-btn="en" style="border:none;background:transparent;color:#5A6861;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">EN</button></div>
 <div class="header">
   <a class="btn-menu" href="../menu.html">← メニュー</a>
-  <h1>Complete the Words 解答解説<span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
+  <h1><span class="jp">Complete the Words 解答解説</span><span class="en">Complete the Words — Answers</span><span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
   <p>Day 1 宿題 — 3セット分</p>
 </div>
 <div class="score-summary" id="scoreSummary"></div>
@@ -81,7 +83,7 @@
 </div>
 <div class="set-panel active" id="set0"><div class="set-section"><div class="set-header"><span class="set-badge">M1</span><h2>Set 1: The History of Public Libraries</h2></div><div class="passage-block"><div class="passage-label">Passage（正解入り）</div><div class="passage-text" id="passage0"></div></div><div class="answers-block"><h3>📝 各問 解答＆解説</h3><div id="ag0"></div></div></div></div>
 <div class="set-panel" id="set1"><div class="set-section"><div class="set-header"><span class="set-badge" style="background:#fef3c7;color:#78350f;border:1px solid #f59e0b">Harder</span><h2>Set 2: Urban Agriculture in Modern Cities</h2></div><div class="passage-block"><div class="passage-label">Passage（正解入り）</div><div class="passage-text" id="passage1"></div></div><div class="answers-block"><h3>📝 各問 解答＆解説</h3><div id="ag1"></div></div></div></div>
-<div class="scoring-reminder"><div class="icon">⚠️</div><div class="text"><h3>スコアリングのルール — 推測しないと損！</h3><p>Complete the Words では、<strong>正解 → 得点</strong>、<strong>不正解 → 0点</strong>、<strong>空欄 → 0点</strong> です。不正解でも空欄でも結果は同じ0点。<strong>わからなくても必ず何か入力しましょう</strong>。</p></div></div>
+<div class="scoring-reminder"><div class="icon">⚠️</div><div class="text"><h3><span class="jp">スコア</span><span class="en">Score</span>リングのルール — 推測しないと損！</h3><p>Complete the Words では、<strong>正解 → 得点</strong>、<strong>不正解 → 0点</strong>、<strong>空欄 → 0点</strong> です。不正解でも空欄でも結果は同じ0点。<strong>わからなくても必ず何か入力しましょう</strong>。</p></div></div>
 
 <script src="../../js/auth.js"></script>
 <script src="../../js/review-mode.js"></script>
@@ -117,6 +119,29 @@ function renderAll(){
 }
 function showSet(i){document.querySelectorAll('.set-panel').forEach(function(p,j){p.classList.toggle('active',j===i);});document.querySelectorAll('.set-nav button').forEach(function(b,j){b.classList.toggle('active',j===i);});}
 renderAll();
+</script>
+
+<script>
+(function(){
+  if (window.__bilingualBooted) return;
+  window.__bilingualBooted = true;
+  var stored = (typeof localStorage!=='undefined' && localStorage.getItem('tck_lang')) || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    try { localStorage.setItem('tck_lang', l); } catch(e){}
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      var on = b.getAttribute('data-lang-btn') === l;
+      b.classList.toggle('active', on);
+      b.style.background = on ? '#007646' : 'transparent';
+      b.style.color = on ? '#fff' : '#5A6861';
+    });
+  }
+})();
 </script>
 </body>
 </html>

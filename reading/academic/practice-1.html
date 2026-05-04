@@ -2,6 +2,7 @@
 <!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="en">
+<!-- toefl-reps-demo: bilingualized -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,19 +90,20 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 .review-dot.unanswered{background:#e2e8f0}
 </style>
 </head>
-<body>
+<body data-lang="jp">
+<div class="tck-lang-toggle" data-bilingual-toggle style="position:fixed;top:12px;right:12px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:3px;font-family:Manrope,system-ui,sans-serif;font-size:.72em;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08)"><button type="button" data-lang-btn="jp" class="active" style="border:none;background:#007646;color:#fff;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">日本語</button><button type="button" data-lang-btn="en" style="border:none;background:transparent;color:#5A6861;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">EN</button></div>
 
 <!-- TOP NAV -->
 <div class="top-nav">
   <div class="top-nav-left">
     <span>Question <span id="qLabel"><strong>1</strong></span> of 2</span>
     <span>|</span>
-    <span>Reading</span>
+    <span><span class="jp">リーディング</span><span class="en">Reading</span></span>
   </div>
   <div class="top-nav-right">
-    <button class="timer-btn" onclick="toggleTimer()">Hide Time</button>
+    <button class="timer-btn" onclick="toggleTimer()"><span class="jp">時間を隠す</span><span class="en">Hide Time</span></button>
     <span class="timer-display" id="timerDisplay">25:00</span>
-    <button class="review-btn" onclick="openReview()">Review</button>
+    <button class="review-btn" onclick="openReview()"><span class="jp">レビュー</span><span class="en">Review</span></button>
     <span class="user-badge" id="userBadge"></span>
   </div>
 </div>
@@ -175,15 +177,15 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 <!-- FOOTER NAV -->
 <div class="reading-footer">
   <button class="btn-nav btn-back" id="btnBack" onclick="changePage(-1)" disabled>‹ Back</button>
-  <button class="btn-nav btn-next" id="btnNext" onclick="changePage(1)">Next ›</button>
+  <button class="btn-nav btn-next" id="btnNext" onclick="changePage(1)"><span class="jp">次へ ›</span><span class="en">Next ›</span></button>
 </div>
 
 <!-- REVIEW OVERLAY -->
 <div class="overlay" id="reviewOverlay">
   <div class="overlay-box">
-    <div class="overlay-title">Review Questions</div>
+    <div class="overlay-title"><span class="jp">問題一覧</span><span class="en">Review Questions</span></div>
     <div id="reviewList"></div>
-    <button class="overlay-close" onclick="closeReview()">Close</button>
+    <button class="overlay-close" onclick="closeReview()"><span class="jp">閉じる</span><span class="en">Close</span></button>
   </div>
 </div>
 
@@ -384,5 +386,28 @@ if(typeof Auth !== 'undefined'){
 </script>
 <script src="../../js/auth.js"></script>
 <script src="../../js/review-mode.js"></script>
+
+<script>
+(function(){
+  if (window.__bilingualBooted) return;
+  window.__bilingualBooted = true;
+  var stored = (typeof localStorage!=='undefined' && localStorage.getItem('tck_lang')) || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    try { localStorage.setItem('tck_lang', l); } catch(e){}
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      var on = b.getAttribute('data-lang-btn') === l;
+      b.classList.toggle('active', on);
+      b.style.background = on ? '#007646' : 'transparent';
+      b.style.color = on ? '#fff' : '#5A6861';
+    });
+  }
+})();
+</script>
 </body>
 </html>

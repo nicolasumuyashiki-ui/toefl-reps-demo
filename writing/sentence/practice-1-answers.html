@@ -2,6 +2,7 @@
 <!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="ja">
+<!-- toefl-reps-demo: bilingualized -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,15 +44,16 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 .btn-back{display:inline-block;padding:12px 32px;background:#4a90d9;color:#fff;border:none;border-radius:8px;font-size:.95em;font-weight:600;text-decoration:none}
 </style>
 </head>
-<body>
+<body data-lang="jp">
+<div class="tck-lang-toggle" data-bilingual-toggle style="position:fixed;top:12px;right:12px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:3px;font-family:Manrope,system-ui,sans-serif;font-size:.72em;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08)"><button type="button" data-lang-btn="jp" class="active" style="border:none;background:#007646;color:#fff;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">日本語</button><button type="button" data-lang-btn="en" style="border:none;background:transparent;color:#5A6861;padding:5px 12px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:inherit">EN</button></div>
 
 <div class="header">
-  <h1>🔤 Build a Sentence — 解答解説<span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
+  <h1>🔤 Build a Sentence — <span class="jp">解答解説</span><span class="en">Answers & Explanations</span><span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
   <p>Kickstart Day 3 Homework | 14問</p>
 </div>
 
 <div class="score-summary">
-  <p class="score-sub">あなたのスコア</p>
+  <p class="score-sub">あなたの<span class="jp">スコア</span><span class="en">Score</span></p>
   <div class="score-big" id="scoreBig">— / 14</div>
   <div class="score-bar"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
   <p class="score-sub" id="scoreMsg"></p>
@@ -73,8 +75,8 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 </div>
 
 <div class="nav-bottom">
-  <a class="btn-back" href="practice-1.html">← もう一度解く</a>
-  <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511">📋 メニューに戻る</a>
+  <a class="btn-back" href="practice-1.html">← <span class="jp">もう一度</span><span class="en">Try again</span>解く</a>
+  <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511"><span class="jp">📋 メニューに戻る</span><span class="en">📋 Back to menu</span></a>
 </div>
 
 <script>
@@ -114,6 +116,29 @@ answers.forEach((a,i)=>{
     +'<div class="q-grammar">📝 '+a.grammar+'</div></div></div>';
 });
 document.getElementById('qList').innerHTML=html;
+</script>
+
+<script>
+(function(){
+  if (window.__bilingualBooted) return;
+  window.__bilingualBooted = true;
+  var stored = (typeof localStorage!=='undefined' && localStorage.getItem('tck_lang')) || 'jp';
+  setLang(stored);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-btn')); });
+  });
+  function setLang(l){
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'jp' ? 'ja' : 'en');
+    try { localStorage.setItem('tck_lang', l); } catch(e){}
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      var on = b.getAttribute('data-lang-btn') === l;
+      b.classList.toggle('active', on);
+      b.style.background = on ? '#007646' : 'transparent';
+      b.style.color = on ? '#fff' : '#5A6861';
+    });
+  }
+})();
 </script>
 </body>
 </html>
