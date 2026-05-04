@@ -49,11 +49,11 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 
 <div class="header">
   <h1>🔤 Build a Sentence — <span class="jp">解答解説</span><span class="en">Answers & Explanations</span><span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
-  <p>Kickstart Day 3 Homework | 14問</p>
+  <p>Kickstart Day 3 Homework | <span class="jp">14問</span><span class="en">14 questions</span></p>
 </div>
 
 <div class="score-summary">
-  <p class="score-sub">あなたの<span class="jp">スコア</span><span class="en">Score</span></p>
+  <p class="score-sub"><span class="jp">あなたのスコア</span><span class="en">Your score</span></p>
   <div class="score-big" id="scoreBig">— / 14</div>
   <div class="score-bar"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
   <p class="score-sub" id="scoreMsg"></p>
@@ -62,11 +62,11 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 <div class="container">
 
 <div class="tips-card">
-  <h2>💡 Build a Sentence 攻略 3ステップ</h2>
+  <h2><span class="jp">💡 Build a Sentence 攻略 3ステップ</span><span class="en">💡 Build a Sentence — 3-step strategy</span></h2>
   <div class="step-grid">
-    <div class="step"><div class="step-num">1</div><h4>主語と動詞を見つける</h4><p>「誰が（主語）」「どうする（動詞）」を最初に探す。この2つが文の骨格。</p></div>
-    <div class="step"><div class="step-num">2</div><h4>骨格を作る</h4><p>S+V を組み合わせて基本形を作る。文型（SV, SVC, SVO）を意識。</p></div>
-    <div class="step"><div class="step-num">3</div><h4>残りを配置</h4><p>修飾語、前置詞句、接続詞を適切な位置に。最後に音読チェック（5秒）。</p></div>
+    <div class="step"><div class="step-num">1</div><h4><span class="jp">主語と動詞を見つける</span><span class="en">Find the subject and verb</span></h4><p><span class="jp">「誰が（主語）」「どうする（動詞）」を最初に探す。この2つが文の骨格。</span><span class="en">Look for "who (subject)" and "does what (verb)" first. These two are the skeleton of the sentence.</span></p></div>
+    <div class="step"><div class="step-num">2</div><h4><span class="jp">骨格を作る</span><span class="en">Build the skeleton</span></h4><p><span class="jp">S+V を組み合わせて基本形を作る。文型（SV, SVC, SVO）を意識。</span><span class="en">Combine S+V into a basic form. Be aware of sentence patterns (SV, SVC, SVO).</span></p></div>
+    <div class="step"><div class="step-num">3</div><h4><span class="jp">残りを配置</span><span class="en">Place the rest</span></h4><p><span class="jp">修飾語、前置詞句、接続詞を適切な位置に。最後に音読チェック（5秒）。</span><span class="en">Position modifiers, prepositional phrases, and conjunctions correctly. Finish with a 5-second read-aloud check.</span></p></div>
   </div>
 </div>
 
@@ -75,26 +75,26 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 </div>
 
 <div class="nav-bottom">
-  <a class="btn-back" href="practice-1.html">← <span class="jp">もう一度</span><span class="en">Try again</span>解く</a>
+  <a class="btn-back" href="practice-1.html"><span class="jp">← もう一度解く</span><span class="en">← Try again</span></a>
   <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511"><span class="jp">📋 メニューに戻る</span><span class="en">📋 Back to menu</span></a>
 </div>
 
 <script>
 const answers=[
-{id:1,prompt:"Are you going to the concert tonight?",sentence:"I do not like that kind of music.",grammar:"否定文: S + do not + V。「that kind of」は「その種類の」。"},
-{id:2,prompt:"Did you enjoy the book I recommended?",sentence:"Yes, it was one of the best books I have read.",grammar:"最上級 + 関係代名詞省略: one of the best + N + S + have + Vpp。"},
-{id:3,prompt:"Why didn't you come to class yesterday?",sentence:"I had a doctor's appointment that I could not reschedule.",grammar:"関係代名詞 that: appointment that I could not reschedule。過去形 had。"},
-{id:4,prompt:"Have you decided what to major in yet?",sentence:"I have not made a final decision yet.",grammar:"現在完了の否定: S + have not + Vpp。yet は文末。"},
-{id:5,prompt:"What did you think of the guest speaker?",sentence:"The examples she used to explain the topic were really interesting.",grammar:"関係代名詞省略: examples (that) she used。S(examples) + were + C(interesting)。"},
-{id:6,prompt:"Can you help me move this weekend?",sentence:"Sure, just let me know what time works best.",grammar:"間接疑問文: what time works best。let me know + wh節。"},
-{id:7,prompt:"How was your job interview this morning?",sentence:"I was nervous at first, but it went well.",grammar:"等位接続詞 but: 2つの独立節をコンマ+butで接続。at first = 最初は。"},
-{id:8,prompt:"Do you know where the nearest post office is?",sentence:"There is one right across the street from the library.",grammar:"There is構文 + 場所の前置詞句: across the street from ~。"},
-{id:9,prompt:"What are you planning to do after graduation?",sentence:"I am thinking about applying for a job abroad.",grammar:"進行形 + 前置詞: am thinking about + Ving。for a job abroad。"},
-{id:10,prompt:"Why do you always take the bus instead of driving?",sentence:"Taking the bus is much cheaper and I can avoid traffic.",grammar:"動名詞主語: Taking the bus is ~。比較級 much cheaper。"},
-{id:11,prompt:"Would you like to join our study group?",sentence:"That sounds great, especially since the exam is coming up soon.",grammar:"since節（理由）: since the exam is coming up。especially で強調。"},
-{id:12,prompt:"Did you hear about the new campus policy?",sentence:"No, I have not heard anything about it.",grammar:"現在完了の否定: have not heard。anything（否定文での不定代名詞）。"},
-{id:13,prompt:"What's the best way to prepare for the TOEFL?",sentence:"I would recommend practicing with timed exercises every day.",grammar:"would recommend + Ving: 丁寧な提案表現。前置詞 with。"},
-{id:14,prompt:"How did you learn to cook so well?",sentence:"My grandmother taught me her recipes when I was young.",grammar:"SVOO: taught me her recipes。時の副詞節: when I was young。"}
+{id:1,prompt:"Are you going to the concert tonight?",sentence:"I do not like that kind of music.",grammar:"否定文: S + do not + V。「that kind of」は「その種類の」。",grammar_en:"Negative form: S + do not + V. \"that kind of\" = of that type."},
+{id:2,prompt:"Did you enjoy the book I recommended?",sentence:"Yes, it was one of the best books I have read.",grammar:"最上級 + 関係代名詞省略: one of the best + N + S + have + Vpp。",grammar_en:"Superlative + omitted relative pronoun: one of the best + N + S + have + Vpp."},
+{id:3,prompt:"Why didn't you come to class yesterday?",sentence:"I had a doctor's appointment that I could not reschedule.",grammar:"関係代名詞 that: appointment that I could not reschedule。過去形 had。",grammar_en:"Relative pronoun that: appointment that I could not reschedule. Past-tense had."},
+{id:4,prompt:"Have you decided what to major in yet?",sentence:"I have not made a final decision yet.",grammar:"現在完了の否定: S + have not + Vpp。yet は文末。",grammar_en:"Present-perfect negative: S + have not + Vpp. \"yet\" goes at the end."},
+{id:5,prompt:"What did you think of the guest speaker?",sentence:"The examples she used to explain the topic were really interesting.",grammar:"関係代名詞省略: examples (that) she used。S(examples) + were + C(interesting)。",grammar_en:"Omitted relative pronoun: examples (that) she used. S (examples) + were + C (interesting)."},
+{id:6,prompt:"Can you help me move this weekend?",sentence:"Sure, just let me know what time works best.",grammar:"間接疑問文: what time works best。let me know + wh節。",grammar_en:"Embedded question: what time works best. let me know + wh-clause."},
+{id:7,prompt:"How was your job interview this morning?",sentence:"I was nervous at first, but it went well.",grammar:"等位接続詞 but: 2つの独立節をコンマ+butで接続。at first = 最初は。",grammar_en:"Coordinating conjunction \"but\": joins two independent clauses with comma + but. at first = initially."},
+{id:8,prompt:"Do you know where the nearest post office is?",sentence:"There is one right across the street from the library.",grammar:"There is構文 + 場所の前置詞句: across the street from ~。",grammar_en:"There is + locative prepositional phrase: across the street from ~."},
+{id:9,prompt:"What are you planning to do after graduation?",sentence:"I am thinking about applying for a job abroad.",grammar:"進行形 + 前置詞: am thinking about + Ving。for a job abroad。",grammar_en:"Progressive + preposition: am thinking about + V-ing. for a job abroad."},
+{id:10,prompt:"Why do you always take the bus instead of driving?",sentence:"Taking the bus is much cheaper and I can avoid traffic.",grammar:"動名詞主語: Taking the bus is ~。比較級 much cheaper。",grammar_en:"Gerund subject: Taking the bus is ~. Comparative \"much cheaper.\""},
+{id:11,prompt:"Would you like to join our study group?",sentence:"That sounds great, especially since the exam is coming up soon.",grammar:"since節（理由）: since the exam is coming up。especially で強調。",grammar_en:"since-clause (reason): since the exam is coming up. \"especially\" intensifies."},
+{id:12,prompt:"Did you hear about the new campus policy?",sentence:"No, I have not heard anything about it.",grammar:"現在完了の否定: have not heard。anything（否定文での不定代名詞）。",grammar_en:"Present-perfect negative: have not heard. \"anything\" (indefinite pronoun in negation)."},
+{id:13,prompt:"What's the best way to prepare for the TOEFL?",sentence:"I would recommend practicing with timed exercises every day.",grammar:"would recommend + Ving: 丁寧な提案表現。前置詞 with。",grammar_en:"would recommend + V-ing: polite suggestion form. Preposition \"with.\""},
+{id:14,prompt:"How did you learn to cook so well?",sentence:"My grandmother taught me her recipes when I was young.",grammar:"SVOO: taught me her recipes。時の副詞節: when I was young。",grammar_en:"SVOO: taught me her recipes. Temporal adverb clause: when I was young."}
 ];
 
 const stored=(JSON.parse(sessionStorage.getItem('sentenceAnswers')||'null')||(window.Review?Review.loadAttempt('sentence',1):null));
@@ -105,7 +105,9 @@ if(stored){
   document.getElementById('scoreBig').textContent=score+' / '+stored.total;
   document.getElementById('scoreBar').style.width=(score/stored.total*100)+'%';
   const pct=Math.round(score/stored.total*100);
-  document.getElementById('scoreMsg').textContent=pct+'% 正答率'+(pct>=80?' — 素晴らしい！🎉':pct>=50?' — いい調子！':' — 復習して次に活かそう💪');
+  const sufJp=pct>=80?' — 素晴らしい！🎉':pct>=50?' — いい調子！':' — 復習して次に活かそう💪';
+  const sufEn=pct>=80?' — Excellent! 🎉':pct>=50?' — Nice progress!':' — Review and try again 💪';
+  document.getElementById('scoreMsg').innerHTML='<span class="jp">'+pct+'% 正答率'+sufJp+'</span><span class="en">'+pct+'% accuracy'+sufEn+'</span>';
 }
 
 let html='';
@@ -113,7 +115,7 @@ answers.forEach((a,i)=>{
   const numCls=stored?((stored.answers[i]&&JSON.stringify(stored.answers[i])===JSON.stringify(answers[i].sentence.replace(answers[i].sentence,''))?'correct':'default')):'default';
   html+='<div class="q-card"><div class="q-header"><div class="q-num default">'+(i+1)+'</div><div class="q-prompt">"'+a.prompt+'"</div></div>'
     +'<div class="q-body"><div class="q-sentence">→ '+a.sentence+'</div>'
-    +'<div class="q-grammar">📝 '+a.grammar+'</div></div></div>';
+    +'<div class="q-grammar">📝 <span class="jp">'+a.grammar+'</span><span class="en">'+(a.grammar_en||a.grammar)+'</span></div></div></div>';
 });
 document.getElementById('qList').innerHTML=html;
 </script>
