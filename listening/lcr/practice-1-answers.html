@@ -78,17 +78,17 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 <div class="score-banner">
   <div class="score-big" id="scoreBig">— / 8</div>
   <div class="score-bar-wrap"><div class="score-bar" id="scoreBar"></div></div>
-  <div class="score-msg" id="scoreMsg">問題を先に解いてからこのページを見ると、<span class="jp">スコア</span><span class="en">Score</span>が表示されます</div>
+  <div class="score-msg" id="scoreMsg"><span class="jp">問題を先に解いてからこのページを見ると、スコアが表示されます</span><span class="en">Complete the practice first, then your score will appear here</span></div>
 </div>
 
 <div class="answers-body">
 
   <div class="tips-section">
     <div class="tips-title">💡 LCR <span class="jp">攻略のコツ</span><span class="en">Strategy tips</span></div>
-    <div class="tip-card"><span class="tip-num">1</span><div class="tip-body"><strong>最初の2語に全集中</strong> — Do you→Yes/No、What→Wh疑問文、Could you→依頼、How about→提案</div></div>
-    <div class="tip-card"><span class="tip-num">2</span><div class="tip-body"><strong>質問タイプを判断</strong> — Yes/No、5W1H、依頼、提案、確認など。タイプに合う応答パターンを予測</div></div>
-    <div class="tip-card"><span class="tip-num">3</span><div class="tip-body"><strong>自然な応答を選ぶ</strong> — 「直接的すぎる答え」は疑う。会話を前に進める選択肢＝正解</div></div>
-    <div class="tip-card"><span class="tip-num">4</span><div class="tip-body"><strong>否定形に注意</strong> — Isn't...? / Don't you...? は確認の意味。意味を逆に取らない</div></div>
+    <div class="tip-card"><span class="tip-num">1</span><div class="tip-body"><span class="jp"><strong>最初の2語に全集中</strong> — Do you→Yes/No、What→Wh疑問文、Could you→依頼、How about→提案</span><span class="en"><strong>Lock in on the first two words</strong> — Do you → Yes/No, What → Wh-question, Could you → request, How about → suggestion</span></div></div>
+    <div class="tip-card"><span class="tip-num">2</span><div class="tip-body"><span class="jp"><strong>質問タイプを判断</strong> — Yes/No、5W1H、依頼、提案、確認など。タイプに合う応答パターンを予測</span><span class="en"><strong>Identify the question type</strong> — Yes/No, 5W1H, request, suggestion, confirmation, etc. Predict a response pattern that matches the type</span></div></div>
+    <div class="tip-card"><span class="tip-num">3</span><div class="tip-body"><span class="jp"><strong>自然な応答を選ぶ</strong> — 「直接的すぎる答え」は疑う。会話を前に進める選択肢＝正解</span><span class="en"><strong>Pick the natural response</strong> — be suspicious of "too-direct" answers. The option that moves the conversation forward = correct</span></div></div>
+    <div class="tip-card"><span class="tip-num">4</span><div class="tip-body"><span class="jp"><strong>否定形に注意</strong> — Isn't...? / Don't you...? は確認の意味。意味を逆に取らない</span><span class="en"><strong>Watch for negative forms</strong> — Isn't...? / Don't you...? are confirmation questions. Don't reverse the meaning</span></div></div>
   </div>
 
   <div id="qSection"></div>
@@ -96,7 +96,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 </div>
 
 <div class="nav-footer">
-  <button class="btn-menu" onclick="location.href='practice-1.html'">← <span class="jp">もう一度</span><span class="en">Try again</span>解く</button>
+  <button class="btn-menu" onclick="location.href='practice-1.html'"><span class="jp">← もう一度解く</span><span class="en">← Try again</span></button>
   <button class="btn-menu" onclick="location.href='../../menu.html'" style="background:#0F1511"><span class="jp">📋 メニューに戻る</span><span class="en">📋 Back to menu</span></button>
 </div>
 
@@ -113,7 +113,9 @@ const QS = [
     ],
     correct: 2,
     explain: "「卒業式にもう登録した？今日が最終日かも」→ (C)は「alumni officeでまだ登録できる」と具体的な場所と手段を教え、会話を前に進めている。",
-    hint: "Have you...? ＋ 締切情報への自然な応答 → 状況＋具体的なアドバイス。(A)は「月曜が締切だった」と矛盾する情報、(B)はガウンの話で別の話題、(D)は郵送で無関係。"
+    explain_en: "\"Have you signed up for graduation yet? Today might be the deadline.\" → (C) tells the speaker they can still register at the alumni office — specific place and method, moving the conversation forward.",
+    hint: "Have you...? ＋ 締切情報への自然な応答 → 状況＋具体的なアドバイス。(A)は「月曜が締切だった」と矛盾する情報、(B)はガウンの話で別の話題、(D)は郵送で無関係。",
+    hint_en: "Have you...? + deadline info → natural response = situation + concrete advice. (A) contradicts (says Monday was the deadline), (B) shifts topic to cap and gown, (D) is irrelevant (mail)."
   },
   {
     q: "I wish the snack bar near the science building didn't close so early.",
@@ -126,7 +128,9 @@ const QS = [
     ],
     correct: 3,
     explain: "「理科棟近くのスナックバーがもっと遅くまでやってればいいのに」→ (D)は「夏に改装するらしい」と関連情報を追加。改装後に営業時間が変わる可能性を示唆する自然な応答。",
-    hint: "I wish...は不満・願望の表明。自然な応答は「共感」か「関連する新情報」。(D)は改装情報で希望につながる。(A)は昼食の話、(B)は自販機、(C)はmeal planで話題がずれている。"
+    explain_en: "\"I wish the snack bar near the science building stayed open later.\" → (D) adds related news (\"they're renovating over the summer\"), implying hours may change after the renovation — a natural response.",
+    hint: "I wish...は不満・願望の表明。自然な応答は「共感」か「関連する新情報」。(D)は改装情報で希望につながる。(A)は昼食の話、(B)は自販機、(C)はmeal planで話題がずれている。",
+    hint_en: "I wish... expresses a complaint/desire. Natural responses: empathy or related new info. (D) gives renovation news that connects to the wish. (A) lunch, (B) vending machines, (C) meal plan all drift off-topic."
   },
   {
     q: "The parking garage on the west side of campus is completely full again.",
@@ -139,7 +143,9 @@ const QS = [
     ],
     correct: 0,
     explain: "「キャンパス西側の駐車場がまた満車だ」→ (A)は「ここから歩いた方が早いかも」と代替手段を提案。困っている相手に対する直接的な解決策。",
-    hint: "状況報告（困っている）への自然な応答 → 解決策の提案。(A)は具体的な代替手段。(B)はキャンパスツアーで無関係、(C)は自分の失敗談、(D)はシャトルで方向性は近いが歩く方が直接的。"
+    explain_en: "\"The west-side parking garage is full again.\" → (A) suggests an alternative (\"It might be quicker to walk from here.\") — a direct solution for someone in trouble.",
+    hint: "状況報告（困っている）への自然な応答 → 解決策の提案。(A)は具体的な代替手段。(B)はキャンパスツアーで無関係、(C)は自分の失敗談、(D)はシャトルで方向性は近いが歩く方が直接的。",
+    hint_en: "Natural response to a problem report = a solution. (A) is a concrete alternative. (B) campus tour is irrelevant; (C) is the speaker's own mistake; (D) shuttle is closer but walking is more direct."
   },
   {
     q: "Would you want to present our research findings together at the symposium?",
@@ -152,7 +158,9 @@ const QS = [
     ],
     correct: 1,
     explain: "「シンポジウムで一緒に研究成果を発表しない？」→ (B)は「いいよ、でも事前にリハーサルするならね」と条件付き承諾。提案に対して次のステップを示す自然な応答。",
-    hint: "Would you want to...? は提案・誘い。承諾・条件付き承諾・辞退のいずれかが自然。(A)は専攻の話で無関係、(C)は締切延長で別の話、(D)は資料数で発表提案への応答になっていない。"
+    explain_en: "\"Want to present our research findings together at the symposium?\" → (B) gives a conditional yes (\"Sure, but only if we rehearse beforehand.\") — natural response indicating the next step.",
+    hint: "Would you want to...? は提案・誘い。承諾・条件付き承諾・辞退のいずれかが自然。(A)は専攻の話で無関係、(C)は締切延長で別の話、(D)は資料数で発表提案への応答になっていない。",
+    hint_en: "Would you want to...? = invitation. Natural responses: accept, accept with conditions, or decline. (A) major is irrelevant; (C) deadline extension is off-topic; (D) sources doesn't address the invite."
   },
   {
     q: "Do you know where I can get a copy of the Campus Emergency Procedures Guide?",
@@ -165,7 +173,9 @@ const QS = [
     ],
     correct: 3,
     explain: "「キャンパス緊急マニュアルはどこで手に入る？」→ (D)は「自分はdepartment websiteで手に入れた」と具体的な入手方法を教えている。",
-    hint: "Do you know where...? には場所・方法の情報提供が自然。(D)は実際に手に入れた方法を共有。(A)はorientationの話で今すぐの役に立たない、(B)は場所案内だが別の施設、(C)は別の書類の話。"
+    explain_en: "\"Where can I get a copy of the Campus Emergency Procedures Guide?\" → (D) shares a concrete acquisition method (\"I got mine through the department website.\").",
+    hint: "Do you know where...? には場所・方法の情報提供が自然。(D)は実際に手に入れた方法を共有。(A)はorientationの話で今すぐの役に立たない、(B)は場所案内だが別の施設、(C)は別の書類の話。",
+    hint_en: "Do you know where...? naturally invites a place/method answer. (D) shares an actual method. (A) orientation isn't immediately useful; (B) wrong office; (C) is about a different form."
   },
   {
     q: "Professor Lane wants us to visit the new art exhibit before class on Wednesday, but I've got a conflict.",
@@ -178,7 +188,9 @@ const QS = [
     ],
     correct: 1,
     explain: "「レイン教授が水曜の授業前にアート展に行けと言ってるけど、予定が被ってる」→ (B)は「週末はギャラリーが早く閉まる」と、水曜以外に行く場合の注意点を提供。代替案として役立つ情報。",
-    hint: "困っている状況の共有 → 共感や代替案の提示が自然。(B)は週末に行く案の情報。(A)は開催時期の誤解、(C)は読書量の不満で別の話題、(D)は締切延長で展覧会とは無関係。"
+    explain_en: "\"Prof. Lane wants us to visit the exhibit before Wednesday's class, but I have a conflict.\" → (B) gives a useful caveat for going on another day (\"The gallery closes early on weekends.\").",
+    hint: "困っている状況の共有 → 共感や代替案の提示が自然。(B)は週末に行く案の情報。(A)は開催時期の誤解、(C)は読書量の不満で別の話題、(D)は締切延長で展覧会とは無関係。",
+    hint_en: "Sharing a scheduling problem invites empathy or an alternative. (B) supplies info for going on the weekend. (A) misreads opening dates; (C) shifts to reading load; (D) deadline extension is unrelated to the exhibit."
   },
   {
     q: "Apparently, you can't print anything in the library anymore without loading money onto your student card first.",
@@ -191,7 +203,9 @@ const QS = [
     ],
     correct: 2,
     explain: "「どうやら図書館で印刷するには、まず学生カードにお金をチャージしないといけなくなったらしい」→ (C)は「そうだ、ポリシー変わったの忘れてた」と共感＋確認。新ルールを認めて会話を続ける自然な応答。",
-    hint: "Apparently...（新情報の共有）への自然な応答 → 確認・共感・補足。(C)は「忘れてた」と共感型。(A)は場所移動の話、(B)はlab reportで無関係、(D)は本の貸出で印刷と無関係。"
+    explain_en: "\"Apparently you can't print in the library without loading money onto your student card first.\" → (C) acknowledges and empathizes (\"Right, I forgot they changed the policy.\") — confirms the new rule and keeps the conversation going.",
+    hint: "Apparently...（新情報の共有）への自然な応答 → 確認・共感・補足。(C)は「忘れてた」と共感型。(A)は場所移動の話、(B)はlab reportで無関係、(D)は本の貸出で印刷と無関係。",
+    hint_en: "Apparently... (new info) invites confirmation, empathy, or addition. (C) is empathetic (\"I forgot\"). (A) talks about a move; (B) lab report is unrelated; (D) book check-out has nothing to do with printing."
   },
   {
     q: "I've been studying for the statistics final all week, and I still don't feel ready.",
@@ -204,7 +218,9 @@ const QS = [
     ],
     correct: 0,
     explain: "「統計の期末試験のために一週間ずっと勉強してるのに、まだ準備ができた気がしない」→ (A)は「復習セッションが明日の朝ある」と、不安を感じている相手に具体的な解決策を提示。",
-    hint: "不安・困りごとの共有 → 共感＋具体的な助言が自然。(A)はreview sessionという具体的な次のアクション。(B)は教科書返却で逆方向、(C)は範囲の情報だが相手の不安への対応になっていない、(D)は驚きだが会話を進めない。"
+    explain_en: "\"I've been studying for the statistics final all week and still don't feel ready.\" → (A) offers a concrete solution (\"Well, the review session is tomorrow morning.\") to an anxious speaker.",
+    hint: "不安・困りごとの共有 → 共感＋具体的な助言が自然。(A)はreview sessionという具体的な次のアクション。(B)は教科書返却で逆方向、(C)は範囲の情報だが相手の不安への対応になっていない、(D)は驚きだが会話を進めない。",
+    hint_en: "Sharing anxiety invites empathy + concrete advice. (A) gives a specific next action (review session). (B) returning the textbook is the wrong direction; (C) gives scope info but doesn't address the worry; (D) is surprise that doesn't move the conversation forward."
   }
 ];
 
@@ -223,8 +239,9 @@ function render(){
     document.getElementById('scoreBig').textContent = correct + ' / 8';
     document.getElementById('scoreBar').style.width = (correct/8*100)+'%';
     const pct = Math.round(correct/8*100);
-    let msg = pct >= 80 ? '素晴らしい！🎉' : pct >= 50 ? 'いい調子！もう少し！' : '復習して次に活かそう💪';
-    document.getElementById('scoreMsg').textContent = pct + '% 正答率 — ' + msg;
+    let msgJp = pct >= 80 ? '素晴らしい！🎉' : pct >= 50 ? 'いい調子！もう少し！' : '復習して次に活かそう💪';
+    let msgEn = pct >= 80 ? 'Excellent! 🎉' : pct >= 50 ? "Good progress — keep going!" : 'Review and try again 💪';
+    document.getElementById('scoreMsg').innerHTML = '<span class="jp">' + pct + '% 正答率 — ' + msgJp + '</span><span class="en">' + pct + '% accuracy — ' + msgEn + '</span>';
   }
 
   const section = document.getElementById('qSection');
@@ -242,11 +259,11 @@ function render(){
 
     let userLine = '';
     if(isSkip){
-      userLine = '<div class="q-user is-skip">⏱️ 未回答（タイムアウト）</div>';
+      userLine = '<div class="q-user is-skip"><span class="jp">⏱️ 未回答（タイムアウト）</span><span class="en">⏱️ No answer (timed out)</span></div>';
     } else if(isCorrect){
-      userLine = '<div class="q-user is-correct">✅ 正解！ あなたの回答: ('+userSelected+')</div>';
+      userLine = '<div class="q-user is-correct"><span class="jp">✅ 正解！ あなたの回答: </span><span class="en">✅ Correct! Your answer: </span>('+userSelected+')</div>';
     } else {
-      userLine = '<div class="q-user is-wrong">❌ あなたの回答: ('+userSelected+') → 正解: ('+labels[q.correct]+')</div>';
+      userLine = '<div class="q-user is-wrong"><span class="jp">❌ あなたの回答: </span><span class="en">❌ Your answer: </span>('+userSelected+')<span class="jp"> → 正解: </span><span class="en"> → Correct: </span>('+labels[q.correct]+')</div>';
     }
 
     let optsHtml = '';
@@ -263,8 +280,8 @@ function render(){
       '<div class="q-card-body">' +
       userLine +
       '<div class="options-list">'+optsHtml+'</div>' +
-      '<div class="q-explain"><strong>解説：</strong> '+q.explain+'</div>' +
-      '<div class="q-hint">🔑 '+q.hint+'</div>' +
+      '<div class="q-explain"><strong><span class="jp">解説：</span><span class="en">Explanation:</span></strong> <span class="jp">'+q.explain+'</span><span class="en">'+(q.explain_en||q.explain)+'</span></div>' +
+      '<div class="q-hint">🔑 <span class="jp">'+q.hint+'</span><span class="en">'+(q.hint_en||q.hint)+'</span></div>' +
       '</div></div>';
   });
   section.innerHTML = html;
