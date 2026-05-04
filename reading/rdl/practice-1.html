@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL iBT - Read in Daily Life (1)</title>
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min-height:100vh;display:flex;flex-direction:column;color:#0F1511;line-height:1.7}
+
+/* TOP NAV */
+.top-nav{background:#fff;border-bottom:1px solid #e2e8f0;padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
+.top-nav-left{display:flex;align-items:center;gap:16px;font-size:.9em;color:#4a5568}
+.top-nav-left strong{color:#0F1511}
+.top-nav-right{display:flex;align-items:center;gap:12px}
+.timer-btn{background:none;border:1px solid #cbd5e0;border-radius:6px;padding:6px 14px;font-size:.85em;color:#4a5568;cursor:pointer;font-family:inherit;transition:all .2s}
+.timer-btn:hover{background:#f7fafc}
+.timer-display{font-family:'Courier New',monospace;font-size:.9em;color:#0F1511;font-weight:600;min-width:60px;text-align:center}
+.review-btn{background:#4a90d9;color:#fff;border:none;border-radius:14px;padding:6px 18px;font-size:.85em;cursor:pointer;font-family:inherit;font-weight:500;transition:all .2s}
+.review-btn:hover{background:#3a7bc8}
+.user-badge{font-size:.8em;color:#718096}
+.user-badge strong{color:#0F1511}
+
+/* PROGRESS BAR */
+.progress-bar{height:4px;background:#ebf4ff;width:100%}
+.progress-fill{height:100%;background:#3182ce;border-radius:2px;transition:width .3s}
+
+/* FOOTER NAV */
+.reading-footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:14px 24px;display:flex;justify-content:flex-end;gap:12px;z-index:100}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:.95em;font-family:inherit;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:all .2s}
+.btn-back{color:#4a5568;background:#fff;border:1px solid #e2e8f0}
+.btn-back:hover{background:#f7fafc}
+.btn-back:disabled{opacity:.5;cursor:not-allowed}
+.btn-next{color:#fff;background:#0F1511}
+.btn-next:hover{background:#4a5568}
+
+/* SPLIT LAYOUT */
+.split-main{flex:1;display:flex;padding:0 0 80px 0;overflow:hidden}
+.passage-panel{flex:1;padding:32px 28px;overflow-y:auto;border-right:1px solid #e2e8f0;background:#f9fafb}
+.question-panel{flex:1;padding:32px 28px;overflow-y:auto}
+.instruction{font-weight:700;font-size:1em;color:#0F1511;margin-bottom:16px}
+
+/* QUESTION STYLES */
+.question-page{display:none}
+.question-page.active{display:block}
+.question-text{font-size:.95em;font-weight:600;color:#0F1511;margin-bottom:20px;line-height:1.6}
+.question-number{color:#4a90d9;margin-right:6px}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .15s;font-size:.92em;line-height:1.5}
+.option:hover{background:#f7fafc;border-color:#cbd5e0}
+.option.selected{background:#ebf4ff;border-color:#4a90d9}
+.option input{display:none}
+.option-label{font-weight:600;color:#4a90d9;min-width:28px}
+.option-text{flex:1;color:#0F1511}
+
+/* PHONE FRAME (Text Messages) */
+.phone-frame{max-width:340px;border:2px solid #0F1511;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.phone-screen{min-height:300px}
+.phone-status-bar{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;background:#f7fafc;font-size:.75em;color:#718096}
+.status-left{display:flex;align-items:center}
+.signal-bars{display:flex;align-items:flex-end;gap:2px}
+.signal-bar{width:3px;background:#0F1511;border-radius:1px}
+
+/* TEXT MESSAGES (1対1) */
+.message-header{background:linear-gradient(90deg,#128C7E,#075E54);padding:10px 15px;display:flex;align-items:center;gap:12px}
+.contact-name{color:#fff;font-weight:600;font-size:1em}
+.message-thread{padding:15px;background:#e5ddd5;min-height:200px}
+.message{margin-bottom:10px;display:flex;flex-direction:column}
+.message.received{align-items:flex-start}
+.message.sent{align-items:flex-end}
+.message-bubble{max-width:80%;padding:8px 12px;border-radius:8px;font-size:.95em;line-height:1.4}
+.message.received .message-bubble{background:#fff;border-bottom-left-radius:0}
+.message.sent .message-bubble{background:#dcf8c6;border-bottom-right-radius:0}
+.message-time{font-size:.75em;color:#718096;margin-top:2px}
+.avatar{width:36px;height:36px;border-radius:50%;background:#ebf4ff;display:flex;align-items:center;justify-content:center;font-size:1.1em}
+
+/* REVIEW OVERLAY */
+.overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);z-index:200;justify-content:center;align-items:center}
+.overlay.active{display:flex}
+.overlay-box{background:#fff;border-radius:12px;padding:28px 32px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.overlay-title{font-size:1.1em;font-weight:700;margin-bottom:16px;color:#0F1511}
+.overlay-close{background:#0F1511;color:#fff;border:none;border-radius:8px;padding:10px 24px;font-size:.9em;cursor:pointer;margin-top:16px;font-family:inherit}
+.review-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0;font-size:.9em}
+.review-item:last-child{border-bottom:none}
+.review-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.review-dot.answered{background:#48bb78}
+.review-dot.unanswered{background:#e2e8f0}
+.review-link{color:#4a90d9;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="top-nav-left">
+    <span>Question <span id="qLabel"><strong>11</strong></span> of 20</span>
+    <span>|</span>
+    <span>Reading</span>
+  </div>
+  <div class="top-nav-right">
+    <button class="timer-btn" onclick="toggleTimer()">Hide Time</button>
+    <span class="timer-display" id="timerDisplay">25:00</span>
+    <button class="review-btn" onclick="openReview()">Review</button>
+    <span class="user-badge" id="userBadge"></span>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:50%"></div></div>
+
+<!-- SPLIT LAYOUT -->
+<div class="split-main">
+  <!-- LEFT: PASSAGE -->
+  <div class="passage-panel">
+    <div class="instruction">Read a chain of text messages.</div>
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="phone-status-bar">
+          <div class="status-left">
+            <div class="signal-bars">
+              <div class="signal-bar" style="height:4px"></div>
+              <div class="signal-bar" style="height:6px"></div>
+              <div class="signal-bar" style="height:8px"></div>
+              <div class="signal-bar" style="height:10px"></div>
+            </div>
+          </div>
+          <span>●</span>
+          <span>🔋</span>
+        </div>
+        <div class="message-header">
+          <div class="avatar">👤</div>
+          <span class="contact-name">Kate</span>
+        </div>
+        <div class="message-thread">
+          <div class="message received">
+            <div class="message-bubble">Hey, are you coming to the farmers market tomorrow?</div>
+            <div class="message-time">9:12 AM</div>
+          </div>
+          <div class="message sent">
+            <div class="message-bubble">I'm on the fence. I have homework due Monday.</div>
+            <div class="message-time">9:14 AM</div>
+          </div>
+          <div class="message received">
+            <div class="message-bubble">Come on! We'll grab fresh bread and be back by 11.</div>
+            <div class="message-time">9:15 AM</div>
+          </div>
+          <div class="message sent">
+            <div class="message-bubble">OK fine. Bus stop at 8:30?</div>
+            <div class="message-time">9:17 AM</div>
+          </div>
+          <div class="message received">
+            <div class="message-bubble">Bring a reusable bag. Last time they charged extra for plastic ones.</div>
+            <div class="message-time">9:18 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: QUESTIONS -->
+  <div class="question-panel">
+    <!-- Q11 -->
+    <div class="question-page active" id="page1">
+      <div class="question-text">
+        <span class="question-number">11.</span>What does the sender mean by "I'm on the fence"?
+      </div>
+      <div class="options">
+        <div class="option" data-q="11" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q11" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">She is sitting outside on a fence.</span>
+        </div>
+        <div class="option" data-q="11" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q11" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">She has not decided yet.</span>
+        </div>
+        <div class="option" data-q="11" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q11" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">She is worried about the weather.</span>
+        </div>
+        <div class="option" data-q="11" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q11" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">She does not want to go at all.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="question-page" id="page2">
+      <div class="question-text">
+        <span class="question-number">12.</span>According to the text messages, why does Kate tell the sender to bring a reusable bag?
+      </div>
+      <div class="options">
+        <div class="option" data-q="12" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q12" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">The market does not provide any bags.</span>
+        </div>
+        <div class="option" data-q="12" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q12" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">They will buy too many items to carry.</span>
+        </div>
+        <div class="option" data-q="12" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q12" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">There was an additional cost for plastic bags before.</span>
+        </div>
+        <div class="option" data-q="12" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q12" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">Reusable bags are sold at the market.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="reading-footer">
+  <button class="btn-nav btn-back" id="btnBack" onclick="changePage(-1)" disabled>‹ Back</button>
+  <button class="btn-nav btn-next" id="btnNext" onclick="changePage(1)">Next ›</button>
+</div>
+
+<!-- REVIEW OVERLAY -->
+<div class="overlay" id="reviewOverlay">
+  <div class="overlay-box">
+    <div class="overlay-title">Review Questions</div>
+    <div id="reviewList"></div>
+    <button class="overlay-close" onclick="closeReview()">Close</button>
+  </div>
+</div>
+
+<script>
+var currentPage = 1;
+var totalPages = 2;
+var startQ = 11;
+var userAnswers = {};
+var timerVisible = true;
+var timeLeft = 1500;
+var timerInterval;
+
+function selectOption(el){
+  var q = el.getAttribute('data-q');
+  var v = el.getAttribute('data-v');
+  userAnswers[q] = v;
+  el.parentElement.querySelectorAll('.option').forEach(function(o){
+    o.classList.remove('selected');
+  });
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+  // Save to sessionStorage
+  sessionStorage.setItem('kickstart_rdl_answers', JSON.stringify(userAnswers)); if(window.Review){Review.markDone("rdl",1);Review.saveAttempt("rdl",1,userAnswers);} 
+}
+
+function changePage(dir){
+  var next = currentPage + dir;
+  if(next < 1 || next > totalPages) return;
+  document.getElementById('page'+currentPage).classList.remove('active');
+  currentPage = next;
+  document.getElementById('page'+currentPage).classList.add('active');
+  document.getElementById('qLabel').innerHTML = '<strong>'+(startQ + currentPage - 1)+'</strong>';
+  document.getElementById('btnBack').disabled = (currentPage === 1);
+  if(currentPage === totalPages){
+    document.getElementById('btnNext').onclick = function(){ goNext(); };
+  } else {
+    document.getElementById('btnNext').onclick = function(){ changePage(1); };
+  }
+  updateProgress();
+}
+
+function goNext(){
+  window.location.href = 'rdl-2.html';
+}
+
+function updateProgress(){
+  var base = 50; // CTW = 50%, RDL1 starts at ~55%
+  var pct = base + ((currentPage / totalPages) * 10);
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function toggleTimer(){
+  timerVisible = !timerVisible;
+  document.getElementById('timerDisplay').style.visibility = timerVisible ? 'visible' : 'hidden';
+  document.querySelector('.timer-btn').textContent = timerVisible ? 'Hide Time' : 'Show Time';
+}
+
+function formatTime(s){
+  var m = Math.floor(s/60);
+  var sec = s%60;
+  return m + ':' + (sec<10?'0':'') + sec;
+}
+
+function startTimer(){
+  var saved = sessionStorage.getItem('kickstart_reading_timer');
+  if(saved) timeLeft = parseInt(saved);
+  document.getElementById('timerDisplay').textContent = formatTime(timeLeft);
+  timerInterval = setInterval(function(){
+    timeLeft--;
+    if(timeLeft <= 0){ clearInterval(timerInterval); timeLeft = 0; }
+    sessionStorage.setItem('kickstart_reading_timer', timeLeft);
+    document.getElementById('timerDisplay').textContent = formatTime(timeLeft);
+  }, 1000);
+}
+
+function openReview(){
+  var list = document.getElementById('reviewList');
+  list.innerHTML = '';
+  for(var i = startQ; i < startQ + totalPages; i++){
+    var answered = userAnswers[i] ? true : false;
+    var div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML = '<div class="review-dot '+(answered?'answered':'unanswered')+'"></div>' +
+      '<span>Question '+i+'</span>' +
+      (answered ? '<span style="color:#48bb78;font-size:.85em">Answered: '+userAnswers[i]+'</span>' : '<span style="color:#e53e3e;font-size:.85em">Not answered</span>');
+    list.appendChild(div);
+  }
+  document.getElementById('reviewOverlay').classList.add('active');
+}
+
+function closeReview(){
+  document.getElementById('reviewOverlay').classList.remove('active');
+}
+
+// Restore answers
+(function(){
+  var saved = sessionStorage.getItem('kickstart_rdl_answers');
+  if(saved){
+    var parsed = JSON.parse(saved);
+    for(var q in parsed){
+      userAnswers[q] = parsed[q];
+      var opts = document.querySelectorAll('[data-q="'+q+'"][data-v="'+parsed[q]+'"]');
+      if(opts.length){
+        opts[0].classList.add('selected');
+        opts[0].querySelector('input').checked = true;
+      }
+    }
+  }
+})();
+
+startTimer();
+updateProgress();
+
+// Auth guard
+if(typeof Auth !== 'undefined'){
+  Auth.require();
+  if(window.Review){Review.attachReviewControls({task:'rdl',set:1,answersUrl:'rdl-answers.html'});}
+  Auth.showBadge('userBadge');
+}
+</script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/review-mode.js"></script>
+</body>
+</html>

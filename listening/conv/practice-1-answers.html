@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listen to a Conversation — 解答解説</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#0F1511;line-height:1.8}
+.header{background:linear-gradient(135deg,#0F1511,#4a5568);color:#fff;padding:28px 24px;text-align:center}
+.header h1{font-size:1.5em;margin-bottom:4px}
+.header p{font-size:.85em;opacity:.8}
+
+.score-summary{max-width:880px;margin:24px auto;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);padding:24px;text-align:center}
+.score-big{font-size:2.8em;font-weight:700;color:#4a90d9;margin:8px 0}
+.score-sub{font-size:.85em;color:#718096}
+.score-bar{height:8px;background:#e2e8f0;border-radius:4px;margin:16px auto;max-width:300px}
+.score-bar-fill{height:100%;background:#4a90d9;border-radius:4px;transition:width .5s}
+
+/* Tips */
+.tips-banner{background:#fff;border-left:4px solid #4a90d9;margin:20px auto;max-width:880px;padding:20px 24px;border-radius:0 8px 8px 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tips-banner h2{font-size:1em;color:#4a90d9;margin-bottom:14px}
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:700px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#ebf4ff;border-radius:8px;padding:14px;text-align:center}
+.tip-icon{font-size:1.5em;margin-bottom:6px}
+.tip-card h3{font-size:.85em;margin-bottom:4px}
+.tip-card p{font-size:.75em;color:#4a5568}
+
+/* Conversation context */
+.conv-section{max-width:880px;margin:20px auto}
+.conv-header{background:#fff;border-radius:10px 10px 0 0;padding:16px 20px;border-bottom:2px solid #4a90d9;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.conv-header h3{font-size:1em;color:#4a90d9}
+.conv-header p{font-size:.82em;color:#718096;margin-top:4px}
+.script-box{background:#fff;padding:16px 20px;margin-bottom:2px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.script-box details{cursor:pointer}
+.script-box summary{font-size:.88em;font-weight:600;color:#4a90d9;padding:8px 0}
+.script-line{font-size:.82em;color:#4a5568;margin:4px 0;padding-left:12px}
+.script-line strong{color:#0F1511}
+
+/* Question cards */
+.q-card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:16px;overflow:hidden}
+.q-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #edf2f7}
+.q-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em;color:#fff;flex-shrink:0}
+.q-num.correct{background:#38a169}
+.q-num.wrong{background:#e53e3e}
+.q-num.skip{background:#5A6861}
+.q-prompt{font-size:.92em;font-weight:600;flex:1}
+.q-badge{font-size:.72em;padding:3px 10px;border-radius:12px;font-weight:600}
+.q-badge.detail{background:#ebf8ff;color:#2b6cb0}
+.q-badge.inference{background:#fefcbf;color:#975a16}
+.q-body{padding:16px 20px}
+.q-user{font-size:.85em;margin-bottom:10px;padding:8px 12px;border-radius:6px}
+.q-user.is-correct{background:#f0fff4;color:#22543d}
+.q-user.is-wrong{background:#fff5f5;color:#9b2c2c}
+.q-user.is-skip{background:#f7fafc;color:#718096}
+.options-list{margin:10px 0}
+.opt-row{display:flex;align-items:flex-start;gap:8px;padding:6px 10px;border-radius:6px;font-size:.85em;margin-bottom:4px}
+.opt-row.is-correct{background:#f0fff4;font-weight:600}
+.opt-row.is-wrong-selected{background:#fff5f5;text-decoration:line-through;color:#e53e3e}
+.opt-label{font-weight:700;min-width:24px}
+.q-explain{background:#f7fafc;border-left:3px solid #4a90d9;padding:12px 16px;border-radius:0 6px 6px 0;margin-top:10px;font-size:.82em}
+.q-explain strong{color:#2b6cb0}
+.q-hint{margin-top:6px;font-size:.8em;color:#718096;font-style:italic}
+
+.nav-bottom{max-width:880px;margin:24px auto;text-align:center;padding-bottom:40px}
+.btn-back{display:inline-block;padding:12px 32px;background:#4a90d9;color:#fff;border:none;border-radius:8px;font-size:.95em;font-weight:600;cursor:pointer;text-decoration:none;margin:0 8px}
+.btn-back:hover{background:#3a7cc0}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎧 Listen to a Conversation — 解答解説</h1>
+  <p>Kickstart Day 2 Homework</p>
+</div>
+
+<div class="score-summary">
+  <p class="score-sub">あなたのスコア</p>
+  <div class="score-big" id="scoreBig">— / 4</div>
+  <div class="score-bar"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
+  <p class="score-sub" id="scoreMsg"></p>
+</div>
+
+<div class="tips-banner">
+  <h2>💡 Conversation 攻略のコツ</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">📝</div>
+      <h3>メモの取り方</h3>
+      <p>問題は何か？解決策は何か？をキーワードだけメモ。全文書き取ろうとしない！</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🔄</div>
+      <h3>問題解決パターン</h3>
+      <p>挨拶→問題提示→解決策提案→結論。キャンパス会話の多くはこのパターンに従う</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">😮</div>
+      <h3>感情表現に注目</h3>
+      <p>Oh, that's a relief! / That's frustrating. / Really? → 話者の感情は頻出の設問ポイント</p>
+    </div>
+  </div>
+</div>
+
+<!-- Conversation 1 -->
+<div class="conv-section">
+  <div class="conv-header">
+    <h3>🗣️ Conversation 1 — 寮の部屋変更</h3>
+    <p>場面：学生（女性）が住居課スタッフ（男性）に部屋の変更を相談</p>
+  </div>
+  <div class="script-box">
+    <details>
+      <summary>📜 スクリプトを見る（クリックで展開）</summary>
+      <div class="script-line"><strong>[NARRATOR]</strong> Listen to a conversation.</div>
+      <div class="script-line"><strong>[WOMAN]</strong> Hi, is it possible to switch dorm rooms this semester? Mine's on the ground floor, and the parking lot noise makes it really hard to study.</div>
+      <div class="script-line"><strong>[MAN]</strong> I understand. We do have a few openings on the upper floors. You'd need to fill out a transfer request form, though.</div>
+      <div class="script-line"><strong>[WOMAN]</strong> Sure. How long does the process take?</div>
+      <div class="script-line"><strong>[MAN]</strong> About two weeks. I can give you the form right now, if you'd like.</div>
+      <div class="script-line"><strong>[WOMAN]</strong> That'd be great. Thanks.</div>
+      <div class="script-line"><strong>[MAN]</strong> Here you go. Just bring it back signed, and we'll get things started.</div>
+    </details>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q1icon">1</div>
+      <div class="q-prompt">Why does the woman want to change her room?</div>
+      <span class="q-badge detail">Detail</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q1user"></div>
+      <div class="options-list">
+        <div class="opt-row is-correct"><span class="opt-label">(A)</span> There is too much outside noise near her room.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> Her roommate is too noisy.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> Her room is too far from her classes.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> The heating system in her room is broken.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 女性は「the parking lot noise makes it really hard to study」と明言。駐車場の騒音＝outside noiseが正解根拠。</div>
+      <div class="q-hint">🔑 ヒント位置：会話の冒頭（女性の1発話目）— 問題提示パターンの典型。最初の発話で理由が語られる。</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q2icon">2</div>
+      <div class="q-prompt">What does the man give the woman?</div>
+      <span class="q-badge detail">Detail</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q2user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> A list of available rooms.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(B)</span> A form she needs to complete.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> A key to a new room.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> A map of the east wing.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 男性は「I can give you the form right now」「Here you go. Just bring it back signed」と言っている。transfer request form = a form she needs to complete。</div>
+      <div class="q-hint">🔑 ヒント位置：会話の終盤 — 解決策→次のアクションの部分。「何を渡したか」は会話の締めに出やすい。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Conversation 2 -->
+<div class="conv-section">
+  <div class="conv-header">
+    <h3>🗣️ Conversation 2 — ボランティア清掃イベント</h3>
+    <p>場面：2人の学生が土曜日の公園清掃イベントの準備について相談</p>
+  </div>
+  <div class="script-box">
+    <details>
+      <summary>📜 スクリプトを見る（クリックで展開）</summary>
+      <div class="script-line"><strong>[NARRATOR]</strong> Listen to a conversation.</div>
+      <div class="script-line"><strong>[MAN]</strong> Hey, did you hear back from the community center about Saturday's cleanup?</div>
+      <div class="script-line"><strong>[WOMAN]</strong> Yeah, they confirmed the park, but we need to bring our own trash bags. Their budget got cut.</div>
+      <div class="script-line"><strong>[MAN]</strong> Oh, I thought they were providing those. How many people signed up?</div>
+      <div class="script-line"><strong>[WOMAN]</strong> About twenty. I was thinking each person could bring a box of bags.</div>
+      <div class="script-line"><strong>[MAN]</strong> Good idea. I'll send out a group message tonight. What time are we meeting?</div>
+      <div class="script-line"><strong>[WOMAN]</strong> Nine a.m., at the main entrance of Riverside Park.</div>
+      <div class="script-line"><strong>[MAN]</strong> Got it. I'll include that in the message.</div>
+    </details>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q3icon">3</div>
+      <div class="q-prompt">Why do the students need to bring their own supplies?</div>
+      <span class="q-badge inference">Inference</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q3user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> The event was planned at the last minute.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> The park does not allow outside equipment.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> The volunteers forgot to request supplies.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(D)</span> The community center has less funding this semester.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 女性は「Their budget got cut」と言っている。budget got cut = less funding。直接「funding」とは言っていないため推論問題（パラフレーズの発見）。</div>
+      <div class="q-hint">🔑 推論のコツ：「budget got cut」→ 予算削減 → less funding。本文の言い換えが正解。本文と同じ単語を使う選択肢は疑え。</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q4icon">4</div>
+      <div class="q-prompt">What will the man do next?</div>
+      <span class="q-badge detail">Detail</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q4user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> Contact the community center for more details.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> Buy trash bags and gloves for the group.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(C)</span> Send a message to the volunteer group.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> Ask each volunteer to sign up again.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 男性は「I'll send out a group message tonight」「I'll include that in the message」と2回言及。send out a group message = send a message to the volunteer group。</div>
+      <div class="q-hint">🔑 ヒント位置：会話の最後 — 「次に何をするか」は常に会話の締めに出る。最後の1〜2文に全集中！</div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-bottom">
+  <a class="btn-back" href="listening-conv.html">← もう一度解く</a>
+  <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511">📋 メニューに戻る</a>
+</div>
+
+<script>
+const labels = ['A','B','C','D'];
+const correctAnswers = [0, 1, 3, 2]; // Q1=A, Q2=B, Q3=D, Q4=C
+
+function render(){
+  // Try to read from sessionStorage (set by listening-conv.html)
+  const stored = (JSON.parse(sessionStorage.getItem('convAnswers')||'null')||(window.Review?Review.loadAttempt('conv',1):null));
+  let correct = 0, answered = 0;
+
+  if(stored && Array.isArray(stored)){
+    for(let i=0;i<4;i++){
+      const userAns = stored[i];
+      const isCorrect = userAns === correctAnswers[i];
+      const isSkip = userAns === null || userAns === undefined;
+      if(!isSkip) answered++;
+      if(isCorrect) correct++;
+
+      const icon = document.getElementById('q'+(i+1)+'icon');
+      const user = document.getElementById('q'+(i+1)+'user');
+
+      if(isSkip){
+        icon.className = 'q-num skip';
+        user.className = 'q-user is-skip';
+        user.textContent = '⏱️ 未回答（タイムアウト）';
+      } else if(isCorrect){
+        icon.className = 'q-num correct';
+        user.className = 'q-user is-correct';
+        user.textContent = '✅ 正解！ あなたの回答: ('+labels[userAns]+')';
+      } else {
+        icon.className = 'q-num wrong';
+        user.className = 'q-user is-wrong';
+        user.textContent = '❌ あなたの回答: ('+labels[userAns]+') → 正解: ('+labels[correctAnswers[i]]+')';
+      }
+    }
+    document.getElementById('scoreBig').textContent = correct + ' / 4';
+    document.getElementById('scoreBar').style.width = (correct/4*100)+'%';
+    const pct = Math.round(correct/4*100);
+    let msg = pct >= 75 ? '素晴らしい！🎉' : pct >= 50 ? 'いい調子！' : '復習して次に活かそう💪';
+    document.getElementById('scoreMsg').textContent = pct + '% 正答率 — ' + msg;
+  } else {
+    document.getElementById('scoreBig').textContent = '— / 4';
+    document.getElementById('scoreMsg').textContent = '問題を先に解いてからこのページを見ると、スコアが表示されます';
+    // Hide user result lines
+    for(let i=1;i<=4;i++){
+      document.getElementById('q'+i+'user').style.display='none';
+    }
+  }
+}
+render();
+</script>
+</body>
+</html>

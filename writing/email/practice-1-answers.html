@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Write an Email — 解答解説・模範回答</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#0F1511;line-height:1.8}
+.header{background:linear-gradient(135deg,#0F1511,#4a5568);color:#fff;padding:28px 24px;text-align:center}
+.header h1{font-size:1.5em;margin-bottom:4px}
+.header p{font-size:.85em;opacity:.8}
+.container{max-width:880px;margin:0 auto;padding:20px}
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:20px;overflow:hidden}
+.card-header{padding:16px 20px;border-bottom:1px solid #edf2f7;font-weight:700;font-size:1em;color:#4a90d9}
+.card-body{padding:20px}
+
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}
+@media(max-width:700px){.tips-grid{grid-template-columns:1fr}}
+.tip{background:#ebf4ff;border-radius:8px;padding:14px;text-align:center}
+.tip h4{font-size:.85em;color:#2b6cb0;margin-bottom:6px}
+.tip p{font-size:.78em;color:#4a5568}
+.tip .time{display:inline-block;background:#4a90d9;color:#fff;padding:2px 10px;border-radius:10px;font-size:.72em;font-weight:700;margin-bottom:6px}
+
+.scenario-box{background:#f7fafc;border-left:3px solid #4a90d9;padding:16px;border-radius:0 8px 8px 0;margin-bottom:16px;font-size:.88em}
+.task-points{list-style:disc;padding-left:20px;margin:8px 0}
+.task-points li{font-size:.85em;color:#4a5568;margin-bottom:4px}
+
+.model-answer{background:#f0fff4;border:1px solid #c6f6d5;border-radius:8px;padding:20px;font-size:.88em;line-height:1.8;color:#22543d}
+.model-answer .highlight{background:#c6f6d5;padding:1px 4px;border-radius:3px}
+.point-tag{display:inline-block;background:#38a169;color:#fff;font-size:.68em;padding:1px 8px;border-radius:10px;font-weight:700;margin-right:4px;vertical-align:middle}
+
+.checklist{margin:14px 0}
+.check-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:.85em}
+.check-item .icon{font-size:1.1em;flex-shrink:0}
+
+.mistakes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:600px){.mistakes-grid{grid-template-columns:1fr}}
+.mistake{background:#fff5f5;border-radius:8px;padding:12px;font-size:.82em}
+.mistake h5{color:#e53e3e;margin-bottom:4px}
+.mistake p{color:#718096}
+
+.user-preview{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:.85em;color:#4a5568;white-space:pre-wrap;max-height:200px;overflow-y:auto;margin-bottom:12px}
+.no-response{color:#5A6861;font-style:italic}
+
+.nav-bottom{text-align:center;padding:24px 0 40px}
+.btn-back{display:inline-block;padding:12px 32px;background:#4a90d9;color:#fff;border:none;border-radius:8px;font-size:.95em;font-weight:600;text-decoration:none}
+.btn-back:hover{background:#3a7cc0}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>✍️ Write an Email — 解答解説・模範回答</h1>
+  <p>Kickstart Day 3 Homework</p>
+</div>
+
+<div class="container">
+
+  <!-- Your response -->
+  <div class="card">
+    <div class="card-header">📝 あなたの回答</div>
+    <div class="card-body">
+      <div class="user-preview" id="userPreview"><span class="no-response">問題を先に解いてからこのページを見ると、あなたの回答が表示されます</span></div>
+      <div id="userStats" style="font-size:.82em;color:#718096"></div>
+    </div>
+  </div>
+
+  <!-- Tips -->
+  <div class="card">
+    <div class="card-header">💡 Write an Email 攻略のコツ</div>
+    <div class="card-body">
+      <div class="tips-grid">
+        <div class="tip">
+          <div class="time">0:00–0:30</div>
+          <h4>問題文を読み3ポイントをメモ</h4>
+          <p>最初の30秒で3つのポイントを確認。見落とし＝大減点</p>
+        </div>
+        <div class="tip">
+          <div class="time">0:30–5:30</div>
+          <h4>書く（各ポイント2-3文）</h4>
+          <p>テンプレートに従って書く。冗長にする必要なし。80〜120語で十分</p>
+        </div>
+        <div class="tip">
+          <div class="time">5:30–7:00</div>
+          <h4>見直し・修正</h4>
+          <p>3ポイント全部入ってるか？スペルミスはないか？を最終確認</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scenario reminder -->
+  <div class="card">
+    <div class="card-header">📋 問題の確認</div>
+    <div class="card-body">
+      <div class="scenario-box">
+        <strong>Scenario:</strong> You are a university student, and the campus newspaper recently published an article about a new study abroad program. However, the article contains several factual errors about the program's application deadline, eligibility requirements, and available destinations. As someone who has already applied to the program, you are familiar with the correct details.
+      </div>
+      <p style="font-weight:700;font-size:.9em;margin-bottom:8px">Write an email to the editor of the campus newspaper. In your email:</p>
+      <ul class="task-points">
+        <li><span class="point-tag">Point 1</span> Compliment the newspaper for covering the study abroad program.</li>
+        <li><span class="point-tag">Point 2</span> Identify the specific errors in the article and provide the correct information.</li>
+        <li><span class="point-tag">Point 3</span> Suggest a way to ensure future articles about university programs are more accurate.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Model Answer -->
+  <div class="card">
+    <div class="card-header">✅ 模範回答（約110語）</div>
+    <div class="card-body">
+      <div class="model-answer">
+Dear Editor,<br><br>
+<span class="highlight"><span class="point-tag">1</span> I wanted to let you know that I really appreciated the recent article about the new study abroad program. It's great to see the newspaper covering opportunities that are important to students.</span><br><br>
+<span class="highlight"><span class="point-tag">2</span> However, I noticed a few errors in the article. The application deadline was listed as March 15, but it is actually April 1. Also, the article mentioned that only juniors and seniors are eligible, but sophomores can apply as well. Finally, the article said the program is limited to Europe, but it also includes destinations in Asia.</span><br><br>
+<span class="highlight"><span class="point-tag">3</span> To avoid similar issues in the future, I would suggest reaching out directly to the program coordinator before publishing articles about university programs. This way, you can confirm the details and provide accurate information to readers.</span><br><br>
+Thank you for your time.<br>
+Best regards
+      </div>
+    </div>
+  </div>
+
+  <!-- Checklist -->
+  <div class="card">
+    <div class="card-header">✅ 自己チェックリスト</div>
+    <div class="card-body">
+      <div class="checklist">
+        <div class="check-item"><span class="icon">☑️</span> 3つのポイントがすべて含まれている</div>
+        <div class="check-item"><span class="icon">☑️</span> 各ポイントに2〜3文の説明がある</div>
+        <div class="check-item"><span class="icon">☑️</span> Dear [Name] で始まり、Best regards で終わっている</div>
+        <div class="check-item"><span class="icon">☑️</span> 80〜120語の範囲に収まっている</div>
+        <div class="check-item"><span class="icon">☑️</span> スペルミス・文法ミスがない</div>
+        <div class="check-item"><span class="icon">☑️</span> カジュアルすぎる表現を避けている（Hey! → Dear）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common mistakes -->
+  <div class="card">
+    <div class="card-header">⚠️ よくあるミス</div>
+    <div class="card-body">
+      <div class="mistakes-grid">
+        <div class="mistake"><h5>✗ ポイント見落とし</h5><p>3つのうち1つを書き忘れる → 大減点。書き終わったら必ず再確認</p></div>
+        <div class="mistake"><h5>✗ 冗長な前置き</h5><p>"I hope this email finds you well..." は不要。すぐに目的を述べる</p></div>
+        <div class="mistake"><h5>✗ カジュアルすぎる表現</h5><p>"Hey Prof!" → "Dear Professor" に。メールの適切なトーンを意識</p></div>
+        <div class="mistake"><h5>✗ 書きすぎ</h5><p>120語を超えても加点なし。簡潔に3ポイントを網羅することが重要</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav-bottom">
+  <a class="btn-back" href="write-email.html">← もう一度解く</a>
+  <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511">📋 メニューに戻る</a>
+</div>
+
+<script>
+const stored = (JSON.parse(sessionStorage.getItem('emailResponse')||'null')||(window.Review?Review.loadAttempt('email',1):null));
+if(stored && stored.text){
+  document.getElementById('userPreview').textContent = stored.text;
+  document.getElementById('userStats').textContent = '語数: ' + stored.words + ' | 使用時間: ' + stored.time;
+} 
+</script>
+</body>
+</html>

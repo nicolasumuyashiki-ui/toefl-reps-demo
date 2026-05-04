@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listen and Choose a Response — 解答解説</title>
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#0F1511;line-height:1.7}
+
+.answers-header{background:#0F1511;color:#fff;padding:20px 28px;text-align:center}
+.answers-header h1{font-size:1.2em;font-weight:600;margin-bottom:4px}
+.answers-header p{font-size:.9em;color:rgba(255,255,255,.7)}
+
+.score-banner{background:#ebf4ff;border-bottom:1px solid #bee3f8;padding:20px 28px;text-align:center}
+.score-big{font-size:2em;font-weight:800;color:#0F1511}
+.score-bar-wrap{width:200px;height:8px;background:#e2e8f0;border-radius:4px;margin:8px auto;overflow:hidden}
+.score-bar{height:100%;background:#48bb78;border-radius:4px;width:0%;transition:width .5s}
+.score-msg{font-size:.85em;color:#718096;margin-top:4px}
+
+.answers-body{max-width:800px;margin:0 auto;padding:24px 20px 120px}
+
+/* TIPS */
+.tips-section{background:#fffaf0;border:1.5px solid #fbd38d;border-radius:12px;padding:20px 24px;margin-bottom:28px}
+.tips-title{font-size:1em;font-weight:700;color:#e8912d;margin-bottom:12px}
+.tip-card{display:flex;gap:12px;margin-bottom:14px}
+.tip-num{background:#e8912d;color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75em;flex-shrink:0;font-weight:700}
+.tip-body{font-size:.88em;color:#4a5568;line-height:1.6}
+.tip-body strong{color:#0F1511}
+
+/* Q CARD */
+.q-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:0;margin-bottom:20px;overflow:hidden}
+.q-card-header{background:#f7fafc;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0}
+.q-num{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8em;font-weight:700;color:#fff;background:#5A6861}
+.q-num.correct{background:#48bb78}
+.q-num.wrong{background:#f56565}
+.q-num.skip{background:#e2e8f0;color:#5A6861}
+.q-prompt{flex:1;margin-left:12px;font-size:.92em;font-weight:600;color:#0F1511}
+.q-badge{font-size:.7em;font-weight:700;padding:3px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+.q-badge.detail{background:#ebf4ff;color:#3b82c8}
+.q-badge.inference{background:#f3f0fa;color:#7c5cbf}
+.q-card-body{padding:16px 20px}
+.q-user{font-size:.85em;padding:8px 12px;border-radius:8px;margin-bottom:12px}
+.q-user.is-correct{background:#f0fff4;color:#276749}
+.q-user.is-wrong{background:#fff5f5;color:#c53030}
+.q-user.is-skip{background:#f7fafc;color:#5A6861}
+
+.options-list{margin-bottom:16px}
+.opt-row{padding:8px 12px;border-radius:6px;font-size:.88em;margin-bottom:4px;display:flex;gap:8px}
+.opt-row.is-correct{background:#f0fff4;border:1px solid #c6f6d5;font-weight:600;color:#276749}
+.opt-row.is-wrong-selected{background:#fff5f5;border:1px solid #fed7d7;color:#c53030;text-decoration:line-through}
+.opt-label{font-weight:700;flex-shrink:0}
+
+.q-transcript{background:#FBF6EC;border-radius:8px;padding:12px 16px;margin-bottom:12px;font-size:.85em}
+.q-transcript strong{color:#4a90d9}
+.q-explain{font-size:.85em;color:#4a5568;line-height:1.65;margin-bottom:8px}
+.q-explain strong{color:#0F1511}
+.q-hint{font-size:.82em;color:#718096;background:#f7fafc;padding:8px 12px;border-radius:6px;border-left:3px solid #e8912d}
+
+/* FOOTER */
+.nav-footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:14px 24px;display:flex;justify-content:center;gap:12px;z-index:100}
+.btn-menu{display:inline-flex;align-items:center;gap:8px;padding:12px 32px;font-size:.95em;font-family:inherit;font-weight:600;border:none;border-radius:8px;cursor:pointer;color:#fff;background:#0F1511;transition:all .2s}
+.btn-menu:hover{background:#4a5568}
+</style>
+</head>
+<body>
+
+<div class="answers-header">
+  <h1>🎧 Listen and Choose a Response — 解答解説</h1>
+  <p>Kickstart Day 2 Homework</p>
+</div>
+
+<div class="score-banner">
+  <div class="score-big" id="scoreBig">— / 8</div>
+  <div class="score-bar-wrap"><div class="score-bar" id="scoreBar"></div></div>
+  <div class="score-msg" id="scoreMsg">問題を先に解いてからこのページを見ると、スコアが表示されます</div>
+</div>
+
+<div class="answers-body">
+
+  <div class="tips-section">
+    <div class="tips-title">💡 LCR 攻略のコツ</div>
+    <div class="tip-card"><span class="tip-num">1</span><div class="tip-body"><strong>最初の2語に全集中</strong> — Do you→Yes/No、What→Wh疑問文、Could you→依頼、How about→提案</div></div>
+    <div class="tip-card"><span class="tip-num">2</span><div class="tip-body"><strong>質問タイプを判断</strong> — Yes/No、5W1H、依頼、提案、確認など。タイプに合う応答パターンを予測</div></div>
+    <div class="tip-card"><span class="tip-num">3</span><div class="tip-body"><strong>自然な応答を選ぶ</strong> — 「直接的すぎる答え」は疑う。会話を前に進める選択肢＝正解</div></div>
+    <div class="tip-card"><span class="tip-num">4</span><div class="tip-body"><strong>否定形に注意</strong> — Isn't...? / Don't you...? は確認の意味。意味を逆に取らない</div></div>
+  </div>
+
+  <div id="qSection"></div>
+
+</div>
+
+<div class="nav-footer">
+  <button class="btn-menu" onclick="location.href='lcr.html'">← もう一度解く</button>
+  <button class="btn-menu" onclick="location.href='../menu.html'" style="background:#0F1511">📋 メニューに戻る</button>
+</div>
+
+<script>
+const QS = [
+  {
+    q: "Have you signed up for the graduation ceremony yet? I think today might be the last day.",
+    type: "detail",
+    opts: [
+      "The deadline was actually last Monday.",
+      "I already picked up my cap and gown.",
+      "You can still register at the alumni office.",
+      "I think they mailed it to your address."
+    ],
+    correct: 2,
+    explain: "「卒業式にもう登録した？今日が最終日かも」→ (C)は「alumni officeでまだ登録できる」と具体的な場所と手段を教え、会話を前に進めている。",
+    hint: "Have you...? ＋ 締切情報への自然な応答 → 状況＋具体的なアドバイス。(A)は「月曜が締切だった」と矛盾する情報、(B)はガウンの話で別の話題、(D)は郵送で無関係。"
+  },
+  {
+    q: "I wish the snack bar near the science building didn't close so early.",
+    type: "detail",
+    opts: [
+      "I usually eat lunch around noon.",
+      "Yeah, the vending machines are always empty.",
+      "My meal plan covers dinner only.",
+      "I heard they're renovating over the summer."
+    ],
+    correct: 3,
+    explain: "「理科棟近くのスナックバーがもっと遅くまでやってればいいのに」→ (D)は「夏に改装するらしい」と関連情報を追加。改装後に営業時間が変わる可能性を示唆する自然な応答。",
+    hint: "I wish...は不満・願望の表明。自然な応答は「共感」か「関連する新情報」。(D)は改装情報で希望につながる。(A)は昼食の話、(B)は自販機、(C)はmeal planで話題がずれている。"
+  },
+  {
+    q: "The parking garage on the west side of campus is completely full again.",
+    type: "detail",
+    opts: [
+      "It might be quicker to walk from here.",
+      "The campus tour starts at the main gate.",
+      "I parked in the faculty lot by mistake.",
+      "You should check the shuttle schedule online."
+    ],
+    correct: 0,
+    explain: "「キャンパス西側の駐車場がまた満車だ」→ (A)は「ここから歩いた方が早いかも」と代替手段を提案。困っている相手に対する直接的な解決策。",
+    hint: "状況報告（困っている）への自然な応答 → 解決策の提案。(A)は具体的な代替手段。(B)はキャンパスツアーで無関係、(C)は自分の失敗談、(D)はシャトルで方向性は近いが歩く方が直接的。"
+  },
+  {
+    q: "Would you want to present our research findings together at the symposium?",
+    type: "inference",
+    opts: [
+      "I haven't picked my major yet either.",
+      "Sure, but only if we rehearse beforehand.",
+      "The professor already extended the deadline.",
+      "I don't think we need that many sources."
+    ],
+    correct: 1,
+    explain: "「シンポジウムで一緒に研究成果を発表しない？」→ (B)は「いいよ、でも事前にリハーサルするならね」と条件付き承諾。提案に対して次のステップを示す自然な応答。",
+    hint: "Would you want to...? は提案・誘い。承諾・条件付き承諾・辞退のいずれかが自然。(A)は専攻の話で無関係、(C)は締切延長で別の話、(D)は資料数で発表提案への応答になっていない。"
+  },
+  {
+    q: "Do you know where I can get a copy of the Campus Emergency Procedures Guide?",
+    type: "detail",
+    opts: [
+      "They usually have extras at orientation.",
+      "The housing office is on the second floor.",
+      "That form is only for transfer students.",
+      "I got mine through the department website."
+    ],
+    correct: 3,
+    explain: "「キャンパス緊急マニュアルはどこで手に入る？」→ (D)は「自分はdepartment websiteで手に入れた」と具体的な入手方法を教えている。",
+    hint: "Do you know where...? には場所・方法の情報提供が自然。(D)は実際に手に入れた方法を共有。(A)はorientationの話で今すぐの役に立たない、(B)は場所案内だが別の施設、(C)は別の書類の話。"
+  },
+  {
+    q: "Professor Lane wants us to visit the new art exhibit before class on Wednesday, but I've got a conflict.",
+    type: "detail",
+    opts: [
+      "I thought the exhibit opened next month.",
+      "The gallery closes early on weekends.",
+      "She always assigns too much reading.",
+      "You could ask for an extension instead."
+    ],
+    correct: 1,
+    explain: "「レイン教授が水曜の授業前にアート展に行けと言ってるけど、予定が被ってる」→ (B)は「週末はギャラリーが早く閉まる」と、水曜以外に行く場合の注意点を提供。代替案として役立つ情報。",
+    hint: "困っている状況の共有 → 共感や代替案の提示が自然。(B)は週末に行く案の情報。(A)は開催時期の誤解、(C)は読書量の不満で別の話題、(D)は締切延長で展覧会とは無関係。"
+  },
+  {
+    q: "Apparently, you can't print anything in the library anymore without loading money onto your student card first.",
+    type: "detail",
+    opts: [
+      "I think they moved it to the science wing.",
+      "The lab report isn't due until Thursday.",
+      "Right, I forgot they changed the policy.",
+      "You need a student ID to check out books."
+    ],
+    correct: 2,
+    explain: "「どうやら図書館で印刷するには、まず学生カードにお金をチャージしないといけなくなったらしい」→ (C)は「そうだ、ポリシー変わったの忘れてた」と共感＋確認。新ルールを認めて会話を続ける自然な応答。",
+    hint: "Apparently...（新情報の共有）への自然な応答 → 確認・共感・補足。(C)は「忘れてた」と共感型。(A)は場所移動の話、(B)はlab reportで無関係、(D)は本の貸出で印刷と無関係。"
+  },
+  {
+    q: "I've been studying for the statistics final all week, and I still don't feel ready.",
+    type: "inference",
+    opts: [
+      "Well, the review session is tomorrow morning.",
+      "I already returned that textbook last week.",
+      "The exam covers only the first three chapters.",
+      "I didn't realize you were in that class."
+    ],
+    correct: 0,
+    explain: "「統計の期末試験のために一週間ずっと勉強してるのに、まだ準備ができた気がしない」→ (A)は「復習セッションが明日の朝ある」と、不安を感じている相手に具体的な解決策を提示。",
+    hint: "不安・困りごとの共有 → 共感＋具体的な助言が自然。(A)はreview sessionという具体的な次のアクション。(B)は教科書返却で逆方向、(C)は範囲の情報だが相手の不安への対応になっていない、(D)は驚きだが会話を進めない。"
+  }
+];
+
+const labels = ['A','B','C','D'];
+
+function render(){
+  const stored = (JSON.parse(sessionStorage.getItem('lcrAnswers')||'null')||(window.Review?Review.loadAttempt('lcr',1):null));
+  let correct = 0, answered = 0;
+  for(let i=1;i<=8;i++){
+    if(stored['q'+i]){
+      answered++;
+      if(stored['q'+i].isCorrect) correct++;
+    }
+  }
+  if(answered > 0){
+    document.getElementById('scoreBig').textContent = correct + ' / 8';
+    document.getElementById('scoreBar').style.width = (correct/8*100)+'%';
+    const pct = Math.round(correct/8*100);
+    let msg = pct >= 80 ? '素晴らしい！🎉' : pct >= 50 ? 'いい調子！もう少し！' : '復習して次に活かそう💪';
+    document.getElementById('scoreMsg').textContent = pct + '% 正答率 — ' + msg;
+  }
+
+  const section = document.getElementById('qSection');
+  let html = '';
+  QS.forEach((q, i) => {
+    const qNum = i + 1;
+    const userData = stored['q'+qNum];
+    const userSelected = userData ? userData.selected : null;
+    const userIdx = userSelected ? labels.indexOf(userSelected) : -1;
+    const isCorrect = userData ? userData.isCorrect : false;
+    const isSkip = !userData;
+
+    const numClass = isSkip ? 'skip' : (isCorrect ? 'correct' : 'wrong');
+    const typeBadge = q.type === 'inference' ? '<span class="q-badge inference">Inference</span>' : '<span class="q-badge detail">Detail</span>';
+
+    let userLine = '';
+    if(isSkip){
+      userLine = '<div class="q-user is-skip">⏱️ 未回答（タイムアウト）</div>';
+    } else if(isCorrect){
+      userLine = '<div class="q-user is-correct">✅ 正解！ あなたの回答: ('+userSelected+')</div>';
+    } else {
+      userLine = '<div class="q-user is-wrong">❌ あなたの回答: ('+userSelected+') → 正解: ('+labels[q.correct]+')</div>';
+    }
+
+    let optsHtml = '';
+    q.opts.forEach((opt, oi) => {
+      let cls = '';
+      if(oi === q.correct) cls = ' is-correct';
+      else if(oi === userIdx && !isCorrect) cls = ' is-wrong-selected';
+      optsHtml += '<div class="opt-row'+cls+'"><span class="opt-label">('+labels[oi]+')</span> '+opt+'</div>';
+    });
+
+    html += '<div class="q-card">' +
+      '<div class="q-card-header"><div class="q-num '+numClass+'">'+qNum+'</div>' +
+      '<div class="q-prompt">'+q.q+'</div>'+typeBadge+'</div>' +
+      '<div class="q-card-body">' +
+      userLine +
+      '<div class="options-list">'+optsHtml+'</div>' +
+      '<div class="q-explain"><strong>解説：</strong> '+q.explain+'</div>' +
+      '<div class="q-hint">🔑 '+q.hint+'</div>' +
+      '</div></div>';
+  });
+  section.innerHTML = html;
+}
+render();
+
+if(typeof Auth !== 'undefined'){ Auth.require(); }
+</script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/review-mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL iBT - Read in Daily Life: Answers &amp; Explanations</title>
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f9fafb;min-height:100vh;color:#0F1511;line-height:1.7}
+.answers-header{background:#0F1511;color:#fff;padding:20px 28px;text-align:center}
+.answers-header h1{font-size:1.2em;font-weight:600;margin-bottom:4px}
+.answers-header p{font-size:.9em;color:rgba(255,255,255,.7)}
+.score-banner{background:#ebf4ff;border-bottom:1px solid #bee3f8;padding:20px 28px;text-align:center}
+.score-big{font-size:2.2em;font-weight:700;color:#2b6cb0}
+.score-label{font-size:.9em;color:#4a5568;margin-top:4px}
+.answers-body{max-width:780px;margin:0 auto;padding:28px 20px 100px}
+.passage-block{margin-bottom:36px}
+.passage-title{font-size:1.05em;font-weight:700;color:#0F1511;padding:12px 0;border-bottom:2px solid #e2e8f0;margin-bottom:20px}
+.passage-type-badge{display:inline-block;background:#4a90d9;color:#fff;font-size:.75em;font-weight:600;padding:3px 10px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.q-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.q-card.correct{border-left:4px solid #48bb78}
+.q-card.incorrect{border-left:4px solid #e53e3e}
+.q-num{font-weight:700;color:#4a90d9;margin-bottom:8px;font-size:.95em}
+.q-text{font-weight:600;margin-bottom:14px;font-size:.93em;line-height:1.6}
+.answer-row{display:flex;gap:16px;margin-bottom:10px;font-size:.9em;flex-wrap:wrap}
+.answer-tag{padding:4px 12px;border-radius:6px;font-weight:600;font-size:.85em}
+.tag-correct{background:#c6f6d5;color:#276749}
+.tag-yours{background:#fed7d7;color:#9b2c2c}
+.tag-yours.match{background:#c6f6d5;color:#276749}
+.explanation{background:#f7fafc;border-radius:8px;padding:14px 16px;margin-top:12px;font-size:.88em;line-height:1.65;color:#4a5568}
+.explanation strong{color:#0F1511}
+.option-review{font-size:.88em;padding:6px 0;color:#4a5568;display:flex;gap:8px}
+.option-review .label{font-weight:600;min-width:22px;color:#718096}
+.option-review.is-correct .label{color:#276749}
+.option-review.is-correct{color:#276749;font-weight:500}
+.option-review.is-wrong-pick{color:#e53e3e;text-decoration:line-through;opacity:.7}
+
+/* TIPS */
+.tips-section{margin-top:8px;margin-bottom:36px}
+.tips-title{font-size:1.1em;font-weight:700;color:#0F1511;padding:14px 0;border-bottom:2px solid #e2e8f0;margin-bottom:20px}
+.tip-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.tip-card-title{font-weight:700;font-size:.95em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tip-num{background:#4a90d9;color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75em;flex-shrink:0}
+.tip-card-body{font-size:.88em;line-height:1.65;color:#4a5568}
+.tip-card-body strong{color:#0F1511}
+.tip-card-body code{background:#ebf4ff;padding:2px 6px;border-radius:3px;font-size:.9em;color:#2b6cb0}
+.tip-example{background:#fffff0;border:1px solid #ecc94b;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:.85em;color:#744210;line-height:1.5}
+.tip-warn{background:#fff5f5;border:1px solid #feb2b2;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:.85em;color:#9b2c2c;line-height:1.5}
+
+.nav-footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:14px 24px;display:flex;justify-content:center;gap:12px;z-index:100}
+.btn-menu{display:inline-flex;align-items:center;gap:8px;padding:12px 32px;font-size:.95em;font-family:inherit;font-weight:600;border:none;border-radius:8px;cursor:pointer;color:#fff;background:#0F1511;transition:all .2s}
+.btn-menu:hover{background:#4a5568}
+</style>
+</head>
+<body>
+
+<div class="answers-header">
+  <h1>Read in Daily Life — Answers &amp; Explanations</h1>
+  <p>Day 1 Homework</p>
+</div>
+
+<div class="score-banner">
+  <div class="score-big" id="scoreDisplay">–/5</div>
+  <div class="score-label">Your Score (Q11–Q15)</div>
+</div>
+
+<div class="answers-body">
+
+  <!-- TIPS -->
+  <div class="tips-section">
+    <div class="tips-title">💡 Read in Daily Life 攻略ポイント</div>
+
+    <div class="tip-card">
+      <div class="tip-card-title"><span class="tip-num">1</span> 冒頭のキーワードから目的を判別する</div>
+      <div class="tip-card-body">
+        最初の1〜2文で文書の目的が分かります。パターンを覚えましょう：<br><br>
+        <strong>通知：</strong><code>We are pleased to inform...</code><br>
+        <strong>依頼：</strong><code>Could you...</code> / <code>I would appreciate if...</code><br>
+        <strong>確認：</strong><code>I'm writing to confirm...</code><br>
+        <strong>謝罪：</strong><code>I apologize for...</code> / <code>Unfortunately...</code><br>
+        <strong>招待：</strong><code>You are invited to...</code> / <code>Join us for...</code>
+        <div class="tip-example">
+          <strong>今回の例（Q13）：</strong> メール冒頭 "Starting December 1, the main entrance will require..." → 変更の通知。目的問題は冒頭に答えがある！
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-title"><span class="tip-num">2</span> NOT / EXCEPT 問題は消去法で解く</div>
+      <div class="tip-card-body">
+        <strong>手順：</strong><br>
+        ① 設問の NOT / EXCEPT に丸をつける<br>
+        ② 4つの選択肢を本文と1つずつ照合<br>
+        ③ 本文に書いてある3つを消去 → 残り1つが正解
+        <div class="tip-warn">
+          <strong>引っかけパターン：</strong><br>
+          ✗ 本文の単語が出てくるが答えではない<br>
+          ✗ 部分的に正しいが全体として不正確<br>
+          ✗ 本文の逆を言っている
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-title"><span class="tip-num">3</span> イディオム・口語表現に慣れておく</div>
+      <div class="tip-card-body">
+        テキストメッセージやSNSなど<strong>カジュアルな文書</strong>が出題されます。日常的なイディオムが問われることがあります。
+        <div class="tip-example">
+          <strong>今回の例（Q11）：</strong> "I'm on the fence" = 「まだ決めていない」。文字通りの意味ではなく慣用的な意味が正解。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Passage 1 -->
+  <div class="passage-block">
+    <div class="passage-title">Passage 1 <span class="passage-type-badge">Text Messages</span></div>
+
+    <div class="q-card" id="card11">
+      <div class="q-num">Question 11 — Vocabulary in Context</div>
+      <div class="q-text">What does the sender mean by "I'm on the fence"?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: B</span>
+        <span class="answer-tag" id="yours11">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt11A"><span class="label">A</span> She is sitting outside on a fence.</div>
+        <div class="option-review is-correct" id="opt11B"><span class="label">B</span> She has not decided yet. ✓</div>
+        <div class="option-review" id="opt11C"><span class="label">C</span> She is worried about the weather.</div>
+        <div class="option-review" id="opt11D"><span class="label">D</span> She does not want to go at all.</div>
+      </div>
+      <div class="explanation">
+        <strong>Explanation:</strong> "on the fence" = undecided。直後に "I have homework" と迷う理由が続き、最終的に行くことに同意している。A は文字通りの意味に飛びつく引っかけ。C は本文に根拠なし。D は強すぎる — 実際には同意している。
+      </div>
+    </div>
+
+    <div class="q-card" id="card12">
+      <div class="q-num">Question 12 — Factual Information</div>
+      <div class="q-text">According to the text messages, why does Kate tell the sender to bring a reusable bag?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: C</span>
+        <span class="answer-tag" id="yours12">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt12A"><span class="label">A</span> The market does not provide any bags.</div>
+        <div class="option-review" id="opt12B"><span class="label">B</span> They will buy too many items to carry.</div>
+        <div class="option-review is-correct" id="opt12C"><span class="label">C</span> There was an additional cost for plastic bags before. ✓</div>
+        <div class="option-review" id="opt12D"><span class="label">D</span> Reusable bags are sold at the market.</div>
+      </div>
+      <div class="explanation">
+        <strong>Explanation:</strong> "Last time they charged extra for plastic ones" が直接の根拠。A は<strong>部分的に正しいが不正確</strong> — 袋はあるが有料。B は未言及。D は "bring" と言っているので "buy" ではない。
+      </div>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage-block">
+    <div class="passage-title">Passage 2 <span class="passage-type-badge">Email</span></div>
+
+    <div class="q-card" id="card13">
+      <div class="q-num">Question 13 — Text Purpose</div>
+      <div class="q-text">What is the main purpose of this email?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: B</span>
+        <span class="answer-tag" id="yours13">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt13A"><span class="label">A</span> To advertise a new apartment building</div>
+        <div class="option-review is-correct" id="opt13B"><span class="label">B</span> To inform residents about an upcoming change in building security ✓</div>
+        <div class="option-review" id="opt13C"><span class="label">C</span> To invite residents to a community meeting</div>
+        <div class="option-review" id="opt13D"><span class="label">D</span> To collect feedback on the current security system</div>
+      </div>
+      <div class="explanation">
+        <strong>解法：目的は冒頭で掴む！</strong><br>
+        1文目 "Starting December 1, the main entrance will require a new electronic key card" → 主語(entrance) + 動詞(require) → セキュリティ変更の通知 = B。<br><br>
+        A は無関係。C は引っかけ — meeting は<strong>過去の出来事</strong>として言及されているだけ。D もメールは決定を伝えており、意見を求めていない。「広すぎる選択肢」より「具体的に合う選択肢」を選ぶのがコツ。
+      </div>
+    </div>
+
+    <div class="q-card" id="card14">
+      <div class="q-num">Question 14 — Factual Information</div>
+      <div class="q-text">According to the email, what happens if a resident does not pick up their key cards by November 25?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: B</span>
+        <span class="answer-tag" id="yours14">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt14A"><span class="label">A</span> They will be locked out of the building permanently.</div>
+        <div class="option-review is-correct" id="opt14B"><span class="label">B</span> They must contact the management office during business hours. ✓</div>
+        <div class="option-review" id="opt14C"><span class="label">C</span> They will need to pay $15 for each card.</div>
+        <div class="option-review" id="opt14D"><span class="label">D</span> They will receive the cards by mail instead.</div>
+      </div>
+      <div class="explanation">
+        <strong>Explanation:</strong> 本文 "will need to contact the office during business hours to arrange a pickup" が直接の根拠。<br><br>
+        A は極端すぎて本文にない。C は<strong>引っかけの典型</strong> — "$15" は本文に出てくるが、これは<strong>追加カード</strong>の価格であり、期限後のペナルティではない（本文の単語が出てくるが答えではないパターン）。D は未言及。
+      </div>
+    </div>
+
+    <div class="q-card" id="card15">
+      <div class="q-num">Question 15 — Inference</div>
+      <div class="q-text">What can be inferred about the decision to add key card access?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: B</span>
+        <span class="answer-tag" id="yours15">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt15A"><span class="label">A</span> It was planned before any residents complained.</div>
+        <div class="option-review is-correct" id="opt15B"><span class="label">B</span> It was influenced by feedback from residents. ✓</div>
+        <div class="option-review" id="opt15C"><span class="label">C</span> It was required by local government regulations.</div>
+        <div class="option-review" id="opt15D"><span class="label">D</span> It was suggested by the building's insurance company.</div>
+      </div>
+      <div class="explanation">
+        <strong>Explanation:</strong> "in response to several recent security concerns raised by residents" が根拠 → 住民のフィードバックが影響 = B。<br><br>
+        A はこの記述と矛盾。C, D は本文に言及のない外部要因。<br><br>
+        <strong>推論問題の鉄則：</strong> 自分の知識や意見を混ぜない！ 「本文に書いてあること」だけが根拠。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav-footer">
+  <button class="btn-menu" onclick="location.href='../menu.html'">← Back to Menu</button>
+</div>
+
+<script>
+var correctAnswers = {'11':'B','12':'C','13':'B','14':'B','15':'B'};
+(function(){
+  var saved = sessionStorage.getItem('kickstart_rdl_answers');if(!saved&&window.Review){var a1=Review.loadAttempt('rdl',1),a2=Review.loadAttempt('rdl',2);if(a1||a2){saved=JSON.stringify(Object.assign({},a1||{},a2||{}));}}
+  var answers = saved ? JSON.parse(saved) : {};
+  var score = 0;
+  for(var q in correctAnswers){
+    var userAns = answers[q] || '—';
+    var isCorrect = (userAns === correctAnswers[q]);
+    if(isCorrect) score++;
+    var yoursEl = document.getElementById('yours'+q);
+    if(yoursEl){
+      yoursEl.textContent = 'Your answer: '+userAns;
+      yoursEl.className = 'answer-tag tag-yours' + (userAns !== '—' && isCorrect ? ' match' : '');
+    }
+    var card = document.getElementById('card'+q);
+    if(card) card.className = 'q-card ' + (userAns === '—' ? '' : (isCorrect ? 'correct' : 'incorrect'));
+    if(userAns !== '—' && !isCorrect){
+      var w = document.getElementById('opt'+q+userAns);
+      if(w) w.className = 'option-review is-wrong-pick';
+    }
+  }
+  document.getElementById('scoreDisplay').textContent = score+'/5';
+})();
+</script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/review-mode.js"></script>
+</body>
+</html>

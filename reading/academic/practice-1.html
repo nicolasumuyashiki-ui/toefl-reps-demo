@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL iBT - Read an Academic Passage</title>
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min-height:100vh;display:flex;flex-direction:column;color:#0F1511;line-height:1.7}
+
+/* TOP NAV */
+.top-nav{background:#fff;border-bottom:1px solid #e2e8f0;padding:10px 24px;display:flex;align-items:center;justify-content:space-between}
+.top-nav-left{display:flex;align-items:center;gap:16px;font-size:.9em;color:#4a5568}
+.top-nav-left strong{color:#0F1511}
+.top-nav-right{display:flex;align-items:center;gap:12px}
+.timer-btn{background:none;border:1px solid #cbd5e0;border-radius:6px;padding:6px 14px;font-size:.85em;color:#4a5568;cursor:pointer;font-family:inherit;transition:all .2s}
+.timer-btn:hover{background:#f7fafc}
+.timer-display{font-family:'Courier New',monospace;font-size:.9em;color:#0F1511;font-weight:600;min-width:60px;text-align:center}
+.review-btn{background:#4a90d9;color:#fff;border:none;border-radius:14px;padding:6px 18px;font-size:.85em;cursor:pointer;font-family:inherit;font-weight:500;transition:all .2s}
+.review-btn:hover{background:#3a7bc8}
+.user-badge{font-size:.8em;color:#718096}
+.user-badge strong{color:#0F1511}
+
+/* PROGRESS BAR */
+.progress-bar{height:4px;background:#ebf4ff;width:100%}
+.progress-fill{height:100%;background:#3182ce;border-radius:2px;transition:width .3s}
+
+/* FOOTER NAV */
+.reading-footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:14px 24px;display:flex;justify-content:flex-end;gap:12px;z-index:100}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:.95em;font-family:inherit;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:all .2s}
+.btn-back{color:#4a5568;background:#fff;border:1px solid #e2e8f0}
+.btn-back:hover{background:#f7fafc}
+.btn-back:disabled{opacity:.5;cursor:not-allowed}
+.btn-next{color:#fff;background:#0F1511}
+.btn-next:hover{background:#4a5568}
+
+/* SPLIT LAYOUT */
+.split-main{flex:1;display:flex;padding:0 0 80px 0;overflow:hidden}
+.passage-panel{flex:1;padding:32px 28px;overflow-y:auto;border-right:1px solid #e2e8f0;background:#f9fafb}
+.question-panel{flex:1;padding:32px 28px;overflow-y:auto}
+
+/* PASSAGE */
+.passage-title{font-size:1.15em;font-weight:700;color:#0F1511;margin-bottom:16px;line-height:1.4}
+.passage-content{font-size:.93em;line-height:1.8;color:#0F1511}
+.passage-content p{margin-bottom:14px;text-indent:1.5em}
+.passage-content p:first-child{text-indent:0}
+.passage-content p:last-child{margin-bottom:0}
+
+/* HIGHLIGHT WORD */
+.highlight-word{background:#fefcbf;padding:1px 4px;border-radius:3px;font-weight:600}
+
+/* QUESTION STYLES */
+.question-page{display:none}
+.question-page.active{display:block}
+.question-text{font-size:.95em;font-weight:600;color:#0F1511;margin-bottom:20px;line-height:1.6}
+.question-number{color:#4a90d9;margin-right:6px}
+.options{display:flex;flex-direction:column;gap:10px}
+.option{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .15s;font-size:.92em;line-height:1.5}
+.option:hover{background:#f7fafc;border-color:#cbd5e0}
+.option.selected{background:#ebf4ff;border-color:#4a90d9}
+.option input{display:none}
+.option-label{font-weight:600;color:#4a90d9;min-width:28px}
+.option-text{flex:1;color:#0F1511}
+
+/* SENTENCE INSERTION STYLES */
+.insert-square{display:inline-block;width:20px;height:20px;background-color:#3182ce;color:white;font-size:.7rem;font-weight:700;text-align:center;line-height:20px;border-radius:3px;cursor:pointer;vertical-align:middle;margin:0 3px;user-select:none;transition:all .2s}
+.insert-square:hover{background-color:#2c5282;transform:scale(1.15);box-shadow:0 2px 6px rgba(49,130,206,.4)}
+.insert-square.selected-square{background-color:#38a169;transform:scale(1.15);box-shadow:0 2px 6px rgba(56,161,105,.4)}
+.inserted-sentence{display:inline;font-weight:700;color:#2c5282;background-color:#ebf8ff;padding:2px 5px;border-radius:3px;border-left:3px solid #3182ce}
+.insertion-sentence-display{font-weight:700;font-size:1rem;line-height:1.6;color:#0F1511;margin-bottom:20px}
+.insertion-instruction{background-color:#fffff0;border:1px solid #ecc94b;border-radius:8px;padding:15px 20px;margin-bottom:20px;font-size:.9rem;color:#744210;line-height:1.5}
+.selection-status{padding:12px 16px;border-radius:6px;margin-bottom:15px;font-weight:500;text-align:center;font-size:.95rem}
+.selection-status.none{background-color:#f7fafc;border:1px dashed #cbd5e0;color:#718096}
+.selection-status.chosen{background-color:#ebf8ff;border:1px solid #3182ce;color:#2c5282}
+
+/* REVIEW OVERLAY */
+.overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);z-index:200;justify-content:center;align-items:center}
+.overlay.active{display:flex}
+.overlay-box{background:#fff;border-radius:12px;padding:28px 32px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.overlay-title{font-size:1.1em;font-weight:700;margin-bottom:16px;color:#0F1511}
+.overlay-close{background:#0F1511;color:#fff;border:none;border-radius:8px;padding:10px 24px;font-size:.9em;cursor:pointer;margin-top:16px;font-family:inherit}
+.review-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0;font-size:.9em}
+.review-item:last-child{border-bottom:none}
+.review-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.review-dot.answered{background:#48bb78}
+.review-dot.unanswered{background:#e2e8f0}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="top-nav-left">
+    <span>Question <span id="qLabel"><strong>16</strong></span> of 20</span>
+    <span>|</span>
+    <span>Reading</span>
+  </div>
+  <div class="top-nav-right">
+    <button class="timer-btn" onclick="toggleTimer()">Hide Time</button>
+    <span class="timer-display" id="timerDisplay">25:00</span>
+    <button class="review-btn" onclick="openReview()">Review</button>
+    <span class="user-badge" id="userBadge"></span>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:75%"></div></div>
+
+<!-- SPLIT LAYOUT -->
+<div class="split-main">
+  <!-- LEFT: PASSAGE (fixed on all pages) -->
+  <div class="passage-panel">
+    <h2 class="passage-title">The Bystander Effect</h2>
+    <div class="passage-content">
+      <p>In 1964, a woman named Kitty Genovese was attacked outside her apartment building in New York City. According to early reports, dozens of neighbors witnessed the event but none of them called the police. This case shocked the nation and prompted two social psychologists, John Darley and Bibb Latané, to investigate why people sometimes fail to help others in emergency situations.</p>
+      <p>Through a series of experiments, Darley and Latané discovered what they called the bystander effect. They found that individuals are less likely to offer assistance when other people are present. In one well-known study, participants heard someone apparently having a seizure over an intercom. When participants believed they were the only listener, 85 percent sought help. However, when they thought others were also listening, only 31 percent responded.</p>
+      <p id="insertionParagraph">The researchers proposed that two psychological mechanisms explain this behavior. The first is diffusion of responsibility, where each person assumes someone else will take action. The second is pluralistic ignorance, in which people look at the reactions of others to decide whether the situation is truly an emergency. If no one else seems alarmed, individuals tend to conclude that help is not needed.</p>
+      <p>These findings have had a lasting influence on the field of social psychology and have been applied in public safety training programs around the world.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: QUESTIONS -->
+  <div class="question-panel">
+
+    <!-- Q16: Main Idea -->
+    <div class="question-page active" id="page1">
+      <div class="question-text">
+        <span class="question-number">16.</span>What is the passage mainly about?
+      </div>
+      <div class="options">
+        <div class="option" data-q="16" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q16" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">How a famous crime in New York City led to changes in police response procedures</span>
+        </div>
+        <div class="option" data-q="16" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q16" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">How social psychologists developed new treatments for anxiety in group settings</span>
+        </div>
+        <div class="option" data-q="16" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q16" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">How research into the bystander effect revealed why people often do not help in emergencies</span>
+        </div>
+        <div class="option" data-q="16" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q16" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">How public safety programs have reduced violent crime rates in large cities</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q17: Factual Information -->
+    <div class="question-page" id="page2">
+      <div class="question-text">
+        <span class="question-number">17.</span>According to the passage, what did Darley and Latané's intercom experiment show?
+      </div>
+      <div class="options">
+        <div class="option" data-q="17" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q17" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">Participants were more likely to seek help when they believed they were alone.</span>
+        </div>
+        <div class="option" data-q="17" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q17" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">Participants responded faster when they knew other people were also listening.</span>
+        </div>
+        <div class="option" data-q="17" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q17" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">Participants who heard the seizure ignored it regardless of group size.</span>
+        </div>
+        <div class="option" data-q="17" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q17" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">Participants in larger groups reported the emergency within a few seconds.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q18: Vocabulary in Context -->
+    <div class="question-page" id="page3">
+      <div class="question-text">
+        <span class="question-number">18.</span>The word "<span style="background:#fefcbf;padding:1px 4px;border-radius:3px;font-weight:700">proposed</span>" in paragraph 3 is closest in meaning to
+      </div>
+      <div class="options">
+        <div class="option" data-q="18" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q18" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">demanded</span>
+        </div>
+        <div class="option" data-q="18" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q18" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">imagined</span>
+        </div>
+        <div class="option" data-q="18" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q18" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">suggested</span>
+        </div>
+        <div class="option" data-q="18" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q18" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">questioned</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q19: Inference -->
+    <div class="question-page" id="page4">
+      <div class="question-text">
+        <span class="question-number">19.</span>Based on the passage, what can be inferred about a person who sees other bystanders remaining calm during an emergency?
+      </div>
+      <div class="options">
+        <div class="option" data-q="19" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q19" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">The person will likely feel greater personal responsibility to act immediately.</span>
+        </div>
+        <div class="option" data-q="19" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q19" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">The person may decide that the situation does not actually require assistance.</span>
+        </div>
+        <div class="option" data-q="19" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q19" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">The person will almost certainly contact the authorities within a short time.</span>
+        </div>
+        <div class="option" data-q="19" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q19" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">The person is likely to have received public safety training at some earlier point.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q20: Sentence Insertion -->
+    <div class="question-page" id="page5">
+      <div class="question-text">
+        <span class="question-number">20.</span>Look at the four squares [■] in paragraph 3 that indicate where the following sentence could be added to the passage.
+      </div>
+      <p class="insertion-sentence-display">In other words, the presence of a group can reduce each individual's sense of obligation.</p>
+      <div class="insertion-instruction">
+        <strong>Directions:</strong> Click on a square [■] in the passage on the left to add the sentence. The sentence will appear in <strong>bold</strong> at the position you choose. Click a different square to move it.
+      </div>
+      <div class="selection-status none" id="insertionStatus">
+        No position selected yet. Click a ■ in paragraph 3.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER NAV -->
+<div class="reading-footer">
+  <button class="btn-nav btn-back" id="btnBack" onclick="changePage(-1)" disabled>‹ Back</button>
+  <button class="btn-nav btn-next" id="btnNext" onclick="changePage(1)">Next ›</button>
+</div>
+
+<!-- REVIEW OVERLAY -->
+<div class="overlay" id="reviewOverlay">
+  <div class="overlay-box">
+    <div class="overlay-title">Review Questions</div>
+    <div id="reviewList"></div>
+    <button class="overlay-close" onclick="closeReview()">Close</button>
+  </div>
+</div>
+
+<script>
+var currentPage = 1;
+var totalPages = 5;
+var startQ = 16;
+var userAnswers = {};
+var timerVisible = true;
+var timeLeft = 1500;
+var timerInterval;
+
+/* ===== SENTENCE INSERTION SETUP ===== */
+var normalParagraphHTML = 'The researchers <span class="highlight-word">proposed</span> that two psychological mechanisms explain this behavior. The first is diffusion of responsibility, where each person assumes someone else will take action. The second is pluralistic ignorance, in which people look at the reactions of others to decide whether the situation is truly an emergency. If no one else seems alarmed, individuals tend to conclude that help is not needed.';
+
+var insertionParagraphHTML = 'The researchers <span class="highlight-word">proposed</span> that two psychological mechanisms explain this behavior. <span class="insert-square" data-insert="A">\u25A0</span> The first is diffusion of responsibility, where each person assumes someone else will take action. <span class="insert-square" data-insert="B">\u25A0</span> The second is pluralistic ignorance, in which people look at the reactions of others to decide whether the situation is truly an emergency. <span class="insert-square" data-insert="C">\u25A0</span> If no one else seems alarmed, individuals tend to conclude that help is not needed. <span class="insert-square" data-insert="D">\u25A0</span>';
+
+var insertSentenceText = "In other words, the presence of a group can reduce each individual's sense of obligation.";
+var correctInsertion = "B";
+var insertionQuestionPage = 5;
+var selectedInsertionPoint = null;
+var insertionChecked = false;
+var para = document.getElementById('insertionParagraph');
+
+function updateParagraphVersion(){
+  if(currentPage === insertionQuestionPage){
+    if(!selectedInsertionPoint){
+      para.innerHTML = insertionParagraphHTML;
+      bindSquareClicks();
+    } else {
+      rebuildParagraphWithInsertion(selectedInsertionPoint);
+    }
+  } else {
+    para.innerHTML = normalParagraphHTML;
+  }
+}
+
+function bindSquareClicks(){
+  var squares = para.querySelectorAll('.insert-square');
+  squares.forEach(function(sq){
+    sq.addEventListener('click', function(){
+      selectedInsertionPoint = this.getAttribute('data-insert');
+      rebuildParagraphWithInsertion(selectedInsertionPoint);
+      document.getElementById('insertionStatus').className = 'selection-status chosen';
+      document.getElementById('insertionStatus').textContent = 'You selected position ' + selectedInsertionPoint + '.';
+      // Save to answers
+      userAnswers['20'] = selectedInsertionPoint;
+      var existing = sessionStorage.getItem('kickstart_academic_answers');
+      var all = existing ? JSON.parse(existing) : {};
+      all['20'] = selectedInsertionPoint;
+      sessionStorage.setItem('kickstart_academic_answers', JSON.stringify(all)); if(window.Review){Review.markDone("academic",1);Review.saveAttempt("academic",1,all);} 
+    });
+  });
+}
+
+function rebuildParagraphWithInsertion(position){
+  var sentences = [
+    'The researchers <span class="highlight-word">proposed</span> that two psychological mechanisms explain this behavior.',
+    'The first is diffusion of responsibility, where each person assumes someone else will take action.',
+    'The second is pluralistic ignorance, in which people look at the reactions of others to decide whether the situation is truly an emergency.',
+    'If no one else seems alarmed, individuals tend to conclude that help is not needed.'
+  ];
+  var labels = ['A','B','C','D'];
+  var html = '';
+  for(var i = 0; i < sentences.length; i++){
+    html += sentences[i] + ' ';
+    if(labels[i] === position){
+      html += '<span class="inserted-sentence">' + insertSentenceText + '</span> ';
+    }
+    if(i < sentences.length - 1 || i === sentences.length - 1){
+      var cls = 'insert-square';
+      if(labels[i] === position) cls += ' selected-square';
+      html += '<span class="' + cls + '" data-insert="' + labels[i] + '">\u25A0</span> ';
+    }
+  }
+  para.innerHTML = html;
+  bindSquareClicks();
+}
+
+/* ===== STANDARD QUESTION FUNCTIONS ===== */
+function selectOption(el){
+  var q = el.getAttribute('data-q');
+  var v = el.getAttribute('data-v');
+  userAnswers[q] = v;
+  el.parentElement.querySelectorAll('.option').forEach(function(o){
+    o.classList.remove('selected');
+  });
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+  var existing = sessionStorage.getItem('kickstart_academic_answers');
+  var all = existing ? JSON.parse(existing) : {};
+  all[q] = v;
+  sessionStorage.setItem('kickstart_academic_answers', JSON.stringify(all));
+}
+
+function changePage(dir){
+  var next = currentPage + dir;
+  if(next < 1 || next > totalPages) return;
+  document.getElementById('page'+currentPage).classList.remove('active');
+  currentPage = next;
+  document.getElementById('page'+currentPage).classList.add('active');
+  document.getElementById('qLabel').innerHTML = '<strong>'+(startQ + currentPage - 1)+'</strong>';
+  document.getElementById('btnBack').disabled = (currentPage === 1);
+
+  if(currentPage === totalPages){
+    document.getElementById('btnNext').textContent = 'Finish ›';
+    document.getElementById('btnNext').onclick = function(){ goNext(); };
+  } else {
+    document.getElementById('btnNext').textContent = 'Next ›';
+    document.getElementById('btnNext').onclick = function(){ changePage(1); };
+  }
+  updateParagraphVersion();
+  updateProgress();
+}
+
+function goNext(){
+  window.location.href = 'academic-answers.html';
+}
+
+function updateProgress(){
+  var pct = 75 + ((currentPage / totalPages) * 25);
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function toggleTimer(){
+  timerVisible = !timerVisible;
+  document.getElementById('timerDisplay').style.visibility = timerVisible ? 'visible' : 'hidden';
+  document.querySelector('.timer-btn').textContent = timerVisible ? 'Hide Time' : 'Show Time';
+}
+
+function formatTime(s){
+  var m = Math.floor(s/60);
+  var sec = s%60;
+  return m + ':' + (sec<10?'0':'') + sec;
+}
+
+function startTimer(){
+  var saved = sessionStorage.getItem('kickstart_reading_timer');
+  if(saved) timeLeft = parseInt(saved);
+  document.getElementById('timerDisplay').textContent = formatTime(timeLeft);
+  timerInterval = setInterval(function(){
+    timeLeft--;
+    if(timeLeft <= 0){ clearInterval(timerInterval); timeLeft = 0; }
+    sessionStorage.setItem('kickstart_reading_timer', timeLeft);
+    document.getElementById('timerDisplay').textContent = formatTime(timeLeft);
+  }, 1000);
+}
+
+function openReview(){
+  var list = document.getElementById('reviewList');
+  list.innerHTML = '';
+  var allSaved = sessionStorage.getItem('kickstart_academic_answers');
+  var allAnswers = allSaved ? JSON.parse(allSaved) : {};
+  for(var i = startQ; i <= startQ + totalPages - 1; i++){
+    var answered = allAnswers[i] ? true : false;
+    var div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML = '<div class="review-dot '+(answered?'answered':'unanswered')+'"></div>' +
+      '<span>Question '+i+'</span>' +
+      (answered ? '<span style="color:#48bb78;font-size:.85em">Answered: '+allAnswers[i]+'</span>' : '<span style="color:#e53e3e;font-size:.85em">Not answered</span>');
+    list.appendChild(div);
+  }
+  document.getElementById('reviewOverlay').classList.add('active');
+}
+
+function closeReview(){
+  document.getElementById('reviewOverlay').classList.remove('active');
+}
+
+// Restore answers
+(function(){
+  var saved = sessionStorage.getItem('kickstart_academic_answers');
+  if(saved){
+    var parsed = JSON.parse(saved);
+    for(var q in parsed){
+      userAnswers[q] = parsed[q];
+      var opts = document.querySelectorAll('[data-q="'+q+'"][data-v="'+parsed[q]+'"]');
+      if(opts.length){
+        opts[0].classList.add('selected');
+        opts[0].querySelector('input').checked = true;
+      }
+    }
+    // Restore insertion
+    if(parsed['20']){
+      selectedInsertionPoint = parsed['20'];
+    }
+  }
+})();
+
+startTimer();
+updateProgress();
+
+if(typeof Auth !== 'undefined'){
+  Auth.require();
+  if(window.Review){Review.attachReviewControls({task:'academic',set:1,answersUrl:'academic-answers.html'});}
+  Auth.showBadge('userBadge');
+}
+</script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/review-mode.js"></script>
+</body>
+</html>

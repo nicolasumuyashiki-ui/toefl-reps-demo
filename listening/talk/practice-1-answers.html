@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listen to an Academic Talk — 解答解説</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#0F1511;line-height:1.8}
+.header{background:linear-gradient(135deg,#0F1511,#4a5568);color:#fff;padding:28px 24px;text-align:center}
+.header h1{font-size:1.5em;margin-bottom:4px}
+.header p{font-size:.85em;opacity:.8}
+.score-summary{max-width:880px;margin:24px auto;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.06);padding:24px;text-align:center}
+.score-big{font-size:2.8em;font-weight:700;color:#4a90d9;margin:8px 0}
+.score-sub{font-size:.85em;color:#718096}
+.score-bar{height:8px;background:#e2e8f0;border-radius:4px;margin:16px auto;max-width:300px}
+.score-bar-fill{height:100%;background:#4a90d9;border-radius:4px;transition:width .5s}
+.tips-banner{background:#fff;border-left:4px solid #4a90d9;margin:20px auto;max-width:880px;padding:20px 24px;border-radius:0 8px 8px 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tips-banner h2{font-size:1em;color:#4a90d9;margin-bottom:14px}
+.signal-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.82em}
+.signal-table th{background:#4a90d9;color:#fff;padding:8px 12px;text-align:left}
+.signal-table td{padding:8px 12px;border-bottom:1px solid #e2e8f0}
+.signal-table tr:nth-child(even){background:#f7fafc}
+.talk-section{max-width:880px;margin:20px auto}
+.talk-header{background:#fff;border-radius:10px 10px 0 0;padding:16px 20px;border-bottom:2px solid #4a90d9;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.talk-header h3{font-size:1em;color:#4a90d9}
+.talk-header p{font-size:.82em;color:#718096;margin-top:4px}
+.script-box{background:#fff;padding:16px 20px;margin-bottom:2px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.script-box details{cursor:pointer}
+.script-box summary{font-size:.88em;font-weight:600;color:#4a90d9;padding:8px 0}
+.script-text{font-size:.82em;color:#4a5568;line-height:1.8;padding:8px 0}
+.script-text .highlight{background:#fefcbf;padding:1px 4px;border-radius:3px}
+.q-card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:16px;overflow:hidden}
+.q-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #edf2f7}
+.q-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em;color:#fff;flex-shrink:0}
+.q-num.correct{background:#38a169}
+.q-num.wrong{background:#e53e3e}
+.q-num.skip{background:#5A6861}
+.q-prompt{font-size:.92em;font-weight:600;flex:1}
+.q-badge{font-size:.72em;padding:3px 10px;border-radius:12px;font-weight:600}
+.q-badge.main-topic{background:#ebf8ff;color:#2b6cb0}
+.q-badge.detail{background:#f0fff4;color:#276749}
+.q-badge.purpose{background:#fed7e2;color:#97266d}
+.q-badge.prediction{background:#fefcbf;color:#975a16}
+.q-body{padding:16px 20px}
+.q-user{font-size:.85em;margin-bottom:10px;padding:8px 12px;border-radius:6px}
+.q-user.is-correct{background:#f0fff4;color:#22543d}
+.q-user.is-wrong{background:#fff5f5;color:#9b2c2c}
+.q-user.is-skip{background:#f7fafc;color:#718096}
+.options-list{margin:10px 0}
+.opt-row{display:flex;align-items:flex-start;gap:8px;padding:6px 10px;border-radius:6px;font-size:.85em;margin-bottom:4px}
+.opt-row.is-correct{background:#f0fff4;font-weight:600}
+.opt-row.is-wrong-selected{background:#fff5f5;text-decoration:line-through;color:#e53e3e}
+.opt-label{font-weight:700;min-width:24px}
+.q-explain{background:#f7fafc;border-left:3px solid #4a90d9;padding:12px 16px;border-radius:0 6px 6px 0;margin-top:10px;font-size:.82em}
+.q-explain strong{color:#2b6cb0}
+.q-hint{margin-top:6px;font-size:.8em;color:#718096;font-style:italic}
+.nav-bottom{max-width:880px;margin:24px auto;text-align:center;padding-bottom:40px}
+.btn-back{display:inline-block;padding:12px 32px;background:#4a90d9;color:#fff;border:none;border-radius:8px;font-size:.95em;font-weight:600;cursor:pointer;text-decoration:none;margin:0 8px}
+.btn-back:hover{background:#3a7cc0;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎓 Listen to an Academic Talk — 解答解説</h1>
+  <p>Kickstart Day 2 Homework | Biology — Animal Migration</p>
+</div>
+
+<div class="score-summary">
+  <p class="score-sub">あなたのスコア</p>
+  <div class="score-big" id="scoreBig">— / 4</div>
+  <div class="score-bar"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
+  <p class="score-sub" id="scoreMsg"></p>
+</div>
+
+<div class="tips-banner">
+  <h2>💡 Academic Talk 攻略：シグナルワード一覧</h2>
+  <table class="signal-table">
+    <thead><tr><th>種類</th><th>シグナルワード</th><th>メモの印</th></tr></thead>
+    <tbody>
+      <tr><td>★ 主旨</td><td>The main point is... / What's important here is...</td><td>★</td></tr>
+      <tr><td>◆ 具体例</td><td>For example... / For instance... / Let me give you...</td><td>◆</td></tr>
+      <tr><td>⇔ 対比</td><td>However... / But... / On the other hand...</td><td>⇔</td></tr>
+      <tr><td>＝ 言い換え</td><td>In other words... / What I mean is... / So essentially...</td><td>＝</td></tr>
+      <tr><td>Σ まとめ</td><td>So, to summarize... / The key takeaway is...</td><td>Σ</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.8em;color:#718096;margin-top:10px">鉄則：シグナルワードが聞こえたら印 → 直後のキーワードだけメモ → 全文を書き取ろうとしない → 聞くことが最優先</p>
+</div>
+
+<!-- Talk Script -->
+<div class="talk-section">
+  <div class="talk-header">
+    <h3>🎓 Academic Talk — Animal Migration (Biology)</h3>
+    <p>話者：女性教授 ｜ 約70秒 ｜ 180語</p>
+  </div>
+  <div class="script-box">
+    <details>
+      <summary>📜 スクリプトを見る（シグナルワードをハイライト付き）</summary>
+      <div class="script-text">
+        <strong>[NARRATOR]</strong> Listen to part of a lecture in a biology class.<br><br>
+        <strong>[PROFESSOR]</strong> So today, let's talk about how some animals find their way during migration. I mean, birds can travel thousands of kilometers, right? And they do it without a map or GPS. <span class="highlight">So how do they manage?</span><br><br>
+        <span class="highlight">Well,</span> scientists have found that many birds actually use the Earth's magnetic field as a kind of internal compass. There are tiny particles of a mineral called <span class="highlight">magnetite</span> in their brains, and these particles react to the magnetic field. <span class="highlight">So essentially,</span> the bird has a built-in navigation system.<br><br>
+        <span class="highlight">But here's the thing</span> — that's not the only tool they use. Some species also rely on the position of the sun during the day, and stars at night. And younger birds often learn specific routes by following experienced adults on their first journey.<br><br>
+        <span class="highlight">Now, what's really fascinating is that</span> recent studies have shown that light pollution from cities can actually interfere with these natural navigation systems. Birds that fly through heavily lit areas sometimes become disoriented and lose their way.<br><br>
+        So next time, we'll look at what <span class="highlight">conservation efforts</span> are being made to address this problem.
+      </div>
+    </details>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q1icon">1</div>
+      <div class="q-prompt">What is the talk mainly about?</div>
+      <span class="q-badge main-topic">Main Topic</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q1user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> How birds are affected by changes in weather patterns.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(B)</span> How certain animals navigate during long journeys.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> Why some bird species are becoming endangered.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> How scientists track bird migration routes.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 冒頭で「let's talk about how some animals find their way during migration」と主題を明示。全体を通して磁場・太陽・星・光害とナビゲーション方法が議論されている。(D)の「track」は科学者側の追跡であり、鳥自身のナビゲーションとは異なる。</div>
+      <div class="q-hint">🔑 Main Topic問題：冒頭の「let's talk about...」がそのまま答え。★シグナルワードの直後に注目。</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q2icon">2</div>
+      <div class="q-prompt">According to the speaker, what is magnetite?</div>
+      <span class="q-badge detail">Detail</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q2user"></div>
+      <div class="options-list">
+        <div class="opt-row is-correct"><span class="opt-label">(A)</span> A mineral found in birds' brains that responds to magnetic fields.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> A type of metal used in scientific tracking devices.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> A chemical that birds produce during long flights.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> A protein that helps birds see in the dark.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 教授は「tiny particles of a mineral called magnetite in their brains, and these particles react to the magnetic field」と定義を明示。mineral + brains + magnetic field の3要素が(A)に一致。(B)の「tracking devices」は人工物で本文に言及なし。</div>
+      <div class="q-hint">🔑 専門用語の定義問題：Academic Talkでは新しい用語を導入する際に必ず説明が続く。「called X」「known as X」の直後が定義。</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q3icon">3</div>
+      <div class="q-prompt">Why does the speaker mention light pollution?</div>
+      <span class="q-badge purpose">Purpose</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q3user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> To compare urban and rural bird populations.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> To explain why birds prefer to migrate at night.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> To introduce a new method of studying migration.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(D)</span> To describe a threat to birds' natural navigation.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 「light pollution from cities can actually interfere with these natural navigation systems」— interfere = threat。目的問題は「なぜその情報を出したか」を問う。光害はナビゲーションへの脅威として言及された。</div>
+      <div class="q-hint">🔑 Purpose問題のコツ：「Why does the speaker mention X?」→ Xの前後の文脈を見る。ここでは「what's really fascinating is that」（⇔対比のシグナル）の後に出てきた＝前の内容（ナビ能力）に対する脅威として提示。</div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q4icon">4</div>
+      <div class="q-prompt">What will the speaker most likely discuss next?</div>
+      <span class="q-badge prediction">Prediction</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q4user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> The history of bird migration research.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> The role of genetics in animal behavior.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(C)</span> Efforts to protect migrating birds from disruptions.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> How other animals use magnetic fields.</div>
+      </div>
+      <div class="q-explain"><strong>解説：</strong> 最後の文「we'll look at what conservation efforts are being made to address this problem」が直接のヒント。conservation efforts = efforts to protect。Prediction問題は常にトークの最後の1〜2文に答えがある。</div>
+      <div class="q-hint">🔑 Prediction問題の鉄則：最後の文に全集中。「Next time...」「We'll look at...」「In our next class...」がそのまま答えになる。</div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-bottom">
+  <a class="btn-back" href="listening-academic.html">← もう一度解く</a>
+  <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511">📋 メニューに戻る</a>
+</div>
+
+<script>
+const labels = ['A','B','C','D'];
+const correctAnswers = [1, 0, 3, 2]; // B, A, D, C
+
+function render(){
+  const stored = (JSON.parse(sessionStorage.getItem('academicAnswers')||'null')||(window.Review?Review.loadAttempt('listening-ac',1):null));
+  let correct = 0, answered = 0;
+  if(stored && Array.isArray(stored)){
+    for(let i=0;i<4;i++){
+      const userAns = stored[i];
+      const isCorrect = userAns === correctAnswers[i];
+      const isSkip = userAns === null || userAns === undefined;
+      if(!isSkip) answered++;
+      if(isCorrect) correct++;
+      const icon = document.getElementById('q'+(i+1)+'icon');
+      const user = document.getElementById('q'+(i+1)+'user');
+      if(isSkip){ icon.className='q-num skip'; user.className='q-user is-skip'; user.textContent='⏱️ 未回答（タイムアウト）'; }
+      else if(isCorrect){ icon.className='q-num correct'; user.className='q-user is-correct'; user.textContent='✅ 正解！ あなたの回答: ('+labels[userAns]+')'; }
+      else { icon.className='q-num wrong'; user.className='q-user is-wrong'; user.textContent='❌ あなたの回答: ('+labels[userAns]+') → 正解: ('+labels[correctAnswers[i]]+')'; }
+    }
+    document.getElementById('scoreBig').textContent = correct + ' / 4';
+    document.getElementById('scoreBar').style.width = (correct/4*100)+'%';
+    const pct = Math.round(correct/4*100);
+    let msg = pct >= 75 ? '素晴らしい！🎉' : pct >= 50 ? 'いい調子！' : '復習して次に活かそう💪';
+    document.getElementById('scoreMsg').textContent = pct + '% 正答率 — ' + msg;
+  } else {
+    document.getElementById('scoreBig').textContent = '— / 4';
+    document.getElementById('scoreMsg').textContent = '問題を先に解いてからこのページを見ると、スコアが表示されます';
+    for(let i=1;i<=4;i++) document.getElementById('q'+i+'user').style.display='none';
+  }
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complete the Words 解答解説</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Nunito',sans-serif;background:#f5f7fa;color:#0F1511;line-height:1.8}
+.header{background:linear-gradient(135deg,#007646,#2a8a8a);color:#fff;padding:28px 24px;text-align:center;position:relative}
+.header h1{font-size:1.5em;font-weight:800;margin-bottom:4px}
+.header p{font-size:.88em;opacity:.85}
+.btn-menu{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:8px;font-size:.78em;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.btn-menu:hover{background:rgba(255,255,255,.25)}
+.score-summary{max-width:880px;margin:20px auto;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.06);padding:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.score-card{flex:1;min-width:180px;text-align:center;padding:14px;border-radius:10px;background:#f9fafb;border:1.5px solid #eef1f5}
+.score-card h3{font-size:.78em;color:#5A6861;font-weight:700;margin-bottom:2px}
+.score-card .score-num{font-size:1.8em;font-weight:800;color:#0F1511}
+.score-card .score-num .correct{color:#007646}
+.score-card .score-detail{font-size:.72em;color:#5A6861;margin-top:2px;font-weight:600}
+.score-card.total{background:#e8f5f4;border-color:#007646}
+.tips-banner{background:#fff;border-left:4px solid #007646;margin:20px auto;max-width:880px;padding:18px 22px;border-radius:0 10px 10px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.tips-banner h2{font-size:1em;color:#007646;margin-bottom:10px;font-weight:800}
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:700px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#FBF6EC;border-radius:10px;padding:12px 14px}
+.tip-num{display:inline-block;background:#007646;color:#fff;font-size:.7em;font-weight:800;padding:2px 10px;border-radius:8px;margin-bottom:6px}
+.tip-card h3{font-size:.88em;color:#0F1511;margin-bottom:4px;font-weight:700}
+.tip-card p{font-size:.78em;color:#5A6861;line-height:1.6}
+.tip-card .ex{font-size:.75em;color:#5A6861;margin-top:3px;font-style:italic}
+.set-nav{max-width:880px;margin:20px auto 0;display:flex;gap:6px;padding:0}
+.set-nav button{flex:1;padding:10px;font-size:.82em;font-family:inherit;font-weight:700;border:none;border-radius:10px 10px 0 0;cursor:pointer;transition:all .2s;background:#e2e8f0;color:#5A6861}
+.set-nav button.active{background:#fff;color:#0F1511;box-shadow:0 -2px 8px rgba(0,0,0,.05)}
+.set-nav button:hover:not(.active){background:#edf2f7}
+.set-panel{display:none;max-width:880px;margin:0 auto}.set-panel.active{display:block}
+.set-section{background:#fff;border-radius:0 0 14px 14px;box-shadow:0 2px 12px rgba(0,0,0,.06);overflow:hidden}
+.set-header{background:#0F1511;color:#fff;padding:14px 22px;display:flex;align-items:center;gap:10px}
+.set-badge{background:#4a90d9;font-size:.7em;font-weight:800;padding:3px 12px;border-radius:8px}
+.set-header h2{font-size:1.05em;font-weight:700}
+.passage-block{padding:18px 22px;background:#FBF6EC;border-bottom:1px solid #e2e8f0}
+.passage-label{font-size:.7em;font-weight:700;color:#5A6861;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.passage-text{font-size:.9em;line-height:2;color:#0F1511}
+.blank-word{font-weight:700;color:#007646}.blank-answer{background:#e6fffa;padding:1px 4px;border-radius:3px;border-bottom:2px solid #007646}
+.answers-block{padding:18px 22px}
+.answers-block h3{font-size:.92em;color:#0F1511;margin-bottom:12px;font-weight:800}
+.answer-row{display:flex;align-items:flex-start;padding:11px 14px;border-bottom:1px solid #f0f0f0;gap:10px}
+.answer-row:hover{background:#f7fafc}.answer-row.incorrect{background:#fff5f5}
+.q-num{min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:800;flex-shrink:0}
+.q-num.correct{background:#c6f6d5;color:#22543d}.q-num.wrong{background:#fed7d7;color:#9b2c2c}
+.q-content{flex:1}
+.q-word{font-weight:700;color:#0F1511;font-size:.88em;margin-bottom:2px}
+.q-word .shown{color:#5A6861}.q-word .ans{color:#007646;font-weight:800}
+.q-user{font-size:.78em;margin-bottom:3px}
+.q-explain{font-size:.78em;color:#5A6861;line-height:1.5}
+.q-tag{display:inline-block;font-size:.68em;font-weight:700;padding:1px 8px;border-radius:6px;margin-left:4px;vertical-align:middle}
+.tag-hard{background:#fed7d7;color:#9b2c2c}.tag-mod{background:#c6f6d5;color:#22543d}
+.scoring-reminder{max-width:880px;margin:20px auto 40px;background:#fffbeb;border:1.5px solid #fbbf24;border-radius:12px;padding:16px 22px;display:flex;align-items:flex-start;gap:10px}
+.scoring-reminder .icon{font-size:1.3em;flex-shrink:0}
+.scoring-reminder .text h3{font-size:.9em;color:#92400e;margin-bottom:3px;font-weight:700}
+.scoring-reminder .text p{font-size:.82em;color:#a16207;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="header">
+  <a class="btn-menu" href="../menu.html">← メニュー</a>
+  <h1>Complete the Words 解答解説</h1>
+  <p>Day 1 宿題 — 3セット分</p>
+</div>
+<div class="score-summary" id="scoreSummary"></div>
+<div class="tips-banner">
+  <h2>💡 Complete the Words 攻略 3つのポイント</h2>
+  <div class="tips-grid">
+    <div class="tip-card"><span class="tip-num">01</span><h3>品詞を特定してから埋める</h3><p>冠詞＋空欄 → 名詞<br>主語＋空欄 → 動詞<br>be動詞＋空欄 → 形容詞/過去分詞<br>空欄＋名詞 → 形容詞</p></div>
+    <div class="tip-card"><span class="tip-num">02</span><h3>頻出パターンを暗記する</h3><p>however, therefore, although<br>particularly, especially<br>significant, demonstrate, evidence</p><div class="ex">→ 見たら即座に埋められるように！</div></div>
+    <div class="tip-card"><span class="tip-num">03</span><h3>推測でも必ず埋める</h3><p>正解 → 得点 / 不正解 → 0点 / 空欄 → 0点</p><div class="ex">→ 推測しないと損！必ず何か入れよう</div></div>
+  </div>
+</div>
+<div class="set-nav" id="setNav">
+  <button class="active" onclick="showSet(0)">Set 1: Public Libraries</button>
+  <button onclick="showSet(1)">Set 2: Sleep & Learning</button>
+  <button onclick="showSet(2)">Set 3: Urban Farming</button>
+</div>
+<div class="set-panel active" id="set0"><div class="set-section"><div class="set-header"><span class="set-badge">M1</span><h2>Set 1: The History of Public Libraries</h2></div><div class="passage-block"><div class="passage-label">Passage（正解入り）</div><div class="passage-text" id="passage0"></div></div><div class="answers-block"><h3>📝 各問 解答＆解説</h3><div id="ag0"></div></div></div></div>
+<div class="set-panel" id="set1"><div class="set-section"><div class="set-header"><span class="set-badge">M1</span><h2>Set 2: Sleep and Learning</h2></div><div class="passage-block"><div class="passage-label">Passage（正解入り）</div><div class="passage-text" id="passage1"></div></div><div class="answers-block"><h3>📝 各問 解答＆解説</h3><div id="ag1"></div></div></div></div>
+<div class="set-panel" id="set2"><div class="set-section"><div class="set-header"><span class="set-badge">M1</span><h2>Set 3: Urban Farming</h2></div><div class="passage-block"><div class="passage-label">Passage（正解入り）</div><div class="passage-text" id="passage2"></div></div><div class="answers-block"><h3>📝 各問 解答＆解説</h3><div id="ag2"></div></div></div></div>
+<div class="scoring-reminder"><div class="icon">⚠️</div><div class="text"><h3>スコアリングのルール — 推測しないと損！</h3><p>Complete the Words では、<strong>正解 → 得点</strong>、<strong>不正解 → 0点</strong>、<strong>空欄 → 0点</strong> です。不正解でも空欄でも結果は同じ0点。<strong>わからなくても必ず何か入力しましょう</strong>。</p></div></div>
+
+<script src="../../js/auth.js"></script>
+<script src="../../js/review-mode.js"></script>
+<script>
+var SD=[
+{intro:"Public libraries have played an important role in education for centuries. In the past, books were expensive, and only wealthy families could afford to collect them. Over time, leaders recognized that sharing knowledge with everyone would benefit society.",conclusion:"These efforts transformed how ordinary citizens gained access to information and education.",target:[{w:"Several",a:"ral",s:"Seve",p:""},{w:"countries",a:null,s:null,p:""},{w:"gradually",a:"lly",s:"gradua",p:""},{w:"established",a:null,s:null,p:""},{w:"free",a:"ee",s:"fr",p:""},{w:"reading",a:null,s:null,p:""},{w:"rooms",a:"oms",s:"ro",p:""},{w:"where",a:null,s:null,p:""},{w:"ordinary",a:"ary",s:"ordin",p:""},{w:"citizens",a:null,s:null,p:""},{w:"could",a:"ld",s:"cou",p:""},{w:"access",a:null,s:null,p:""},{w:"information",a:"tion",s:"informa",p:""},{w:"and",a:null,s:null,p:""},{w:"expand",a:"pand",s:"ex",p:""},{w:"their",a:null,s:null,p:""},{w:"knowledge",a:"dge",s:"knowle",p:""},{w:"of",a:null,s:null,p:""},{w:"the",a:"he",s:"t",p:""},{w:"world",a:null,s:null,p:"."}],exp:[{pos:"数量詞",d:"MOD",e:"「空欄＋名詞(countries)」→形容詞。\"Seve\"→Several。"},{pos:"副詞",d:"MOD",e:"「空欄＋動詞(established)」→副詞。\"gradua\"→gradually（徐々に）。"},{pos:"形容詞",d:"MOD",e:"「空欄＋名詞(reading rooms)」→形容詞。\"fr\"→free。"},{pos:"名詞",d:"HARD",e:"「free reading＋空欄」→名詞。\"ro\"のみでHARD→rooms。"},{pos:"形容詞",d:"MOD",e:"「空欄＋名詞(citizens)」→形容詞。\"ordin\"→ordinary（一般の）。"},{pos:"助動詞",d:"MOD",e:"「主語＋空欄＋access」→助動詞。\"cou\"→could。"},{pos:"名詞",d:"MOD",e:"「access＋空欄」→名詞。\"informa\"→information。"},{pos:"動詞",d:"HARD",e:"「and＋空欄＋their knowledge」→動詞。\"ex\"のみ→expand。文脈推測が重要！"},{pos:"名詞",d:"MOD",e:"「expand their＋空欄」→名詞。\"knowle\"→knowledge。"},{pos:"冠詞",d:"HARD",e:"「空欄＋名詞(world)」→冠詞。\"t\"1文字→the。品詞パターンで即答。"}]},
+{intro:"Sleep plays an essential role in academic performance. When students do not get sufficient rest, their ability to concentrate and retain new information decreases quite significantly. This is why developing good sleep habits is so important.",conclusion:"Experts therefore recommend that students maintain a consistent sleep schedule to perform their best.",target:[{w:"Studies",a:"ies",s:"Stud",p:""},{w:"have",a:null,s:null,p:""},{w:"confirmed",a:"med",s:"confir",p:""},{w:"that",a:null,s:null,p:""},{w:"during",a:"ing",s:"dur",p:""},{w:"sleep",a:null,s:null,p:""},{w:"the",a:"he",s:"t",p:""},{w:"brain",a:null,s:null,p:""},{w:"actively",a:"ely",s:"activ",p:""},{w:"works",a:null,s:null,p:""},{w:"to",a:"o",s:"t",p:""},{w:"retain",a:null,s:null,p:""},{w:"and",a:"nd",s:"a",p:""},{w:"strengthen",a:null,s:null,p:""},{w:"the",a:"e",s:"th",p:""},{w:"connections",a:null,s:null,p:""},{w:"between",a:"een",s:"betw",p:""},{w:"recently",a:null,s:null,p:""},{w:"learned",a:"rned",s:"lea",p:""},{w:"facts",a:null,s:null,p:"."}],exp:[{pos:"名詞（主語）",d:"MOD",e:"「空欄＋have confirmed」→主語。\"Stud\"→Studies。頻出パターン。"},{pos:"過去分詞",d:"MOD",e:"「have＋空欄」→現在完了。\"confir\"→confirmed。"},{pos:"前置詞",d:"MOD",e:"「空欄＋名詞(sleep)」→前置詞。\"dur\"→during。"},{pos:"冠詞",d:"HARD",e:"「空欄＋名詞(brain)」→冠詞。\"t\"1文字→the。品詞パターンで即答。"},{pos:"副詞",d:"MOD",e:"「brain＋空欄＋works」→副詞。\"activ\"→actively（活発に）。"},{pos:"不定詞",d:"MOD",e:"「works＋空欄＋retain」→to不定詞。\"t\"→to。"},{pos:"接続詞",d:"HARD",e:"「retain＋空欄＋strengthen」→並列。\"a\"1文字→and。推測で埋めよう！"},{pos:"冠詞",d:"MOD",e:"「strengthen＋空欄＋connections」→冠詞。\"th\"→the。"},{pos:"前置詞",d:"MOD",e:"「connections＋空欄＋recently」→前置詞。\"betw\"→between。"},{pos:"過去分詞",d:"HARD",e:"「recently＋空欄＋facts」→過去分詞。\"lea\"→learned。文脈推測。"}]},
+{intro:"As cities continue to grow, finding ways to produce fresh food locally has become increasingly important. Urban farming offers a practical solution by turning rooftops, empty lots, and unused spaces into productive gardens.",conclusion:"Many researchers believe that urban farming will play a key role in improving food security for growing communities around the world.",target:[{w:"This",a:"is",s:"Th",p:""},{w:"approach",a:null,s:null,p:""},{w:"benefits",a:"its",s:"benef",p:""},{w:"local",a:null,s:null,p:""},{w:"communities",a:"ies",s:"communit",p:""},{w:"by",a:null,s:null,p:""},{w:"providing",a:"ing",s:"provid",p:""},{w:"fresh",a:null,s:null,p:""},{w:"produce",a:"duce",s:"pro",p:""},{w:"while",a:null,s:null,p:""},{w:"reducing",a:"ing",s:"reduc",p:""},{w:"the",a:null,s:null,p:""},{w:"overall",a:"rall",s:"ove",p:""},{w:"reliance",a:null,s:null,p:""},{w:"on",a:"n",s:"o",p:""},{w:"food",a:null,s:null,p:""},{w:"imported",a:"ted",s:"impor",p:""},{w:"from",a:null,s:null,p:""},{w:"distant",a:"tant",s:"dis",p:""},{w:"regions",a:null,s:null,p:"."}],exp:[{pos:"指示形容詞",d:"MOD",e:"「空欄＋名詞(approach)」→限定詞。\"Th\"→This。"},{pos:"動詞",d:"MOD",e:"「This approach＋空欄」→動詞。\"benef\"→benefits（恩恵をもたらす）。"},{pos:"名詞",d:"MOD",e:"「local＋空欄」→名詞。\"communit\"→communities。"},{pos:"動名詞",d:"MOD",e:"「by＋空欄＋fresh」→動名詞。\"provid\"→providing。by+-ingは頻出！"},{pos:"名詞",d:"HARD",e:"「providing fresh＋空欄」→名詞。\"pro\"→produce（農産物）。文脈推測。"},{pos:"動名詞",d:"MOD",e:"「while＋空欄」→動名詞。\"reduc\"→reducing（削減する）。"},{pos:"形容詞",d:"HARD",e:"「the＋空欄＋reliance」→形容詞。\"ove\"→overall（全体的な）。品詞で絞込み。"},{pos:"前置詞",d:"MOD",e:"「reliance＋空欄＋food」→前置詞。\"o\"→on。reliance onは定型。"},{pos:"過去分詞",d:"MOD",e:"「food＋空欄＋from」→過去分詞。\"impor\"→imported（輸入された）。"},{pos:"形容詞",d:"HARD",e:"「from＋空欄＋regions」→形容詞。\"dis\"→distant（遠い）。文脈推測。"}]}
+];
+
+function renderAll(){
+  var ts=0,tq=0,sh='';
+  SD.forEach(function(s,si){
+    var bl=s.target.filter(function(t){return t.a!==null;});
+    var st=null;try{st=JSON.parse(sessionStorage.getItem('ctw_answers_'+(si+1)));}catch(e){}if(!st&&window.Review){st=Review.loadAttempt('ctw',si+1);}
+    var ua=st?st.answers:[];var sc=st?st.score:0;ts+=sc;tq+=bl.length;
+    sh+='<div class="score-card"><h3>Set '+(si+1)+'</h3><div class="score-num"><span class="correct">'+sc+'</span>/'+bl.length+'</div><div class="score-detail">'+(st?Math.round(sc/bl.length*100)+'%':'—')+'</div></div>';
+    var ph='<span>'+s.intro+'</span> ';
+    s.target.forEach(function(t){if(t.a!==null){ph+='<span class="blank-word">'+t.s+'<span class="blank-answer">'+t.a+'</span></span>';if(t.p)ph+=t.p;ph+=' ';}else{ph+=t.w+(t.p||'')+' ';}});
+    ph+='<span>'+s.conclusion+'</span>';
+    document.getElementById('passage'+si).innerHTML=ph;
+    var ag='';
+    bl.forEach(function(b,qi){
+      var ex=s.exp[qi];var uans=ua[qi]||'';var ok=uans.toLowerCase()===b.a.toLowerCase();
+      var dt=ex.d==='HARD'?'<span class="q-tag tag-hard">HARD</span>':'<span class="q-tag tag-mod">MOD</span>';
+      var ul='';
+      if(st){if(ok){ul='<div class="q-user" style="color:#22543d">✅ 正解！ あなたの回答: '+b.s+uans+'</div>';}else if(!uans.trim()){ul='<div class="q-user" style="color:#9b2c2c">⬜ 未回答 — 推測でも必ず埋めよう！</div>';}else{ul='<div class="q-user" style="color:#9b2c2c">❌ あなた: <span style="text-decoration:line-through">'+b.s+uans+'</span> → 正解: '+b.w+'</div>';}}
+      ag+='<div class="answer-row'+(st&&!ok?' incorrect':'')+'"><div class="q-num '+(st?(ok?'correct':'wrong'):'correct')+'">'+(qi+1)+'</div><div class="q-content"><div class="q-word"><span class="shown">'+b.s+'</span><span class="ans">'+b.a+'</span> = '+b.w+' '+dt+'</div>'+ul+'<div class="q-explain"><strong>品詞：'+ex.pos+'</strong> '+ex.e+'</div></div></div>';
+    });
+    document.getElementById('ag'+si).innerHTML=ag;
+  });
+  sh+='<div class="score-card total"><h3>合計</h3><div class="score-num"><span class="correct">'+ts+'</span>/'+tq+'</div><div class="score-detail">'+Math.round(ts/tq*100)+'%</div></div>';
+  document.getElementById('scoreSummary').innerHTML=sh;
+}
+function showSet(i){document.querySelectorAll('.set-panel').forEach(function(p,j){p.classList.toggle('active',j===i);});document.querySelectorAll('.set-nav button').forEach(function(b,j){b.classList.toggle('active',j===i);});}
+renderAll();
+</script>
+</body>
+</html>

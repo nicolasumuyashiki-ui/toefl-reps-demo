@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!-- toefl-reps-demo: migrated from kickstart-hw -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL iBT - Academic Passage: Answers &amp; Explanations</title>
+<link rel="stylesheet" href="../../css/common.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f9fafb;min-height:100vh;color:#0F1511;line-height:1.7}
+.answers-header{background:#0F1511;color:#fff;padding:20px 28px;text-align:center}
+.answers-header h1{font-size:1.2em;font-weight:600;margin-bottom:4px}
+.answers-header p{font-size:.9em;color:rgba(255,255,255,.7)}
+.score-banner{background:#ebf4ff;border-bottom:1px solid #bee3f8;padding:20px 28px;text-align:center}
+.score-big{font-size:2.2em;font-weight:700;color:#2b6cb0}
+.score-label{font-size:.9em;color:#4a5568;margin-top:4px}
+.answers-body{max-width:780px;margin:0 auto;padding:28px 20px 100px}
+.passage-block{margin-bottom:36px}
+.passage-title-bar{font-size:1.05em;font-weight:700;color:#0F1511;padding:12px 0;border-bottom:2px solid #e2e8f0;margin-bottom:20px}
+.passage-type-badge{display:inline-block;background:#0F1511;color:#fff;font-size:.75em;font-weight:600;padding:3px 10px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.q-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.q-card.correct{border-left:4px solid #48bb78}
+.q-card.incorrect{border-left:4px solid #e53e3e}
+.q-num{font-weight:700;color:#4a90d9;margin-bottom:8px;font-size:.95em}
+.q-text{font-weight:600;margin-bottom:14px;font-size:.93em;line-height:1.6}
+.answer-row{display:flex;gap:16px;margin-bottom:10px;font-size:.9em;flex-wrap:wrap}
+.answer-tag{padding:4px 12px;border-radius:6px;font-weight:600;font-size:.85em}
+.tag-correct{background:#c6f6d5;color:#276749}
+.tag-yours{background:#fed7d7;color:#9b2c2c}
+.tag-yours.match{background:#c6f6d5;color:#276749}
+.explanation{background:#f7fafc;border-radius:8px;padding:14px 16px;margin-top:12px;font-size:.88em;line-height:1.65;color:#4a5568}
+.explanation strong{color:#0F1511}
+.option-review{font-size:.88em;padding:6px 0;color:#4a5568;display:flex;gap:8px}
+.option-review .label{font-weight:600;min-width:22px;color:#718096}
+.option-review.is-correct .label{color:#276749}
+.option-review.is-correct{color:#276749;font-weight:500}
+.option-review.is-wrong-pick{color:#e53e3e;text-decoration:line-through;opacity:.7}
+.insertion-explain{background:#ebf8ff;border:1px solid #90cdf4;border-radius:8px;padding:14px 16px;margin-top:10px;font-size:.88em;line-height:1.65;color:#2c5282}
+
+/* TIPS */
+.tips-section{margin-top:8px;margin-bottom:36px}
+.tips-title{font-size:1.1em;font-weight:700;color:#0F1511;padding:14px 0;border-bottom:2px solid #e2e8f0;margin-bottom:20px}
+.tip-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.tip-card-title{font-weight:700;font-size:.95em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tip-num{background:#0F1511;color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75em;flex-shrink:0}
+.tip-card-body{font-size:.88em;line-height:1.65;color:#4a5568}
+.tip-card-body strong{color:#0F1511}
+.tip-card-body code{background:#ebf4ff;padding:2px 6px;border-radius:3px;font-size:.9em;color:#2b6cb0}
+.tip-example{background:#fffff0;border:1px solid #ecc94b;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:.85em;color:#744210;line-height:1.5}
+.tip-warn{background:#fff5f5;border:1px solid #feb2b2;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:.85em;color:#9b2c2c;line-height:1.5}
+.paraphrase-box{background:#f0fff4;border:1px solid #9ae6b4;border-radius:6px;padding:10px 14px;margin-top:10px;font-size:.85em;color:#276749;line-height:1.5}
+
+.nav-footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:14px 24px;display:flex;justify-content:center;gap:12px;z-index:100}
+.btn-menu{display:inline-flex;align-items:center;gap:8px;padding:12px 32px;font-size:.95em;font-family:inherit;font-weight:600;border:none;border-radius:8px;cursor:pointer;color:#fff;background:#0F1511;transition:all .2s}
+.btn-menu:hover{background:#4a5568}
+</style>
+</head>
+<body>
+
+<div class="answers-header">
+  <h1>Read an Academic Passage — Answers &amp; Explanations</h1>
+  <p>Day 1 Homework — "The Bystander Effect"</p>
+</div>
+
+<div class="score-banner">
+  <div class="score-big" id="scoreDisplay">–/5</div>
+  <div class="score-label">Your Score (Q16–Q20)</div>
+</div>
+
+<div class="answers-body">
+
+  <!-- TIPS -->
+  <div class="tips-section">
+    <div class="tips-title">💡 Read an Academic Passage 攻略ポイント</div>
+
+    <div class="tip-card">
+      <div class="tip-card-title"><span class="tip-num">1</span> 言い換え（パラフレーズ）を見抜く</div>
+      <div class="tip-card-body">
+        <strong>正解は必ず本文の「言い換え」。</strong>本文と同じ単語を使う選択肢はむしろ疑うこと。
+        <div class="paraphrase-box">
+          <strong>言い換えの例：</strong><br>
+          demonstrated → showed<br>
+          significant → important<br>
+          proposed → suggested<br>
+          fail to help → do not offer assistance
+        </div>
+        <div class="tip-example">
+          <strong>今回の例（Q16）：</strong> 本文 "prompted...to investigate why people sometimes fail to help" → 選択肢C "revealed why people often do not help" — 言い換えの典型！
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-title"><span class="tip-num">2</span> 構造を理解する</div>
+      <div class="tip-card-body">
+        <strong>最初の文 →</strong> トピック・主張<br>
+        <strong>中間 →</strong> 詳細・具体例・データ<br>
+        <strong>最後の文 →</strong> 結論・まとめ<br><br>
+        Main Idea問題は<strong>最初と最後だけで解けることが多い</strong>。
+        <div class="tip-example">
+          <strong>今回の例：</strong> 冒頭でGenovese事件 → 研究の紹介、中間で実験の詳細、最後で「社会心理学への影響」→ 全体を貫くテーマは「傍観者効果の研究」
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-title"><span class="tip-num">3</span> 推論の根拠を確認する</div>
+      <div class="tip-card-body">
+        <strong>自分の知識や意見を混ぜない。</strong>「本文に書いてあること」だけが根拠。
+        <div class="tip-warn">
+          <strong>最も多いミス：</strong><br>
+          ✓ costs reduced → financially beneficial（本文の情報から推論可能）<br>
+          ✗ costs reduced → popular（根拠なし — 自分の想像を混ぜている）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Questions -->
+  <div class="passage-block">
+    <div class="passage-title-bar">The Bystander Effect <span class="passage-type-badge">Psychology</span></div>
+
+    <!-- Q16 -->
+    <div class="q-card" id="card16">
+      <div class="q-num">Question 16 — Main Idea</div>
+      <div class="q-text">What is the passage mainly about?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: C</span>
+        <span class="answer-tag" id="yours16">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt16A"><span class="label">A</span> How a famous crime in New York City led to changes in police response procedures</div>
+        <div class="option-review" id="opt16B"><span class="label">B</span> How social psychologists developed new treatments for anxiety in group settings</div>
+        <div class="option-review is-correct" id="opt16C"><span class="label">C</span> How research into the bystander effect revealed why people often do not help in emergencies ✓</div>
+        <div class="option-review" id="opt16D"><span class="label">D</span> How public safety programs have reduced violent crime rates in large cities</div>
+      </div>
+      <div class="explanation">
+        <strong>解法：構造で解く！</strong><br>
+        冒頭 → Genovese事件が研究のきっかけ。中間 → 実験と2つのメカニズム。結末 → 社会心理学への影響。全体を貫くのは「傍観者効果の研究」= C。<br><br>
+        A は冒頭の事件だけに焦点を当てており、"police procedures"は<strong>本文にない</strong>（関連するが未言及の引っかけ）。B は anxiety treatments が未言及。D は最終文の "public safety training" を拡大解釈している。
+        <div class="paraphrase-box">
+          <strong>パラフレーズ発見：</strong> 本文 "investigate why people sometimes fail to help" → C "revealed why people often do not help" — fail to help = do not help
+        </div>
+      </div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="q-card" id="card17">
+      <div class="q-num">Question 17 — Factual Information</div>
+      <div class="q-text">According to the passage, what did Darley and Latané's intercom experiment show?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: A</span>
+        <span class="answer-tag" id="yours17">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review is-correct" id="opt17A"><span class="label">A</span> Participants were more likely to seek help when they believed they were alone. ✓</div>
+        <div class="option-review" id="opt17B"><span class="label">B</span> Participants responded faster when they knew other people were also listening.</div>
+        <div class="option-review" id="opt17C"><span class="label">C</span> Participants who heard the seizure ignored it regardless of group size.</div>
+        <div class="option-review" id="opt17D"><span class="label">D</span> Participants in larger groups reported the emergency within a few seconds.</div>
+      </div>
+      <div class="explanation">
+        <strong>Explanation:</strong> 本文 "believed they were the only listener, 85 percent sought help" vs "thought others were also listening, only 31 percent responded" → 一人の方が助けを求めやすい = A。<br><br>
+        B は<strong>因果関係の逆転</strong> — 他者がいると反応率が下がる。C は85%のデータと矛盾。D も31%のデータと矛盾。
+      </div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="q-card" id="card18">
+      <div class="q-num">Question 18 — Vocabulary in Context</div>
+      <div class="q-text">The word "proposed" in paragraph 3 is closest in meaning to</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: C</span>
+        <span class="answer-tag" id="yours18">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt18A"><span class="label">A</span> demanded</div>
+        <div class="option-review" id="opt18B"><span class="label">B</span> imagined</div>
+        <div class="option-review is-correct" id="opt18C"><span class="label">C</span> suggested ✓</div>
+        <div class="option-review" id="opt18D"><span class="label">D</span> questioned</div>
+      </div>
+      <div class="explanation">
+        <strong>Explanation:</strong> 文脈では研究者が説明を「提案した」→ suggested が最も近い。demanded は強すぎる（研究者は主張を強制しない）。imagined は「想像した」で事実に基づく提案ではない。questioned は逆の意味（疑問を呈する）。<br><br>
+        <strong>💡 Vocabulary in Context のコツ：</strong> 文脈に当てはめて意味が通るかチェック。"The researchers <em>suggested</em> that two mechanisms..." — 自然に読める！
+      </div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="q-card" id="card19">
+      <div class="q-num">Question 19 — Inference</div>
+      <div class="q-text">Based on the passage, what can be inferred about a person who sees other bystanders remaining calm during an emergency?</div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: B</span>
+        <span class="answer-tag" id="yours19">Your answer: —</span>
+      </div>
+      <div style="margin:10px 0">
+        <div class="option-review" id="opt19A"><span class="label">A</span> The person will likely feel greater personal responsibility to act immediately.</div>
+        <div class="option-review is-correct" id="opt19B"><span class="label">B</span> The person may decide that the situation does not actually require assistance. ✓</div>
+        <div class="option-review" id="opt19C"><span class="label">C</span> The person will almost certainly contact the authorities within a short time.</div>
+        <div class="option-review" id="opt19D"><span class="label">D</span> The person is likely to have received public safety training at some earlier point.</div>
+      </div>
+      <div class="explanation">
+        <strong>推論の根拠を本文で確認：</strong><br>
+        本文 "pluralistic ignorance, in which people look at the reactions of others to decide whether the situation is truly an emergency. If no one else seems alarmed, individuals tend to conclude that help is not needed." → 他者が冷静 = 緊急ではないと判断 = B。<br><br>
+        A は diffusion of responsibility と逆（集団→個人の責任感が<strong>下がる</strong>）。C は研究の予測と逆。D は本文に根拠なし。
+        <div class="tip-warn">
+          <strong>推論問題の鉄則：</strong> 本文に書いてあることだけが根拠。「常識的にそうだろう」は通用しない！
+        </div>
+      </div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="q-card" id="card20">
+      <div class="q-num">Question 20 — Sentence Insertion</div>
+      <div class="q-text">Sentence: <em>"In other words, the presence of a group can reduce each individual's sense of obligation."</em></div>
+      <div class="answer-row">
+        <span class="answer-tag tag-correct">Correct: B</span>
+        <span class="answer-tag" id="yours20">Your answer: —</span>
+      </div>
+      <div class="insertion-explain">
+        <strong>Position B が正解</strong> — "The first is diffusion of responsibility, where each person assumes someone else will take action." の直後。<br><br>
+        挿入文の冒頭 <strong>"In other words"</strong> は「言い換え」のシグナルワード。直前の文で述べた「責任の拡散」を別の表現で言い直している。<br><br>
+        <strong>他の位置がダメな理由：</strong><br>
+        A — 1つ目のメカニズムが紹介される前なので、言い換える対象がない。<br>
+        C — 2つ目のメカニズム（pluralistic ignorance）への転換を壊す。<br>
+        D — 結論の後で唐突。段落の流れが途切れる。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FINAL TAKEAWAY -->
+  <div class="tip-card" style="border:2px solid #4a90d9;background:#ebf4ff">
+    <div class="tip-card-title" style="color:#2b6cb0;font-size:1em">🎯 鉄則まとめ</div>
+    <div class="tip-card-body">
+      <strong>1. 正解は必ず本文の「言い換え」。</strong>同じ単語を使う選択肢は引っかけの可能性大。<br>
+      <strong>2. 推論問題でも「本文に書いてあること」だけが根拠。</strong>自分の知識を混ぜない。<br>
+      <strong>3. Main Idea は最初の文と最後の文で解ける。</strong>中間の詳細に引きずられない。
+    </div>
+  </div>
+
+</div>
+
+<div class="nav-footer">
+  <button class="btn-menu" onclick="location.href='../menu.html'">← Back to Menu</button>
+</div>
+
+<script>
+var correctAnswers = {'16':'C','17':'A','18':'C','19':'B','20':'B'};
+(function(){
+  var saved = sessionStorage.getItem('kickstart_academic_answers');if(!saved&&window.Review){var a1=Review.loadAttempt('academic',1),a2=Review.loadAttempt('academic',2);if(a1||a2){saved=JSON.stringify(Object.assign({},a1||{},a2||{}));}}
+  var answers = saved ? JSON.parse(saved) : {};
+  var score = 0;
+  for(var q in correctAnswers){
+    var userAns = answers[q] || '—';
+    var isCorrect = (userAns === correctAnswers[q]);
+    if(isCorrect) score++;
+    var yoursEl = document.getElementById('yours'+q);
+    if(yoursEl){
+      yoursEl.textContent = 'Your answer: '+userAns;
+      yoursEl.className = 'answer-tag tag-yours' + (userAns !== '—' && isCorrect ? ' match' : '');
+    }
+    var card = document.getElementById('card'+q);
+    if(card) card.className = 'q-card ' + (userAns === '—' ? '' : (isCorrect ? 'correct' : 'incorrect'));
+    if(q !== '20' && userAns !== '—' && !isCorrect){
+      var w = document.getElementById('opt'+q+userAns);
+      if(w) w.className = 'option-review is-wrong-pick';
+    }
+  }
+  document.getElementById('scoreDisplay').textContent = score+'/5';
+})();
+</script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/review-mode.js"></script>
+</body>
+</html>
