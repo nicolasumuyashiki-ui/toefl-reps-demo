@@ -96,7 +96,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 <!-- TOP NAV -->
 <div class="top-nav">
   <div class="top-nav-left">
-    <span>Question <span id="qLabel"><strong>11</strong></span> of 20</span>
+    <span>Question <span id="qLabel"><strong>1</strong></span> of 1</span>
     <span>|</span>
     <span>Reading</span>
   </div>
@@ -162,70 +162,42 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 
   <!-- RIGHT: QUESTIONS -->
   <div class="question-panel">
-    <!-- Q11 -->
+    <!-- Q1 -->
     <div class="question-page active" id="page1">
       <div class="question-text">
-        <span class="question-number">11.</span>What does the sender mean by "I'm on the fence"?
+        <span class="question-number">1.</span>What does the sender mean by "I'm on the fence"?
       </div>
       <div class="options">
-        <div class="option" data-q="11" data-v="A" onclick="selectOption(this)">
-          <input type="radio" name="q11" value="A">
+        <div class="option" data-q="1" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q1" value="A">
           <span class="option-label">A</span>
           <span class="option-text">She is sitting outside on a fence.</span>
         </div>
-        <div class="option" data-q="11" data-v="B" onclick="selectOption(this)">
-          <input type="radio" name="q11" value="B">
+        <div class="option" data-q="1" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q1" value="B">
           <span class="option-label">B</span>
           <span class="option-text">She has not decided yet.</span>
         </div>
-        <div class="option" data-q="11" data-v="C" onclick="selectOption(this)">
-          <input type="radio" name="q11" value="C">
+        <div class="option" data-q="1" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q1" value="C">
           <span class="option-label">C</span>
           <span class="option-text">She is worried about the weather.</span>
         </div>
-        <div class="option" data-q="11" data-v="D" onclick="selectOption(this)">
-          <input type="radio" name="q11" value="D">
+        <div class="option" data-q="1" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q1" value="D">
           <span class="option-label">D</span>
           <span class="option-text">She does not want to go at all.</span>
         </div>
       </div>
     </div>
 
-    <!-- Q12 -->
-    <div class="question-page" id="page2">
-      <div class="question-text">
-        <span class="question-number">12.</span>According to the text messages, why does Kate tell the sender to bring a reusable bag?
-      </div>
-      <div class="options">
-        <div class="option" data-q="12" data-v="A" onclick="selectOption(this)">
-          <input type="radio" name="q12" value="A">
-          <span class="option-label">A</span>
-          <span class="option-text">The market does not provide any bags.</span>
-        </div>
-        <div class="option" data-q="12" data-v="B" onclick="selectOption(this)">
-          <input type="radio" name="q12" value="B">
-          <span class="option-label">B</span>
-          <span class="option-text">They will buy too many items to carry.</span>
-        </div>
-        <div class="option" data-q="12" data-v="C" onclick="selectOption(this)">
-          <input type="radio" name="q12" value="C">
-          <span class="option-label">C</span>
-          <span class="option-text">There was an additional cost for plastic bags before.</span>
-        </div>
-        <div class="option" data-q="12" data-v="D" onclick="selectOption(this)">
-          <input type="radio" name="q12" value="D">
-          <span class="option-label">D</span>
-          <span class="option-text">Reusable bags are sold at the market.</span>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
 <!-- FOOTER NAV -->
 <div class="reading-footer">
   <button class="btn-nav btn-back" id="btnBack" onclick="changePage(-1)" disabled>‹ Back</button>
-  <button class="btn-nav btn-next" id="btnNext" onclick="changePage(1)">Next ›</button>
+  <button class="btn-nav btn-next" id="btnNext" onclick="goNext()">Finish ›</button>
 </div>
 
 <!-- REVIEW OVERLAY -->
@@ -239,8 +211,8 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 
 <script>
 var currentPage = 1;
-var totalPages = 2;
-var startQ = 11;
+var totalPages = 1;
+var startQ = 1;
 var userAnswers = {};
 var timerVisible = true;
 var timeLeft = 1500;
@@ -280,8 +252,7 @@ function goNext(){
 }
 
 function updateProgress(){
-  var base = 50; // CTW = 50%, RDL1 starts at ~55%
-  var pct = base + ((currentPage / totalPages) * 10);
+  var pct = (currentPage / totalPages) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
 }
 
