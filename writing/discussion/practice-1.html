@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="en">
 <head>
@@ -115,7 +116,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
   <!-- INSTRUCTION -->
   <div class="instruction-page" id="instructionPage">
     <div class="instruction-card">
-      <h1>Writing for an Academic Discussion</h1>
+      <h1>Writing for an Academic Discussion<span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
       <p>In this task, you will contribute to an online class discussion. Read the professor's question and the student responses, then write your own post.</p>
       <table class="task-table">
         <thead><tr><th>Step</th><th>Description</th></tr></thead>
@@ -185,7 +186,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
         <div class="stat-item"><div class="stat-value" id="statTime">0:00</div><div class="stat-label">Time Used</div></div>
       </div>
       <div class="preview-box"><div class="preview-text" id="previewText"></div></div>
-      <a class="btn-answers" href="discussion-answers.html">解答解説・模範回答を見る →</a>
+      <a class="btn-answers" href="practice-1-answers.html">解答解説・模範回答を見る →</a>
     </div>
   </div>
 
@@ -211,7 +212,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <script src="../../js/auth.js"></script>
 <script src="../../js/review-mode.js"></script>
 <script>
-if(typeof Auth!=='undefined'){Auth.require();Auth.showBadge('userBadge');} if(window.Review){Review.attachReviewControls({task:'discussion',set:1,answersUrl:'discussion-answers.html'});}
+if(typeof Auth!=='undefined'){Auth.require();Auth.showBadge('userBadge');} if(window.Review){Review.attachReviewControls({task:'discussion',set:1,answersUrl:'practice-1-answers.html'});}
 
 let timerInterval=null, totalSeconds=600, secondsLeft=600, isWriting=false, wordCountVisible=true;
 

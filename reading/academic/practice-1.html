@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="en">
 <head>
@@ -385,7 +386,7 @@ function changePage(dir){
 }
 
 function goNext(){
-  window.location.href = 'academic-answers.html';
+  window.location.href = 'practice-1-answers.html';
 }
 
 function updateProgress(){
@@ -463,7 +464,7 @@ updateProgress();
 
 if(typeof Auth !== 'undefined'){
   Auth.require();
-  if(window.Review){Review.attachReviewControls({task:'academic',set:1,answersUrl:'academic-answers.html'});}
+  if(window.Review){Review.attachReviewControls({task:'academic',set:1,answersUrl:'practice-1-answers.html'});}
   Auth.showBadge('userBadge');
 }
 </script>

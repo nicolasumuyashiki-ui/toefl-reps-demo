@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- toefl-reps-demo: navigation+demo-pill fixes applied -->
 <!-- toefl-reps-demo: migrated from kickstart-hw -->
 <html lang="en">
 <head>
@@ -131,7 +132,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
   <!-- INSTRUCTION PAGE -->
   <div class="instruction-page" id="instructionPage">
     <div class="instruction-card">
-      <h1>Write an Email</h1>
+      <h1>Write an Email<span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
       <p>In this task, you will write an email response based on a given scenario. Read the scenario carefully and follow the instructions.</p>
       <table class="task-table">
         <thead><tr><th>Task</th><th>Description</th></tr></thead>
@@ -214,7 +215,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
         </div>
         <div class="preview-text" id="previewText"></div>
       </div>
-      <a href="email-answers.html" style="display:inline-block;margin-top:12px;padding:14px 36px;background:#4a90d9;color:#fff;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;">解答解説・模範回答を見る →</a>
+      <a href="practice-1-answers.html" style="display:inline-block;margin-top:12px;padding:14px 36px;background:#4a90d9;color:#fff;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;">解答解説・模範回答を見る →</a>
     </div>
   </div>
 
@@ -242,7 +243,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <script src="../../js/review-mode.js"></script>
 <script>
 /* ===== AUTH ===== */
-if(typeof Auth!=='undefined'){Auth.require();Auth.showBadge('userBadge');} if(window.Review){Review.attachReviewControls({task:'email',set:1,answersUrl:'email-answers.html'});}
+if(typeof Auth!=='undefined'){Auth.require();Auth.showBadge('userBadge');} if(window.Review){Review.attachReviewControls({task:'email',set:1,answersUrl:'practice-1-answers.html'});}
 
 /* ===== STATE ===== */
 let timerInterval = null;
