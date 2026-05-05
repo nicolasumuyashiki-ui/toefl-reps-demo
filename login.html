@@ -75,9 +75,13 @@ h2{font-family:var(--font-en);font-size:1.35em;font-weight:800;color:var(--green
 
 .gate-notice{background:#fff4e0;border:1px solid var(--gold);border-radius:10px;padding:12px 14px;font-size:.84em;color:#7a5a1c;margin-bottom:16px;display:none}
 
-.upgrade-banner{margin-top:18px;padding:14px 16px;background:linear-gradient(135deg,var(--paper),var(--cream-warm,#F7EED9));border:1px solid var(--gold);border-radius:12px;text-align:center;font-size:.84em;color:var(--green-deep);line-height:1.6}
-.upgrade-banner strong{color:var(--green-dark)}
-.upgrade-banner a{color:var(--green-dark);font-weight:700;text-decoration:none;border-bottom:1px solid var(--green-dark)}
+.upgrade-banner{margin-top:18px;padding:18px 18px 16px;background:linear-gradient(135deg,var(--paper),var(--cream-warm,#F7EED9));border:1px solid var(--gold);border-radius:12px;text-align:center;color:var(--green-deep);line-height:1.55}
+.upgrade-banner .upgrade-eyebrow{display:block;font-family:var(--font-en);font-size:.7em;font-weight:800;color:#8A6D2A;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.upgrade-banner .upgrade-title{display:block;font-family:var(--font-jp);font-size:1em;font-weight:700;color:var(--green-deep);margin-bottom:10px}
+.upgrade-banner .upgrade-price{font-family:var(--font-en);font-weight:800;color:var(--green-dark)}
+.upgrade-banner .btn-upgrade{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 26px;background:var(--gold);color:var(--green-deep);border-radius:999px;text-decoration:none;font-weight:800;font-size:.92em;font-family:var(--font-jp);transition:all .18s;box-shadow:0 4px 14px rgba(201,169,97,.35);border:none}
+.upgrade-banner .btn-upgrade:hover{background:#D9BA72;transform:translateY(-1px);box-shadow:0 8px 20px rgba(201,169,97,.45)}
+.upgrade-banner .btn-upgrade .arrow{font-family:var(--font-en);font-weight:700}
 </style>
 </head>
 <body data-lang="jp">
@@ -184,8 +188,17 @@ h2{font-family:var(--font-en);font-size:1.35em;font-weight:800;color:var(--green
   </div>
 
   <div class="upgrade-banner">
-    <span class="jp">本サブスクで詳しく見る・お申込み: <a href="index.html#pricing">月額 ¥3,980 プラン →</a></span>
-    <span class="en">Full subscription details &amp; signup: <a href="index.html#pricing">Monthly ¥3,980 plan →</a></span>
+    <span class="upgrade-eyebrow">
+      <span class="jp">本サブスクのご案内</span><span class="en">Full subscription</span>
+    </span>
+    <span class="upgrade-title">
+      <span class="jp">体験版の次は、<strong class="upgrade-price">月額 ¥3,980</strong> で全コンテンツへ</span>
+      <span class="en">Ready for everything? <strong class="upgrade-price">¥3,980 / month</strong></span>
+    </span>
+    <a class="btn-upgrade" href="index.html#pricing">
+      <span class="jp">本サブスクの詳細を見る</span><span class="en">See full subscription</span>
+      <span class="arrow">→</span>
+    </a>
   </div>
 </div>
 
