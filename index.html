@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOEFL Reps Demo — 全12タスクを無料で体験 · TCK Workshop</title>
-<meta name="description" content="2026年新形式TOEFL対応。TCK Workshop / TOEFL Reps の全12タスクを1セットずつ無料で体験。アカウント登録は30秒、クレジットカード不要。">
+<meta name="description" content="2026年新形式 TOEFL 対応。TCK Workshop / TOEFL Reps の全12タスクを 1 セットずつ無料で体験。30秒で登録、クレジットカード不要。">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="shortcut icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="TOEFL Reps Demo — 全12タスクを無料で体験">
-<meta property="og:description" content="TCK Workshop / TOEFL Reps の全12タスクを1セットずつ無料で体験。">
+<meta property="og:description" content="TCK Workshop / TOEFL Reps の全12タスクを 1 セットずつ無料で体験。">
 <meta property="og:image" content="https://apps.tckworkshop.co.jp/toefl-reps-demo/assets/ogp-card.jpg">
 <meta property="og:site_name" content="TCK Workshop · TOEFL Reps Demo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,189 +32,75 @@ body{font-family:var(--font-jp);background:var(--cream);color:var(--ink-900);lin
 
 /* ===== Nav ===== */
 .nav{position:sticky;top:0;z-index:100;background:rgba(251,246,236,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--paper)}
-.nav-inner{max-width:1160px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.nav-inner{max-width:1080px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .nav-brand{display:flex;align-items:center;gap:10px}
-.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-.brand-name{font-family:var(--font-en);font-size:.76em;font-weight:800;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
+.brand-name{font-family:var(--font-en);font-size:.78em;font-weight:800;color:var(--green);letter-spacing:.14em;text-transform:uppercase}
 .brand-demo-pill{font-family:var(--font-en);font-size:.6em;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--terracotta);padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:4px}
 .nav-actions{display:flex;align-items:center;gap:10px}
-.nav-link{font-family:var(--font-jp);font-size:.86em;color:var(--ink-700);text-decoration:none;padding:10px 6px;font-weight:600;transition:color .15s}
+.nav-link{font-family:var(--font-jp);font-size:.86em;color:var(--ink-700);text-decoration:none;padding:10px 6px;font-weight:600}
 .nav-link:hover{color:var(--green-dark)}
 .nav-cta{font-family:var(--font-jp);font-size:.86em;font-weight:700;color:var(--white);background:var(--green);padding:10px 18px;border-radius:999px;text-decoration:none;transition:all .18s}
 .nav-cta:hover{background:var(--green-dark);transform:translateY(-1px)}
 
 /* ===== Hero ===== */
-.hero{position:relative;padding:80px 32px 88px;max-width:1160px;margin:0 auto;overflow:hidden;text-align:center}
-.hero-inner{position:relative;z-index:2;max-width:820px;margin:0 auto}
-.hero-kicker{display:inline-flex;align-items:center;gap:10px;background:var(--paper);padding:8px 16px;border-radius:999px;margin-bottom:26px}
+.hero{padding:84px 28px 64px;max-width:780px;margin:0 auto;text-align:center}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;background:var(--paper);padding:7px 14px;border-radius:999px;margin-bottom:24px}
 .hero-kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--terracotta);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.hero-kicker-text{font-family:var(--font-en);font-size:.72em;font-weight:700;color:var(--green-deep);letter-spacing:.14em;text-transform:uppercase}
+.hero-kicker-text{font-family:var(--font-en);font-size:.7em;font-weight:700;color:var(--green-deep);letter-spacing:.14em;text-transform:uppercase}
 .hero-kicker-text strong{color:var(--terracotta)}
+.hero h1{font-size:clamp(1.95em,4.4vw,2.9em);font-weight:800;color:var(--green-deep);line-height:1.22;letter-spacing:-0.02em;margin-bottom:18px}
+.hero h1 .accent{color:var(--green)}
+.hero p.lead{font-size:1em;color:var(--ink-700);max-width:580px;margin:0 auto 30px;line-height:1.85}
+.hero-cta-big{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:20px 44px;background:var(--green);color:var(--white);border-radius:999px;text-decoration:none;font-weight:800;font-size:1.12em;font-family:var(--font-jp);box-shadow:0 12px 32px rgba(0,118,70,.28);transition:all .2s;border:none;cursor:pointer}
+.hero-cta-big:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 16px 38px rgba(0,118,70,.36)}
+.hero-cta-big .arrow{font-family:var(--font-en);font-weight:800}
+.hero-cta-note{margin-top:14px;font-family:var(--font-en);font-size:.78em;color:var(--ink-500);letter-spacing:.04em}
 
-.hero h1{font-size:clamp(2.1em,4.7vw,3.5em);font-weight:800;color:var(--green-deep);line-height:1.16;letter-spacing:-0.025em;margin-bottom:24px}
-.hero h1 .serif-word{font-family:var(--font-jp);font-weight:900;color:var(--green);padding:0}
+/* ===== What you get ===== */
+.benefits{padding:60px 28px 56px;max-width:760px;margin:0 auto}
+.benefits-head{text-align:center;margin-bottom:36px}
+.benefits-head h2{font-family:var(--font-serif-jp);font-size:clamp(1.45em,3vw,1.85em);font-weight:600;color:var(--green-deep);line-height:1.4;margin-bottom:8px}
+.benefits-head p{font-size:.92em;color:var(--ink-500)}
+.benefit-list{display:flex;flex-direction:column;gap:14px}
+.benefit{display:flex;align-items:flex-start;gap:16px;background:var(--white);border:1px solid var(--paper);border-radius:14px;padding:20px 22px}
+.benefit .check{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.84em;font-weight:800;font-family:var(--font-en);margin-top:1px}
+.benefit-body{flex:1}
+.benefit-body strong{display:block;font-family:var(--font-jp);font-size:1.02em;font-weight:800;color:var(--green-deep);margin-bottom:4px;letter-spacing:-0.005em}
+.benefit-body span{display:block;font-size:.9em;color:var(--ink-700);line-height:1.7}
 
-.hero-sub{font-size:1.02em;color:var(--ink-500);max-width:620px;margin:0 auto 36px;line-height:1.85}
+/* ===== Center CTA (重複ナビ + 中央 CTA) ===== */
+.mid-cta{padding:18px 28px 80px;max-width:760px;margin:0 auto;text-align:center}
+.mid-cta-card{background:var(--green-deep);color:var(--white);border-radius:20px;padding:48px 32px;box-shadow:0 16px 50px rgba(0,40,23,.18)}
+.mid-cta-card h2{font-family:var(--font-serif-jp);font-size:clamp(1.4em,3.2vw,1.85em);font-weight:600;line-height:1.45;margin-bottom:10px;color:var(--white)}
+.mid-cta-card p{font-size:.95em;color:rgba(255,255,255,.8);margin-bottom:28px;line-height:1.85}
+.mid-cta-card .btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:18px 40px;background:var(--gold);color:var(--green-deep);border-radius:999px;text-decoration:none;font-weight:800;font-size:1.05em;font-family:var(--font-jp);box-shadow:0 10px 26px rgba(201,169,97,.25);transition:all .2s}
+.mid-cta-card .btn-gold:hover{background:#D9BA72;transform:translateY(-2px);box-shadow:0 14px 32px rgba(201,169,97,.35)}
+.mid-cta-note{margin-top:14px;font-family:var(--font-en);font-size:.76em;color:rgba(255,255,255,.55);letter-spacing:.04em}
 
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;justify-content:center}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;background:var(--green);color:var(--white);border-radius:999px;text-decoration:none;font-weight:700;font-size:1em;font-family:var(--font-jp);transition:all .2s;box-shadow:0 8px 24px rgba(0,118,70,.22);border:none;cursor:pointer}
-.btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,118,70,.32)}
-.btn-primary .arrow{font-family:var(--font-en);font-weight:700}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:15px 26px;background:transparent;color:var(--green-dark);border:1.5px solid var(--green);border-radius:999px;text-decoration:none;font-weight:700;font-size:.96em;font-family:var(--font-jp);transition:all .2s;cursor:pointer}
-.btn-secondary:hover{background:var(--green);color:var(--white)}
-
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:720px;margin:0 auto}
-@media(max-width:640px){.hero-stats{grid-template-columns:1fr;gap:12px}}
-.stat{background:var(--white);border:1.5px solid var(--paper);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all .2s;position:relative;overflow:hidden}
-.stat:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,118,70,.08)}
-.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.stat:hover::before{transform:scaleX(1)}
-.stat-num{font-family:var(--font-en);font-size:2.3em;font-weight:800;color:var(--green-deep);letter-spacing:-0.03em;line-height:1}
-.stat-label{font-size:.82em;color:var(--ink-500);font-weight:600;text-align:center}
-.stat-unit{font-family:var(--font-en);font-size:.6em;color:var(--ink-500);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:-3px}
-
-.hero-deco{position:absolute;top:-120px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--paper) 0%,transparent 70%);z-index:1;opacity:.7}
-.hero-deco-2{position:absolute;bottom:-80px;left:-80px;width:220px;height:220px;border-radius:50%;border:1px dashed var(--green);opacity:.25;z-index:1}
-
-/* ===== Story chapter ===== */
-.chapter{padding:88px 32px;max-width:820px;margin:0 auto}
-.chapter-header{margin-bottom:38px;text-align:center}
-.chapter-title{font-family:var(--font-serif-jp);font-size:clamp(1.55em,3.3vw,2.3em);font-weight:600;color:var(--green-deep);line-height:1.4;letter-spacing:-0.005em}
-.chapter-body{font-family:var(--font-serif-jp);font-size:1.02em;line-height:2;color:var(--ink-800);font-weight:400;letter-spacing:.01em}
-.chapter-body p{margin-bottom:1.5em}
-.chapter-body em{font-style:normal;color:var(--green-deep);font-weight:600;background:linear-gradient(transparent 65%,rgba(201,169,97,.28) 65%);padding:0 2px}
-.chapter-divider{display:flex;align-items:center;justify-content:center;gap:16px;margin:24px 0 36px;color:var(--ink-300)}
-.chapter-divider::before,.chapter-divider::after{content:'';flex:0 0 40px;height:1px;background:var(--ink-200)}
-.chapter-divider-dot{width:5px;height:5px;border-radius:50%;background:var(--green);opacity:.5}
-.chapter-alt{background:var(--cream-warm);border-top:1px solid var(--paper);border-bottom:1px solid var(--paper)}
-.chapter-alt-inner{max-width:820px;margin:0 auto;padding:88px 32px}
-
-/* Product mark — bigger version with Demo badge in upper-right */
-.product-name-logo{margin:36px 0;padding:42px 32px;background:var(--white);border:1.5px solid var(--paper);border-radius:18px;display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;overflow:hidden}
-.product-name-logo::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green) 0%,var(--gold) 50%,var(--green) 100%)}
-.product-name-logo .demo-badge{position:absolute;top:14px;right:14px;font-family:var(--font-en);font-size:.66em;font-weight:800;letter-spacing:.14em;color:#fff;background:var(--terracotta);padding:4px 10px 3px;border-radius:4px;line-height:1}
-.pnl-label{font-family:var(--font-en);font-size:.7em;font-weight:800;color:var(--green);letter-spacing:.22em;text-transform:uppercase}
-.pnl-main{font-family:var(--font-en);font-size:clamp(2.2em,4.6vw,3.1em);font-weight:800;color:var(--green-deep);letter-spacing:-0.025em;line-height:1;margin:2px 0 0}
-@media(max-width:640px){.product-name-logo{padding:32px 22px;margin:28px 0}.pnl-main{font-size:1.9em}}
-
-/* ===== Solution / Features ===== */
-.solution{padding:88px 32px;max-width:1160px;margin:0 auto}
-.solution-head{text-align:center;max-width:720px;margin:0 auto 48px}
-.solution-head .tag-pill{display:inline-block;background:var(--green);color:var(--white);font-family:var(--font-en);font-size:.7em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:18px}
-.solution-head h2{font-family:var(--font-serif-jp);font-size:clamp(1.7em,3.8vw,2.6em);font-weight:600;color:var(--green-deep);line-height:1.3;letter-spacing:-0.015em;margin-bottom:16px}
-.solution-head p{font-size:.98em;color:var(--ink-500);line-height:1.85}
-
-.features{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:60px}
-@media(max-width:768px){.features{grid-template-columns:1fr}}
-.feature-card{background:var(--white);border:1px solid var(--paper);border-radius:18px;padding:30px 28px;transition:all .2s;position:relative;overflow:hidden}
-.feature-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,118,70,.08)}
-.feature-card.featured{background:var(--green-deep);color:var(--white);border-color:var(--green-deep)}
-.feature-num{font-family:var(--font-en);font-size:.7em;font-weight:700;color:var(--green);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:block}
-.feature-card.featured .feature-num{color:var(--gold)}
-.feature-title{font-family:var(--font-serif-jp);font-size:1.25em;font-weight:600;color:var(--green-deep);line-height:1.45;letter-spacing:-0.005em;margin-bottom:12px}
-.feature-card.featured .feature-title{color:var(--white)}
-.feature-body{font-size:.92em;color:var(--ink-700);line-height:1.8}
-.feature-card.featured .feature-body{color:rgba(255,255,255,.85)}
-.feature-meta{margin-top:18px;padding-top:14px;border-top:1px solid var(--paper);font-family:var(--font-en);font-size:.7em;color:var(--ink-500);font-weight:600;letter-spacing:.04em}
-.feature-card.featured .feature-meta{border-top-color:rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
-.feature-paid-only{display:inline-block;font-family:var(--font-en);font-size:.6em;font-weight:800;letter-spacing:.1em;color:var(--gold);background:rgba(201,169,97,.12);padding:3px 8px;border-radius:4px;margin-left:8px;text-transform:uppercase;vertical-align:middle}
-
-.task-breakdown{background:var(--white);border:1px solid var(--paper);border-radius:20px;overflow:hidden}
-.task-breakdown-head{padding:24px 32px;border-bottom:1px solid var(--paper);background:var(--cream-warm);display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.task-breakdown-head h3{font-family:var(--font-serif-jp);font-size:1.22em;font-weight:600;color:var(--green-deep)}
-.task-breakdown-head .summary{font-family:var(--font-en);font-size:.84em;color:var(--ink-500);font-weight:600}
-.task-breakdown-head .summary strong{color:var(--green);font-weight:800}
-.skill-row{display:grid;grid-template-columns:130px 1fr;padding:18px 32px;border-bottom:1px solid var(--paper);align-items:flex-start;gap:22px}
-.skill-row:last-child{border-bottom:none}
-@media(max-width:640px){.skill-row{grid-template-columns:1fr;gap:8px;padding:16px 22px}}
-.skill-label{font-family:var(--font-en);font-size:1em;font-weight:800;color:var(--green-deep);letter-spacing:-0.01em}
-.skill-label span{display:block;font-family:var(--font-jp);font-size:.64em;color:var(--ink-500);font-weight:500;margin-top:2px;letter-spacing:normal}
-.skill-tasks{display:flex;flex-wrap:wrap;gap:7px}
-.skill-task-pill{font-family:var(--font-en);font-size:.76em;font-weight:600;color:var(--ink-700);background:var(--cream);border:1px solid var(--paper);padding:5px 11px;border-radius:999px;letter-spacing:-0.005em}
-
-/* ===== How it works ===== */
-.how{background:var(--green-deep);color:var(--white);padding:80px 32px}
-.how-inner{max-width:1160px;margin:0 auto}
-.how-head{max-width:700px;margin:0 auto 48px;text-align:center}
-.how-head .tag-pill{display:inline-block;background:var(--gold);color:var(--green-deep);font-family:var(--font-en);font-size:.7em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:18px}
-.how-head h2{font-family:var(--font-serif-jp);font-size:clamp(1.75em,3.8vw,2.4em);font-weight:600;color:var(--white);line-height:1.35;letter-spacing:-0.015em;margin-bottom:14px}
-.how-head p{font-size:.94em;color:rgba(255,255,255,.72);line-height:1.85}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-@media(max-width:768px){.steps{grid-template-columns:1fr}}
-.step{position:relative;padding-top:14px}
-.step-num{font-family:var(--font-en);font-size:2.6em;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-0.04em;margin-bottom:14px;display:block}
-.step-title{font-family:var(--font-serif-jp);font-size:1.18em;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.45}
-.step-body{font-size:.9em;color:rgba(255,255,255,.72);line-height:1.8}
-
-/* ===== Pricing ===== */
-.pricing{background:var(--cream-warm);border-top:1px solid var(--paper);border-bottom:1px solid var(--paper);padding:80px 32px}
-.pricing-inner{max-width:1160px;margin:0 auto}
-.pricing-head{text-align:center;max-width:660px;margin:0 auto 44px}
-.pricing-head .tag-pill{display:inline-block;background:var(--terracotta);color:var(--white);font-family:var(--font-en);font-size:.7em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:18px}
-.pricing-head h2{font-family:var(--font-serif-jp);font-size:clamp(1.75em,3.8vw,2.4em);font-weight:600;color:var(--green-deep);line-height:1.35;letter-spacing:-0.015em;margin-bottom:14px}
-.pricing-head p{font-size:.94em;color:var(--ink-500);line-height:1.85}
-.pricing-card{max-width:540px;margin:0 auto;background:var(--white);border:2px solid var(--green);border-radius:24px;padding:42px 38px;position:relative;box-shadow:0 20px 60px rgba(0,40,23,.1)}
-@media(max-width:640px){.pricing-card{padding:38px 26px}}
-.pricing-plan-name{font-family:var(--font-en);font-size:.78em;font-weight:700;color:var(--green);letter-spacing:.18em;text-transform:uppercase;text-align:center;margin-bottom:14px}
-.pricing-amount{text-align:center;margin-bottom:6px}
-.pricing-amount .currency{font-family:var(--font-en);font-size:1.3em;font-weight:600;color:var(--green-deep);vertical-align:top;margin-right:2px}
-.pricing-amount .price{font-family:var(--font-en);font-size:3.4em;font-weight:800;color:var(--green-deep);letter-spacing:-0.03em;line-height:1}
-.pricing-amount .period{font-family:var(--font-en);font-size:.84em;font-weight:600;color:var(--ink-500);margin-left:4px}
-.pricing-subscription-note{text-align:center;font-size:.78em;color:var(--ink-500);font-weight:500;background:rgba(0,118,70,.06);border:1px solid rgba(0,118,70,.12);padding:8px 14px;border-radius:8px;margin-bottom:22px;line-height:1.55}
-.pricing-subscription-note strong{color:var(--green-dark);font-weight:700}
-.pricing-divider{height:1px;background:var(--paper);margin:20px 0}
-.pricing-includes{list-style:none;margin-bottom:26px}
-.pricing-includes li{display:flex;align-items:flex-start;gap:12px;padding:9px 0;font-size:.92em;color:var(--ink-700);line-height:1.65}
-.check-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.7em;font-weight:700;font-family:var(--font-en);margin-top:2px}
-.pricing-includes li strong{color:var(--green-deep);font-weight:700}
-.pricing-cta{display:block;width:100%;padding:16px;background:var(--green);color:var(--white);border-radius:999px;text-decoration:none;font-weight:700;font-size:1em;text-align:center;transition:all .2s;box-shadow:0 8px 24px rgba(0,118,70,.25)}
-.pricing-cta:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,118,70,.32)}
-.pricing-note{text-align:center;font-size:.78em;color:var(--ink-500);margin-top:12px;line-height:1.6}
-.pricing-soon{text-align:center;font-family:var(--font-en);font-size:.72em;font-weight:700;color:var(--terracotta);background:rgba(184,92,60,.08);padding:10px 14px;border-radius:8px;margin-bottom:14px;letter-spacing:.06em}
-
-/* ===== FAQ ===== */
-.faq{padding:80px 32px;max-width:900px;margin:0 auto}
-.faq-head{text-align:center;margin-bottom:40px}
-.faq-head .tag-pill{display:inline-block;background:var(--paper);color:var(--green-dark);font-family:var(--font-en);font-size:.7em;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:18px}
-.faq-head h2{font-family:var(--font-serif-jp);font-size:clamp(1.75em,3.8vw,2.2em);font-weight:600;color:var(--green-deep);line-height:1.35;letter-spacing:-0.015em}
-.faq-list{display:flex;flex-direction:column;gap:12px}
-.faq-item{background:var(--white);border:1px solid var(--paper);border-radius:14px;overflow:hidden;transition:border-color .2s}
-.faq-item[open]{border-color:var(--green)}
-.faq-item summary{padding:18px 24px;cursor:pointer;font-weight:700;color:var(--green-deep);font-size:.98em;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;line-height:1.5}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:var(--font-en);color:var(--green);font-weight:700;transition:transform .2s}
-.faq-item[open] .faq-icon{background:var(--green);color:var(--white);transform:rotate(45deg)}
-.faq-body{padding:0 24px 20px;color:var(--ink-700);font-size:.92em;line-height:1.85}
-
-/* ===== Final CTA ===== */
-.final-cta{background:var(--green-deep);color:var(--white);padding:96px 32px;text-align:center;position:relative;overflow:hidden}
-.final-cta::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,97,.08) 0%,transparent 60%)}
-.final-cta-inner{max-width:720px;margin:0 auto;position:relative;z-index:2}
-.final-cta h2{font-family:var(--font-serif-jp);font-size:clamp(1.75em,4vw,2.5em);font-weight:600;line-height:1.4;letter-spacing:-0.01em;margin-bottom:22px;color:var(--white)}
-.final-cta p{font-family:var(--font-serif-jp);font-size:1.02em;color:rgba(255,255,255,.78);margin-bottom:32px;line-height:1.95}
-.final-cta .btn-primary{background:var(--gold);color:var(--green-deep);box-shadow:0 8px 24px rgba(201,169,97,.25)}
-.final-cta .btn-primary:hover{background:#D9BA72;transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,169,97,.35)}
-.final-cta .btn-secondary{border-color:rgba(255,255,255,.3);color:var(--white)}
-.final-cta .btn-secondary:hover{background:var(--white);color:var(--green-deep);border-color:var(--white)}
-.final-cta-note{margin-top:24px;font-size:.82em;color:rgba(255,255,255,.5);font-family:var(--font-en)}
+/* ===== Upgrade section (本サブスクへの導線) ===== */
+.upgrade{padding:64px 28px;max-width:760px;margin:0 auto;text-align:center;border-top:1px solid var(--paper)}
+.upgrade .pill{display:inline-block;font-family:var(--font-en);font-size:.7em;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);background:rgba(184,92,60,.08);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+.upgrade h2{font-family:var(--font-serif-jp);font-size:clamp(1.35em,3vw,1.7em);font-weight:600;color:var(--green-deep);line-height:1.45;margin-bottom:14px}
+.upgrade p{font-size:.94em;color:var(--ink-700);line-height:1.85;max-width:560px;margin:0 auto 22px}
+.upgrade .upgrade-features{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.upgrade .upgrade-features span{font-family:var(--font-en);font-size:.78em;font-weight:700;color:var(--green-dark);background:var(--cream-warm);border:1px solid var(--paper);padding:5px 12px;border-radius:999px}
+.upgrade-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:var(--green-dark);border:1.5px solid var(--green);border-radius:999px;text-decoration:none;font-weight:700;font-size:.96em;font-family:var(--font-jp);transition:all .2s}
+.upgrade-cta:hover{background:var(--green);color:var(--white)}
+.upgrade-price{margin-top:10px;font-family:var(--font-en);font-size:.82em;color:var(--ink-500);font-weight:600;letter-spacing:.02em}
 
 /* ===== Footer ===== */
-.footer{background:var(--cream);padding:42px 32px 38px;border-top:1px solid var(--paper)}
-.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
-.footer-brand{display:flex;align-items:center;gap:10px}
-.footer-copy{font-family:var(--font-en);font-size:.8em;color:var(--ink-500);font-weight:500}
+.footer{background:var(--cream);padding:32px 28px;border-top:1px solid var(--paper)}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--font-en);font-size:.78em;color:var(--ink-500)}
+.footer a{color:var(--green-dark);text-decoration:none}
+.footer a:hover{text-decoration:underline}
 
-/* ===== Reveal ===== */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:640px){
-  .hero{padding:56px 24px 68px}
-  .chapter,.chapter-alt-inner,.solution,.how-inner,.pricing-inner,.faq,.final-cta-inner{padding-left:24px;padding-right:24px}
-  .chapter,.chapter-alt-inner,.solution{padding-top:64px;padding-bottom:64px}
-  .how,.pricing,.faq{padding:60px 24px}
-  .final-cta{padding:72px 24px}
+@media(max-width:560px){
+  .hero{padding:60px 22px 48px}
+  .benefits,.mid-cta,.upgrade{padding-left:22px;padding-right:22px}
+  .mid-cta-card{padding:36px 24px}
+  .hero-cta-big{padding:18px 32px;font-size:1.04em}
+  .nav-link{display:none}
 }
 </style>
 </head>
@@ -237,362 +123,106 @@ body{font-family:var(--font-jp);background:var(--cream);color:var(--ink-900);lin
 
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <div class="hero-deco"></div>
-  <div class="hero-deco-2"></div>
-  <div class="hero-inner">
-    <div class="hero-kicker">
-      <span class="hero-kicker-dot"></span>
-      <span class="hero-kicker-text"><strong>FREE TRIAL</strong> &nbsp;·&nbsp; 2026年新形式 TOEFL iBT 対応</span>
-    </div>
+  <div class="hero-kicker">
+    <span class="hero-kicker-dot"></span>
+    <span class="hero-kicker-text"><strong>FREE TRIAL</strong> &nbsp;·&nbsp; 2026年新形式 TOEFL iBT 対応</span>
+  </div>
 
-    <h1>
-      新形式 TOEFL の<br>
-      <span class="serif-word">全12タスク</span>を、まずは無料で。
-    </h1>
+  <h1>新形式 TOEFL の<br><span class="accent">全12タスク</span>を、無料で体験。</h1>
 
-    <p class="hero-sub">
-      TCK Workshop の TOEFL Reps を、各タスク 1 セットずつ無料で体験できます。本サブスクと同じ問題基準・日英解説対応。30秒で登録、クレジットカード不要。
-    </p>
+  <p class="lead">
+    各タスク 1 セットずつ、本サブスクと同じ問題・解説で試せます。<br>
+    クレジットカードも不要。30 秒で始められます。
+  </p>
 
-    <div class="hero-ctas">
-      <a href="login.html" class="btn-primary">無料体験を始める <span class="arrow">→</span></a>
-      <a href="#pricing" class="btn-secondary">本サブスクの詳細</a>
-    </div>
+  <a href="login.html" class="hero-cta-big" id="heroCta">無料で始める <span class="arrow">→</span></a>
+  <p class="hero-cta-note">No credit card required · Free forever</p>
+</section>
 
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">12</span>
-        <span class="stat-unit">Tasks</span>
-        <span class="stat-label">全タスク体験可</span>
+<!-- ===== What you can do (benefits) ===== -->
+<section class="benefits">
+  <div class="benefits-head">
+    <h2>無料アカウントで、できること。</h2>
+    <p>本サブスクの「中身」をそのまま、無料でご確認いただけます。</p>
+  </div>
+  <div class="benefit-list">
+    <div class="benefit">
+      <span class="check">✓</span>
+      <div class="benefit-body">
+        <strong>全 12 タスクを 1 セットずつ体験</strong>
+        <span>Reading・Listening・Speaking・Writing の全タスクを、新形式 TOEFL の出題形式そのままで試せます。</span>
       </div>
-      <div class="stat">
-        <span class="stat-num">¥0</span>
-        <span class="stat-unit">Free Trial</span>
-        <span class="stat-label">クレカ登録不要</span>
+    </div>
+    <div class="benefit">
+      <span class="check">✓</span>
+      <div class="benefit-body">
+        <strong>日英バイリンガルの詳細解説</strong>
+        <span>すべての解説に日本語・英語の両方を用意。お子様の学習言語に合わせて画面上で切り替え可能です。</span>
       </div>
-      <div class="stat">
-        <span class="stat-num">JP / EN</span>
-        <span class="stat-unit">Bilingual</span>
-        <span class="stat-label">日英解説対応</span>
+    </div>
+    <div class="benefit">
+      <span class="check">✓</span>
+      <div class="benefit-body">
+        <strong>本サブスクと同じ問題・難易度</strong>
+        <span>体験版でも問題の品質・解説の深さは本サブスクと同等。実際の使い心地をそのまま確認できます。</span>
+      </div>
+    </div>
+    <div class="benefit">
+      <span class="check">✓</span>
+      <div class="benefit-body">
+        <strong>30 秒で登録、クレカ不要</strong>
+        <span>メールアドレス・お名前・パスワードのみで登録完了。期間制限もありません。</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Story chapter ===== -->
-<section class="chapter">
-  <div class="chapter-header">
-    <h2 class="chapter-title">「このライティング、見てくれない?」</h2>
-  </div>
-  <div class="chapter-body">
-    <p>先週、子どもが書いたライティング答案を「見てくれない?」と言われた。</p>
-    <p>TOEFL の Writing、Academic Discussion というタスクらしい。開いてみると、100語ちょっとの英文。文法は合っているように見える。主張と理由もある。でも、それが TOEFL の採点基準で良い答案なのか、<em>親の私には判断がつかなかった</em>。</p>
-    <p>「内容は分かるけど、これがいい答案かは、私には分からない」そう答えるのが精一杯だった。子どもは「そうだよね」と笑って答案を持って部屋に戻った。別に落ち込んだ様子ではない。ただ、その夜、答案用紙がそのままリビングのテーブルに置かれていて、私は少し遠くからそれを眺めた。</p>
-    <div class="chapter-divider">
-      <span class="chapter-divider-dot"></span>
-    </div>
-    <p>TOEFL iBT は2026年1月に新形式に変わった。それから数ヶ月経って、対策本は少しずつ書店に並び始めている。子どもも2冊買ってきて、どちらも読んでいた。情報は、たぶん足りている。</p>
-    <p>足りないのは、書いたものを見て「ここはこう直すと点が取れる」と具体的に教えてくれる誰かだ。</p>
-    <p>親にできることは、<em>新形式の Writing を正しく見てくれる人を、探して差し出すこと</em>だと思う。そして、子どもが日々向き合っている出題の難しさを、まずは親の目でも確かめておくことだ。</p>
+<!-- ===== Center CTA ===== -->
+<section class="mid-cta">
+  <div class="mid-cta-card">
+    <h2>まずは触ってみる。<br>それが一番早い。</h2>
+    <p>30 秒で登録 → メニューから好きなタスクへ。<br>1 セット試すだけでも、独学で何が足りないかが見えてきます。</p>
+    <a href="login.html" class="btn-gold">無料で始める <span style="font-family:var(--font-en);font-weight:800">→</span></a>
+    <p class="mid-cta-note">No credit card · Sign up in 30 seconds</p>
   </div>
 </section>
 
-<!-- ===== Solution intro ===== -->
-<section class="chapter chapter-alt">
-  <div class="chapter-alt-inner">
-    <div class="chapter-header">
-      <h2 class="chapter-title">必要だったのは、<br>散らばった情報を束ねる人でした。</h2>
-    </div>
-    <div class="chapter-body">
-      <p>TCK Workshop は、帰国生のお子様を10年以上指導してきた学習サービスです。その経験のなかで、2026年の新形式切り替えにあわせて、ひとつの講座を用意しました。</p>
-      <p>この新しい講座の名前は——</p>
-      <div class="product-name-logo">
-        <span class="demo-badge">Demo</span>
-        <span class="pnl-label">TCK Workshop</span>
-        <span class="pnl-main">TOEFL Reps</span>
-      </div>
-      <p>「Reps」は、反復、繰り返しという意味です。新形式 TOEFL は、ひとつひとつのタスクが小さく、<em>反復で身につく性質</em>を持っています。その性質に合わせて、全12タスクを、タスク単位で、10セットずつ繰り返し練習できる設計にしました。</p>
-      <p>この体験版では、<em>各タスクを 1 セットずつ</em>そのまま試していただけます。問題の品質、解説の深さ、画面の使い心地——本サブスクと同じものを、無料でご確認ください。</p>
-    </div>
+<!-- ===== Upgrade to paid ===== -->
+<section class="upgrade">
+  <span class="pill">Want more?</span>
+  <h2>本サブスクなら、反復・採点・コーチングまで。</h2>
+  <p>体験版は各タスク 1 セットまで。残り 9 セット分の反復演習・自動採点・進捗ダッシュボード・月 1 回の無料コンサルは本サブスクでご利用いただけます。</p>
+  <div class="upgrade-features">
+    <span>12 Tasks × 10 Sets</span>
+    <span>採点 &amp; 進捗保存</span>
+    <span>月 1 回 無料コンサル</span>
+    <span>個別指導オプション</span>
   </div>
-</section>
-
-<!-- ===== 4 Features ===== -->
-<section class="solution">
-  <div class="solution-head">
-    <span class="tag-pill">Features</span>
-    <h2>TCK TOEFL Reps が<br>提供する、4つの柱。</h2>
-    <p>演習量・解説・伴走・コーチング。独学のつまずきを、次の1手に変える設計です。</p>
-  </div>
-
-  <div class="features">
-    <div class="feature-card">
-      <span class="feature-num">01 · Volume</span>
-      <h3 class="feature-title">全12タスク × 10セットの、反復演習。</h3>
-      <p class="feature-body">
-        新形式 TOEFL の全タスクを、それぞれ10セット収録。Reading・Listening・Speaking・Writing の、どのタスクでつまずいても、その領域だけを集中的に繰り返せます。<br><br>
-        <strong>体験版</strong>では、各タスクを 1 セットずつそのままお試しいただけます。
-      </p>
-      <div class="feature-meta">本家: 12 Tasks × 10 Sets / 体験: 12 Tasks × 1 Set</div>
-    </div>
-
-    <div class="feature-card featured">
-      <span class="feature-num">02 · Clarity</span>
-      <h3 class="feature-title">日英両言語での、詳細解説。</h3>
-      <p class="feature-body">
-        タスクごとに攻略の鉄則を明示し、解説は日本語と英語の両方で用意しています。帰国子女のお子様の学習言語に合わせて切り替えていただけます。
-      </p>
-      <div class="feature-meta">JP / EN Explanations · 体験版でも全機能</div>
-    </div>
-
-    <div class="feature-card">
-      <span class="feature-num">03 · Coaching <span class="feature-paid-only">本サブスクのみ</span></span>
-      <h3 class="feature-title">個別指導オプションで、弱点を潰す。</h3>
-      <p class="feature-body">
-        Writing の添削や Speaking の評価など、独学では判断が難しい領域を、TCK の特別講師が1対1で指導します。必要なときだけ、必要な回数だけ追加可能です。
-      </p>
-      <div class="feature-meta">Optional Add-on · 本サブスク契約後に申込</div>
-    </div>
-
-    <div class="feature-card">
-      <span class="feature-num">04 · Guidance <span class="feature-paid-only">本サブスクのみ</span></span>
-      <h3 class="feature-title">月1回、無料の学習コンサル。</h3>
-      <p class="feature-body">
-        サブスク期間中は、正解率データをもとに次の学習プランを講師と一緒に設計します。原則月1回、迷いを次の1手に変える時間をご用意しています。
-      </p>
-      <div class="feature-meta">Included · Monthly</div>
-    </div>
-  </div>
-
-  <div class="task-breakdown">
-    <div class="task-breakdown-head">
-      <h3>体験版に含まれるタスク</h3>
-      <span class="summary">4 Skills · 12 Tasks · <strong>各 1 Set</strong> 体験可能</span>
-    </div>
-    <div class="skill-row">
-      <div class="skill-label">Reading<span>リーディング</span></div>
-      <div class="skill-tasks">
-        <span class="skill-task-pill">Complete the Words</span>
-        <span class="skill-task-pill">Read in Daily Life</span>
-        <span class="skill-task-pill">Read an Academic Passage</span>
-      </div>
-    </div>
-    <div class="skill-row">
-      <div class="skill-label">Listening<span>リスニング</span></div>
-      <div class="skill-tasks">
-        <span class="skill-task-pill">Listen and Choose a Response</span>
-        <span class="skill-task-pill">Listen to a Conversation</span>
-        <span class="skill-task-pill">Listen to an Announcement</span>
-        <span class="skill-task-pill">Listen to an Academic Talk</span>
-      </div>
-    </div>
-    <div class="skill-row">
-      <div class="skill-label">Speaking<span>スピーキング</span></div>
-      <div class="skill-tasks">
-        <span class="skill-task-pill">Listen and Repeat</span>
-        <span class="skill-task-pill">Take an Interview</span>
-      </div>
-    </div>
-    <div class="skill-row">
-      <div class="skill-label">Writing<span>ライティング</span></div>
-      <div class="skill-tasks">
-        <span class="skill-task-pill">Build a Sentence</span>
-        <span class="skill-task-pill">Write an Email</span>
-        <span class="skill-task-pill">Academic Discussion</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== How it works ===== -->
-<section class="how">
-  <div class="how-inner">
-    <div class="how-head">
-      <span class="tag-pill">How It Works</span>
-      <h2>使い方は、3ステップ。</h2>
-      <p>アカウント登録から最初の演習まで、数分で始められます。迷わず、タスク別に、お子様のペースで。</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <span class="step-num">01</span>
-        <h3 class="step-title">アカウント登録</h3>
-        <p class="step-body">
-          メールアドレス・お名前・パスワードを入力するだけ。クレジットカードや本人確認は不要です。
-        </p>
-      </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <h3 class="step-title">タスクを選んで体験</h3>
-        <p class="step-body">
-          メニューから気になるタスクを選択。Reading・Listening・Writing・Speaking、お子様が一番気になる領域から始められます。
-        </p>
-      </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <h3 class="step-title">本サブスクで深く学ぶ</h3>
-        <p class="step-body">
-          体験で手応えを掴んだら、本サブスクで残り 9 セット分の反復演習・採点・コーチングへ。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Pricing ===== -->
-<section class="pricing" id="pricing">
-  <div class="pricing-inner">
-    <div class="pricing-head">
-      <span class="tag-pill">Pricing</span>
-      <h2>料金プラン</h2>
-      <p>月額サブスクリプション。新形式 TOEFL 対策を、もっとも身軽に始めていただけるプランです。</p>
-    </div>
-    <div class="pricing-card">
-      <div class="pricing-plan-name">Monthly Subscription</div>
-      <div class="pricing-amount">
-        <span class="currency">¥</span><span class="price">3,980</span><span class="period">/ 月(税込)</span>
-      </div>
-      <div class="pricing-subscription-note">
-        <strong>月額制サブスクリプション</strong>。毎月自動で更新されます。いつでも解約可能、違約金は一切ございません。
-      </div>
-      <div class="pricing-divider"></div>
-      <ul class="pricing-includes">
-        <li><span class="check-icon">✓</span><span><strong>全12タスク × 10セット</strong>の演習コンテンツ使い放題</span></li>
-        <li><span class="check-icon">✓</span><span><strong>日英両言語の詳細解説</strong>にフルアクセス</span></li>
-        <li><span class="check-icon">✓</span><span><strong>月1回の無料 TOEFL コンサル</strong>で学習プラン設計</span></li>
-        <li><span class="check-icon">✓</span><span>正解率・進捗ダッシュボードで弱点を可視化</span></li>
-        <li><span class="check-icon">✓</span><span>個別指導オプションをいつでも追加可能</span></li>
-      </ul>
-      <a href="https://share-na2.hsforms.com/2CSgnwwuPR96yz3TnXGgldA40iizu" class="pricing-cta" target="_blank" rel="noopener">お申込みに進む →</a>
-      <p class="pricing-note">毎月自動更新 · いつでも解約可能</p>
-
-      <div style="margin-top:16px;padding-top:16px;border-top:1px dashed var(--paper);text-align:center">
-        <p style="font-size:.84em;color:var(--ink-500);margin-bottom:8px"><span class="jp">サブスクの前に、まずは雰囲気を確かめたい方は</span><span class="en">Want to try first?</span></p>
-        <a href="login.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-jp);font-weight:800;color:var(--green-dark);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px">
-          <span class="jp">★ 無料体験版を試す</span><span class="en">★ Try the free demo</span>
-          <span style="font-family:var(--font-en);font-weight:800">→</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="faq">
-  <div class="faq-head">
-    <span class="tag-pill">FAQ</span>
-    <h2>よくあるご質問</h2>
-  </div>
-  <div class="faq-list">
-    <details class="faq-item">
-      <summary>体験版では、何ができますか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        新形式 TOEFL iBT の全12タスク(Reading 3種・Listening 4種・Speaking 2種・Writing 3種)を、それぞれ 1 Practice ずつそのまま体験いただけます。問題の品質・解説の深さ・画面の使い心地は、本サブスクと同等です。なお、体験版では採点・進捗保存・録音保存などの一部機能は無効化されています。これらは本サブスク版でご利用いただけます。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>体験版に料金はかかりますか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        無料です。クレジットカード登録は不要です。お申込みは、メールアドレス・お名前・パスワードのみで完了します。期間制限もなく、何度でもログインしてご利用いただけます。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>本サブスクへの切替はどうしますか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        本サブスクのお申込みフォームは公開済みです。<a href="https://share-na2.hsforms.com/2CSgnwwuPR96yz3TnXGgldA40iizu" target="_blank" rel="noopener" style="color:var(--green-dark);font-weight:700">お申込みフォーム</a>からお手続きください。お申込み内容を確認のうえ、TCK 担当より受講開始のご案内をお送りします。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>解説は日本語と英語、どちらですか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        解説は日本語と英語の両方で用意されており、画面上でいつでも切り替えられます。帰国子女のお子様は英語のまま、日本の学校で学んでいるお子様は日本語で、と学習環境に合わせて使えます。体験版でもこの機能は完全にご利用いただけます。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>本サブスクの料金プランはどうなっていますか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        月額 ¥3,980(税込)のサブスクリプションプランです。お申込み日を起点に毎月自動で更新されます。解約はいつでも管理画面から数クリックで可能。違約金や解約手数料は一切いただきません。解約後も当月の期間終了まではすべてのコンテンツをご利用いただけます。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>月1回の無料コンサルティングとは、具体的に何をしますか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        本サブスク期間中、お子様の正解率・演習履歴のデータをもとに、TCK の講師が次の1ヶ月の学習プランを一緒に設計します。原則月1回、オンラインで実施。弱点タスクの優先順位付けから、個別指導の必要性判断まで、客観的にアドバイスいたします。体験版にはこのサービスは含まれません。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>個別指導オプションは、どういう仕組みですか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        Writing の添削や Speaking の評価など、独学では判断が難しい領域を、TCK の特別講師が1対1で指導します。本サブスクとは別課金で、必要なときに必要な回数だけ追加していただけます。体験版にはこのサービスは含まれません。
-      </div>
-    </details>
-    <details class="faq-item">
-      <summary>どのようなお子様が対象ですか?<span class="faq-icon">+</span></summary>
-      <div class="faq-body">
-        帰国子女のお子様を中心に、TOEFL iBT を受験予定の中高生を主な対象としています。タスク別演習の性質上、これから本格的に対策を始める方から、スコアの底上げを狙う方まで、幅広いレベルのお子様にお使いいただけます。
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- ===== Final CTA ===== -->
-<section class="final-cta">
-  <div class="final-cta-inner">
-    <h2>この子の隣に、<br>誰かがいる。</h2>
-    <p>
-      新形式 TOEFL 対策の「次の一手」を、まずは無料で。<br>
-      クレジットカード不要、30秒で登録完了です。
-    </p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
-      <a href="login.html" class="btn-primary">無料体験を始める <span class="arrow">→</span></a>
-      <a href="#pricing" class="btn-secondary">本サブスクの詳細</a>
-    </div>
-    <p class="final-cta-note">TCK Workshop · TOEFL Reps Demo · 2026年新形式対応</p>
-  </div>
+  <a href="https://share-na2.hsforms.com/2CSgnwwuPR96yz3TnXGgldA40iizu" class="upgrade-cta" target="_blank" rel="noopener">本サブスクの詳細・お申込み →</a>
+  <p class="upgrade-price">月額 ¥3,980（税込 ¥4,378）／ いつでも解約可能</p>
 </section>
 
 <!-- ===== Footer ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand">
-      <img class="brand-logo brand-logo--xs" src="assets/tck-logo.png" alt="TCK Workshop">
-      <span class="brand-name">TCK Workshop</span>
-      <span class="brand-demo-pill">Demo</span>
-    </div>
-    <span class="footer-copy">© TCK Workshop · TOEFL Reps Demo</span>
+    <span>© TCK Workshop · TOEFL Reps Demo</span>
+    <span><a href="https://tckwshop.com" target="_blank" rel="noopener">tckwshop.com</a> · お問い合わせは <a href="mailto:info@tckworkshop.co.jp">info@tckworkshop.co.jp</a></span>
   </div>
 </footer>
 
 <script>
-/* Reveal-on-scroll for the marketing sections. Cheap IntersectionObserver,
-   no third-party deps. Falls back to permanently visible if IO is missing. */
-if ('IntersectionObserver' in window) {
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) entry.target.classList.add('is-visible');
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.feature-card, .step, .skill-row, .pricing-card, .chapter-body p, .stat, .faq-item').forEach(function(el){
-    el.classList.add('reveal');
-    observer.observe(el);
-  });
-}
-
-/* If the user is already logged into the demo, swap the two big "Sign up"
-   CTAs in the nav to "Continue to menu" so we don't push them through the
-   login flow they've already cleared. Reads sessionStorage directly to
-   avoid a script tag dependency on auth.js for this marketing page. */
+/* If the user is already logged into the demo, swap the nav + hero CTAs to
+   "メニューを開く" so we don't push them through the login flow they've
+   already cleared. Reads sessionStorage directly to avoid loading auth.js
+   on this marketing page. */
 (function(){
   try {
     var u = JSON.parse(sessionStorage.getItem('tck_demo_user'));
     if (!u || !u.userId) return;
-    var ctas = document.querySelectorAll('a[href="login.html"]');
-    ctas.forEach(function(a){
+    document.querySelectorAll('a[href="login.html"]').forEach(function(a){
       a.setAttribute('href', 'menu.html');
-      // Only swap label on top-of-page CTAs, not the in-card pricing one
-      // which has its own marketing copy.
       var t = (a.textContent || '').trim();
-      if (t.indexOf('無料体験を始める') === 0) a.innerHTML = 'メニューを開く <span class="arrow">→</span>';
-      else if (t === '無料で始める') a.textContent = 'メニューへ';
+      if (t.indexOf('無料で始める') === 0) a.innerHTML = 'メニューを開く <span class="arrow">→</span>';
       else if (t === 'ログイン') a.textContent = u.userName || 'メニュー';
     });
   } catch(e){}
