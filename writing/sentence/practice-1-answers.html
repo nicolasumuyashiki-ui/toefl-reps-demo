@@ -49,12 +49,12 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 
 <div class="header">
   <h1>🔤 Build a Sentence — <span class="jp">解答解説</span><span class="en">Answers & Explanations</span><span style="display:inline-block;font-family:'Manrope',system-ui,sans-serif;font-size:.5em;font-weight:800;letter-spacing:.12em;color:#fff;background:#B85C3C;padding:3px 8px 2px;border-radius:3px;line-height:1;margin-left:10px;vertical-align:middle;text-transform:uppercase">Demo</span></h1>
-  <p>Kickstart Day 3 Homework | <span class="jp">14問</span><span class="en">14 questions</span></p>
+  <p>Kickstart Day 3 Homework | <span class="jp">16問</span><span class="en">16 questions</span></p>
 </div>
 
 <div class="score-summary">
   <p class="score-sub"><span class="jp">あなたのスコア</span><span class="en">Your score</span></p>
-  <div class="score-big" id="scoreBig">— / 14</div>
+  <div class="score-big" id="scoreBig">— / 16</div>
   <div class="score-bar"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
   <p class="score-sub" id="scoreMsg"></p>
 </div>
@@ -94,7 +94,9 @@ const answers=[
 {id:11,prompt:"Would you like to join our study group?",sentence:"That sounds great, especially since the exam is coming up soon.",grammar:"since節（理由）: since the exam is coming up。especially で強調。",grammar_en:"since-clause (reason): since the exam is coming up. \"especially\" intensifies."},
 {id:12,prompt:"Did you hear about the new campus policy?",sentence:"No, I have not heard anything about it.",grammar:"現在完了の否定: have not heard。anything（否定文での不定代名詞）。",grammar_en:"Present-perfect negative: have not heard. \"anything\" (indefinite pronoun in negation)."},
 {id:13,prompt:"What's the best way to prepare for the TOEFL?",sentence:"I would recommend practicing with timed exercises every day.",grammar:"would recommend + Ving: 丁寧な提案表現。前置詞 with。",grammar_en:"would recommend + V-ing: polite suggestion form. Preposition \"with.\""},
-{id:14,prompt:"How did you learn to cook so well?",sentence:"My grandmother taught me her recipes when I was young.",grammar:"SVOO: taught me her recipes。時の副詞節: when I was young。",grammar_en:"SVOO: taught me her recipes. Temporal adverb clause: when I was young."}
+{id:14,prompt:"How did you learn to cook so well?",sentence:"My grandmother taught me her recipes when I was young.",grammar:"SVOO: taught me her recipes。時の副詞節: when I was young。",grammar_en:"SVOO: taught me her recipes. Temporal adverb clause: when I was young."},
+{id:15,prompt:"What did you do over the long weekend?",sentence:"I spent most of the time catching up on my readings.",grammar:"spend + 時間 + V-ing: 「〜して時間を過ごす」の定型表現。catch up on は『〜の遅れを取り戻す』。",grammar_en:"\"spend + time + V-ing\" pattern for how time was used. \"catch up on\" = make up for lost ground."},
+{id:16,prompt:"Have you signed up for the volunteer program yet?",sentence:"Yes, I registered yesterday and my first shift starts next week.",grammar:"等位接続詞 and による単純な複文。register は signed up の言い換え。shift は「勤務シフト」。",grammar_en:"Coordinating conjunction \"and\" linking two independent clauses. \"register\" rephrases \"signed up\"; \"shift\" = work period."}
 ];
 
 const stored=(JSON.parse(sessionStorage.getItem('sentenceAnswers')||'null')||(window.Review?Review.loadAttempt('sentence',1):null));
