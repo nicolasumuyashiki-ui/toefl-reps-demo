@@ -250,6 +250,9 @@ const questions = [
     }
 ];
 
+/* Normalize answer index→letter so "userAns === q.answer" matches across legacy + new data shapes (mirror of main app). */
+questions.forEach(function(q){ if (typeof q.answer === "number" && q.choices) q.answer = q.choices[q.answer].letter; });
+
 /* ===== STATE ===== */
 let currentQ = 0;
 let currentAudio = null;
