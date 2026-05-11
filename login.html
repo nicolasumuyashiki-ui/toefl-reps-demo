@@ -244,8 +244,11 @@ function tMsg(jp, en) {
   return (localStorage.getItem('tck_lang') || 'jp') === 'en' ? en : jp;
 }
 
-function saveAndGo(res) {
+function saveAndGo(res, pass) {
   Auth.setUser({ userId: res.userId, userName: res.userName, email: res.email || '' });
+  // Stash the password so authenticated API calls (e.g. Api.getMyAnswers)
+  // can verify against USERS_TRIAL on the server. Cleared on logout.
+  if (pass) sessionStorage.setItem('kickstart_pass', pass);
   // Honor ?return=... so a "gated page → login → original page" round-trip
   // doesn't dump users on the menu; sanitize to prevent open-redirect.
   var ret = new URLSearchParams(location.search).get('return') || 'menu.html';
@@ -267,7 +270,7 @@ function doLogin() {
   // the lookup key, so we pass the email straight through.
   Api.login(email, pass).then(function(r){
     if (r.success) {
-      saveAndGo(r);
+      saveAndGo(r, pass);
       return;
     }
     var map = {
@@ -304,7 +307,7 @@ function doRegister() {
   // here is unused by the backend for signup but kept for symmetry.
   Api.signup('', pass, name, email).then(function(r){
     if (r.success) {
-      saveAndGo(r);
+      saveAndGo(r, pass);
       return;
     }
     var map = {

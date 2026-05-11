@@ -69,5 +69,52 @@ var Api = {
   recover: function(email) {
     return _jsonpRequest(API_URL + '?action=recoverTrialPass'
       + '&email=' + encodeURIComponent(email));
+  },
+
+  /* Save a completed practice attempt to the shared ANSWERS sheet.
+     Trial users live in USERS_TRIAL, but answers are written to the
+     same sheet as paid users — verifyAnyUser_ on the server reads
+     either pool so each user only sees their own data.
+     `setName` is e.g. "CTW P1 Set 1", "Email P1", "Discussion P1". */
+  saveAnswers: function(setName, answers, score, meta) {
+    var user = JSON.parse(sessionStorage.getItem('kickstart_user') || '{}');
+    meta = meta || {};
+    var url = API_URL + '?action=saveAnswers'
+      + '&userId='   + encodeURIComponent(user.userId   || '')
+      + '&userName=' + encodeURIComponent(user.userName || '')
+      + '&set='      + encodeURIComponent(setName)
+      + '&answers='  + encodeURIComponent(JSON.stringify(answers))
+      + '&score='    + encodeURIComponent(score)
+      + '&harderCorrect=' + encodeURIComponent(meta.harderCorrect || 0)
+      + '&harderTotal='   + encodeURIComponent(meta.harderTotal   || 0)
+      + '&attemptNumber=' + encodeURIComponent(meta.attemptNumber || 1);
+    return _jsonpRequest(url);
+  },
+
+  /* Student-side: fetch the logged-in trial user's own past attempts
+     for a specific (task, practice [, set]). GAS forces userId equal
+     to the verified user so callers can't read someone else's data. */
+  getMyAnswers: function(task, practice, set, id, pass) {
+    var u = JSON.parse(sessionStorage.getItem('kickstart_user') || '{}');
+    var p = pass || sessionStorage.getItem('kickstart_pass') || '';
+    return _jsonpRequest(API_URL + '?action=getMyAnswers'
+      + '&id='       + encodeURIComponent(id || u.userId || '')
+      + '&pass='     + encodeURIComponent(p)
+      + '&task='     + encodeURIComponent(task)
+      + '&practice=' + encodeURIComponent(practice)
+      + '&set='      + encodeURIComponent(set || ''));
+  },
+
+  /* Returns the trial user's own recordings (RECORDINGS / RECORDINGS_PT
+     filtered server-side). Currently unused — demo speaking pages don't
+     upload to GAS — but wired so student-history.js can render an
+     empty Speaking section gracefully and so future demo enhancements
+     don't need another API change. */
+  listMyRecordings: function(id, pass) {
+    var u = JSON.parse(sessionStorage.getItem('kickstart_user') || '{}');
+    var p = pass || sessionStorage.getItem('kickstart_pass') || '';
+    return _jsonpRequest(API_URL + '?action=listMyRecordings'
+      + '&id='   + encodeURIComponent(id || u.userId || '')
+      + '&pass=' + encodeURIComponent(p));
   }
 };

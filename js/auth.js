@@ -59,3 +59,28 @@ var Auth = {
       '<span>' + (u.userName || u.userId) + '</span>';
   }
 };
+
+/* ============================================================
+   Student-history loader — on answer / tips pages, inject
+   js/student-history.js so the logged-in trial user can review
+   their past attempts. Mirror of the main-app loader (sans the
+   admin overlay variant since demo has no admin mode).
+   ============================================================ */
+(function(){
+  if (typeof location === 'undefined') return;
+  if (!/practice-\d+(?:-set-\d+)?(?:-answers|-tips)\.html(?:[?#]|$)/.test(location.pathname + location.search)) return;
+  var here = (document.currentScript && document.currentScript.src) || '';
+  if (!here) {
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+      var s = scripts[i].src || '';
+      if (/\/auth\.js(\?|$)/.test(s)) { here = s; break; }
+    }
+  }
+  if (!here) return;
+  var historySrc = here.replace(/\/auth\.js(\?[^#]*)?(\#.*)?$/, '/student-history.js');
+  var tag = document.createElement('script');
+  tag.src = historySrc;
+  tag.defer = true;
+  document.head.appendChild(tag);
+})();
