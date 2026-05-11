@@ -95,7 +95,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <div class="top-nav">
 <div class="nav-left"><span class="section-label"><span class="jp">ライティング</span><span class="en">Writing</span></span><span class="divider">|</span><span class="task-label">Build a Sentence</span></div>
 <div class="nav-right">
-<span class="timer-display" id="timer">08:00</span>
+<span class="timer-display" id="timer">07:00</span>
 <button class="finish-btn" id="btnFinish" onclick="showModal()" style="display:none"><span class="jp">終了</span><span class="en">Finish</span></button>
 <div class="user-badge" id="userBadge">?</div>
 </div>
@@ -109,12 +109,12 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <table class="task-table">
 <thead><tr><th>Detail</th><th>Info</th></tr></thead>
 <tbody>
-<tr><td>Questions</td><td>16</td></tr>
-<tr><td><span class="jp">制限時間</span><span class="en">Time Limit</span></td><td>8 minutes</td></tr>
+<tr><td>Questions</td><td>10</td></tr>
+<tr><td><span class="jp">制限時間</span><span class="en">Time Limit</span></td><td>7 minutes</td></tr>
 <tr><td>Format</td><td>Drag words from the Word Bank into the blank slots</td></tr>
 </tbody>
 </table>
-<div class="warning-box">⏱️ You have <strong>8 minutes</strong>. Click "<span class="jp">スタート</span><span class="en">Start</span>" to begin. You can finish early with the <span class="jp">終了</span><span class="en">Finish</span> button.</div>
+<div class="warning-box">⏱️ You have <strong>7 minutes</strong>. Click "<span class="jp">スタート</span><span class="en">Start</span>" to begin. You can finish early with the <span class="jp">終了</span><span class="en">Finish</span> button.</div>
 <button class="btn-start" onclick="startQuiz()"><span class="jp">スタート</span><span class="en">Start</span></button>
 </div>
 </div>
@@ -131,7 +131,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <div class="completion-card">
 <div style="font-size:48px">✅</div>
 <h2>Build a Sentence — Complete!</h2>
-<div class="score-display" id="scoreDisplay">0 / 16</div>
+<div class="score-display" id="scoreDisplay">0 / 10</div>
 <div class="results-list" id="resultsList"></div>
 <a class="btn-answers" href="practice-1-answers.html"><span class="jp">解答解説を見る →</span><span class="en">View answers →</span></a>
 </div>
@@ -165,19 +165,13 @@ const questions=[
 {id:7,prompt:"How was your job interview this morning?",gender:"female",fixedStart:"I",fixedEnd:"well.",blanks:["was","nervous","at first,","but","it","went"],answer:["was","nervous","at first,","but","it","went"]},
 {id:8,prompt:"Do you know where the nearest post office is?",gender:"male",fixedStart:"",fixedEnd:".",blanks:["There is","one","right across","the street","from the library"],answer:["There is","one","right across","the street","from the library"]},
 {id:9,prompt:"What are you planning to do after graduation?",gender:"female",fixedStart:"I",fixedEnd:"abroad.",blanks:["am","thinking","about","applying","for","a job"],answer:["am","thinking","about","applying","for","a job"]},
-{id:10,prompt:"Why do you always take the bus instead of driving?",gender:"male",fixedStart:"",fixedEnd:"traffic.",blanks:["Taking the bus","is","much cheaper","and","I can avoid"],answer:["Taking the bus","is","much cheaper","and","I can avoid"]},
-{id:11,prompt:"Would you like to join our study group?",gender:"female",fixedStart:"That",fixedEnd:".",blanks:["sounds great,","especially","since","the exam","is coming up","soon"],answer:["sounds great,","especially","since","the exam","is coming up","soon"]},
-{id:12,prompt:"Did you hear about the new campus policy?",gender:"male",fixedStart:"No,",fixedEnd:"it.",blanks:["I","have","not","heard","anything","about"],answer:["I","have","not","heard","anything","about"]},
-{id:13,prompt:"What's the best way to prepare for the TOEFL?",gender:"female",fixedStart:"I",fixedEnd:".",blanks:["would recommend","practicing","with","timed exercises","every day"],answer:["would recommend","practicing","with","timed exercises","every day"]},
-{id:14,prompt:"How did you learn to cook so well?",gender:"male",fixedStart:"My",fixedEnd:"young.",blanks:["grandmother","taught","me","her recipes","when I was"],answer:["grandmother","taught","me","her recipes","when I was"]},
-{id:15,prompt:"What did you do over the long weekend?",gender:"female",fixedStart:"I",fixedEnd:"readings.",blanks:["spent","most of","the time","catching up","on my"],answer:["spent","most of","the time","catching up","on my"]},
-{id:16,prompt:"Have you signed up for the volunteer program yet?",gender:"male",fixedStart:"Yes,",fixedEnd:"next week.",blanks:["I","registered","yesterday","and","my first shift","starts"],answer:["I","registered","yesterday","and","my first shift","starts"]}
+{id:10,prompt:"Why do you always take the bus instead of driving?",gender:"male",fixedStart:"",fixedEnd:"traffic.",blanks:["Taking the bus","is","much cheaper","and","I can avoid"],answer:["Taking the bus","is","much cheaper","and","I can avoid"]}
 ];
 
 // Shuffle word banks
 function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-let currentQ=0,userAnswers=[],timerInterval=null,secondsLeft=480,isActive=false;
+let currentQ=0,userAnswers=[],timerInterval=null,secondsLeft=420,isActive=false;
 questions.forEach(()=>userAnswers.push([]));
 
 // Assign images
@@ -201,7 +195,7 @@ function startTimer(){
   updateTimer();
   timerInterval=setInterval(()=>{
     secondsLeft--;updateTimer();
-    document.getElementById('progressFill').style.width=((480-secondsLeft)/480*100)+'%';
+    document.getElementById('progressFill').style.width=((420-secondsLeft)/420*100)+'%';
     if(secondsLeft<=60)document.getElementById('timer').classList.add('warning');
     if(secondsLeft<=0){clearInterval(timerInterval);if(!window.Review||Review.shouldCutOff('sentence',1))finishQuiz();}
   },1000);
