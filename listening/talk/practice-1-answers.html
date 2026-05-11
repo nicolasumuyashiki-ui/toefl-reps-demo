@@ -73,7 +73,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 
 <div class="score-summary">
   <p class="score-sub"><span class="jp">あなたのスコア</span><span class="en">Your score</span></p>
-  <div class="score-big" id="scoreBig">— / 4</div>
+  <div class="score-big" id="scoreBig">— / 8</div>
   <div class="score-bar"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
   <p class="score-sub" id="scoreMsg"></p>
 </div>
@@ -190,6 +190,103 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
   </div>
 </div>
 
+<!-- ===== Talk 2: Tidal Locking (Astronomy) ===== -->
+<div class="talk-section">
+  <div class="talk-header">
+    <h3>🎓 Academic Talk 2 — Tidal Locking (Astronomy)</h3>
+    <p><span class="jp">話者：男性教授 ｜ 約2分30秒 ｜ 約340語</span><span class="en">Speaker: male professor | ~2:30 | ~340 words</span></p>
+  </div>
+  <div class="script-box">
+    <details>
+      <summary>📜 <span class="jp">スクリプトを見る（シグナルワードをハイライト付き）</span><span class="en">View script (signal words highlighted)</span></summary>
+      <div class="script-text">
+        <strong>[NARRATOR]</strong> Listen to part of a lecture in an astronomy class.<br><br>
+        <strong>[PROFESSOR]</strong> <span class="highlight">Okay, today let's talk about</span> something I think is one of the most elegant gravitational phenomena in our solar system — <span class="highlight">tidal locking</span>. Now, if you've ever wondered why the Moon always shows us the same face — why we see the same craters, the same plains, night after night — you're touching on tidal locking.<br><br>
+        <span class="highlight">So what's actually happening?</span> When two objects orbit each other, gravity doesn't just pull on them uniformly. It pulls a little harder on the near side of each object than the far side. That difference in pull is called a <span class="highlight">tidal force</span>. Over millions of years, this slight imbalance acts like a brake — it slows the rotation of the smaller body until its spin matches the time it takes to orbit the larger one. When that happens, the same hemisphere of the smaller body always faces the larger one. <span class="highlight">That's tidal locking.</span><br><br>
+        <span class="highlight">The Moon is the classic example.</span> It rotates exactly once for every orbit around Earth — about every 27 days. So from our viewpoint, the same craters appear in the same spots, forever. The far side of the Moon — sometimes called the dark side, though it's not actually dark — was never seen by human eyes until the Soviet Luna 3 mission photographed it in 1959.<br><br>
+        <span class="highlight">Now, tidal locking isn't unique to the Moon.</span> The dwarf planet Pluto and its moon Charon are mutually locked — they each show the same face to the other. And outside our solar system, astronomers think many exoplanets orbiting close to red dwarf stars are tidally locked, which has huge implications for whether those planets could support life. Imagine a world where one side is in permanent daylight and the other in permanent night — the climate would be radically different from anything on Earth.<br><br>
+        <span class="highlight">We'll come back to that last point next time,</span> when we talk about habitability around red dwarfs.
+      </div>
+    </details>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q5icon">5</div>
+      <div class="q-prompt">What is the talk mainly about?</div>
+      <span class="q-badge main-topic">Main Topic</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q5user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> The history of lunar exploration.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(B)</span> A phenomenon that synchronizes the rotation and orbit of celestial bodies.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> Future missions to study exoplanets.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> The differences between moons and planets.</div>
+      </div>
+      <div class="q-explain"><strong><span class="jp">解説：</span><span class="en">Explanation:</span></strong> <span class="jp">冒頭の "today let's talk about ... tidal locking" がそのまま主題。後の段落で「同じ面を向ける」現象として synchronize の定義が続く。(A) 月の探査は Luna 3 への一言だけで主題ではない。(C) 太陽系外惑星も主題ではなく一例。</span><span class="en">The opening "today let's talk about ... tidal locking" sets the topic. The next paragraph defines it as the synchronization of rotation and orbit. (A) Lunar exploration is just a Luna 3 footnote, not the topic. (C) Exoplanets appear only as one example.</span></div>
+      <div class="q-hint">🔑 <span class="jp">Main Topic問題：冒頭 "let's talk about X" の X がそのまま答え。X を抽象化 (synchronize) しているのが正解。</span><span class="en">Main Topic rule: the X in "let's talk about X" is the answer. The choice that abstracts X (synchronize) wins.</span></div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q6icon">6</div>
+      <div class="q-prompt">According to the speaker, what causes tidal locking?</div>
+      <span class="q-badge detail">Detail</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q6user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> A magnetic field generated by the larger body.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(B)</span> The gravitational difference between the near and far sides of a body.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> A collision between two orbiting bodies in their early history.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> The temperature gradient between hot and cold sides of a planet.</div>
+      </div>
+      <div class="q-explain"><strong><span class="jp">解説：</span><span class="en">Explanation:</span></strong> <span class="jp">"gravity ... pulls a little harder on the near side of each object than the far side. That difference in pull is called a tidal force" — まさに near/far 側の重力差が原因。(A) 磁場、(D) 温度差は本文に登場しない引っかけ。(C) 衝突も無関係。</span><span class="en">"gravity ... pulls a little harder on the near side of each object than the far side. That difference in pull is called a tidal force." The near/far gravitational difference is the cause. (A) magnetism, (D) temperature, (C) collisions are all decoys with no support.</span></div>
+      <div class="q-hint">🔑 <span class="jp">Detail問題：「called X」「That's X」で定義された語の説明をそのまま抜き出す。本文の "near side / far side" がキーワード。</span><span class="en">Detail rule: copy the explanation that immediately follows "called X" or "That's X." Keywords here: "near side / far side."</span></div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q7icon">7</div>
+      <div class="q-prompt">Why does the professor mention the Soviet Luna 3 mission?</div>
+      <span class="q-badge purpose">Purpose</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q7user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> To explain why the Moon rotates more slowly than Earth.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(B)</span> To illustrate the first observation of the Moon's hidden far side.</div>
+        <div class="opt-row"><span class="opt-label">(C)</span> To compare American and Soviet space programs.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> To show how early missions failed to escape Earth's orbit.</div>
+      </div>
+      <div class="q-explain"><strong><span class="jp">解説：</span><span class="en">Explanation:</span></strong> <span class="jp">"The far side of the Moon ... was never seen by human eyes until the Soviet Luna 3 mission photographed it in 1959" — Luna 3 は「初めて月の裏側を撮影した例」として登場。(C) 米ソ比較は本文に存在せず、(D) 失敗の話も書かれていない。</span><span class="en">"The far side of the Moon ... was never seen by human eyes until the Soviet Luna 3 mission photographed it in 1959." Luna 3 is cited as the first observation of the far side. (C) US/Soviet comparison and (D) mission failures are not in the text.</span></div>
+      <div class="q-hint">🔑 <span class="jp">Purpose問題：「Why mention X?」→ X の直前の主張を補強する具体例として登場。ここでは "the far side was never seen" の証拠として Luna 3 を出している。</span><span class="en">Purpose rule: "Why mention X?" → X usually backs up the claim immediately before it. Here Luna 3 is evidence for "the far side was never seen."</span></div>
+    </div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-header">
+      <div class="q-num correct" id="q8icon">8</div>
+      <div class="q-prompt">What will the speaker most likely discuss next?</div>
+      <span class="q-badge prediction">Prediction</span>
+    </div>
+    <div class="q-body">
+      <div class="q-user is-correct" id="q8user"></div>
+      <div class="options-list">
+        <div class="opt-row"><span class="opt-label">(A)</span> How Pluto and Charon were discovered.</div>
+        <div class="opt-row"><span class="opt-label">(B)</span> The geological features of the Moon's far side.</div>
+        <div class="opt-row is-correct"><span class="opt-label">(C)</span> The conditions for habitability around red dwarf stars.</div>
+        <div class="opt-row"><span class="opt-label">(D)</span> The history of Soviet space exploration.</div>
+      </div>
+      <div class="q-explain"><strong><span class="jp">解説：</span><span class="en">Explanation:</span></strong> <span class="jp">締めの一文 "We'll come back to that last point next time, when we talk about habitability around red dwarfs" が直接のヒント。red dwarfs (赤色矮星)周りの居住可能性がそのまま (C)。(A) Pluto/Charon は talk 内で例として既出。</span><span class="en">The closing line "We'll come back to that last point next time, when we talk about habitability around red dwarfs" is the direct cue — answer (C). (A) Pluto/Charon was already used as a within-talk example.</span></div>
+      <div class="q-hint">🔑 <span class="jp">Prediction問題：最後の "next time / we'll come back" のすぐ後がそのまま答え。</span><span class="en">Prediction rule: whatever follows "next time / we'll come back" is the answer.</span></div>
+    </div>
+  </div>
+</div>
+
 <div class="nav-bottom">
   <a class="btn-back" href="practice-1.html"><span class="jp">← もう一度解く</span><span class="en">← Try again</span></a>
   <a class="btn-back" href="../menu.html" style="background:#0F1511;color:#fff;border-color:#0F1511"><span class="jp">📋 メニューに戻る</span><span class="en">📋 Back to menu</span></a>
@@ -197,13 +294,13 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;
 
 <script>
 const labels = ['A','B','C','D'];
-const correctAnswers = [1, 0, 3, 2]; // B, A, D, C
+const correctAnswers = [1, 0, 3, 2, 1, 1, 1, 2]; // Talk1: B,A,D,C  Talk2: B,B,B,C
 
 function render(){
   const stored = (JSON.parse(sessionStorage.getItem('academicAnswers')||'null')||(window.Review?Review.loadAttempt('listening-ac',1):null));
   let correct = 0, answered = 0;
   if(stored && Array.isArray(stored)){
-    for(let i=0;i<4;i++){
+    for(let i=0;i<8;i++){
       const userAns = stored[i];
       const isCorrect = userAns === correctAnswers[i];
       const isSkip = userAns === null || userAns === undefined;
@@ -211,20 +308,21 @@ function render(){
       if(isCorrect) correct++;
       const icon = document.getElementById('q'+(i+1)+'icon');
       const user = document.getElementById('q'+(i+1)+'user');
+      if(!icon || !user) continue;
       if(isSkip){ icon.className='q-num skip'; user.className='q-user is-skip'; user.innerHTML='<span class="jp">⏱️ 未回答（タイムアウト）</span><span class="en">⏱️ No answer (timed out)</span>'; }
       else if(isCorrect){ icon.className='q-num correct'; user.className='q-user is-correct'; user.innerHTML='<span class="jp">✅ 正解！ あなたの回答: </span><span class="en">✅ Correct! Your answer: </span>('+labels[userAns]+')'; }
       else { icon.className='q-num wrong'; user.className='q-user is-wrong'; user.innerHTML='<span class="jp">❌ あなたの回答: </span><span class="en">❌ Your answer: </span>('+labels[userAns]+')<span class="jp"> → 正解: </span><span class="en"> → Correct: </span>('+labels[correctAnswers[i]]+')'; }
     }
-    document.getElementById('scoreBig').textContent = correct + ' / 4';
-    document.getElementById('scoreBar').style.width = (correct/4*100)+'%';
-    const pct = Math.round(correct/4*100);
+    document.getElementById('scoreBig').textContent = correct + ' / 8';
+    document.getElementById('scoreBar').style.width = (correct/8*100)+'%';
+    const pct = Math.round(correct/8*100);
     let msgJp = pct >= 75 ? '素晴らしい！🎉' : pct >= 50 ? 'いい調子！' : '復習して次に活かそう💪';
     let msgEn = pct >= 75 ? 'Excellent! 🎉' : pct >= 50 ? 'Nice progress!' : 'Review and try again 💪';
     document.getElementById('scoreMsg').innerHTML = '<span class="jp">' + pct + '% 正答率 — ' + msgJp + '</span><span class="en">' + pct + '% accuracy — ' + msgEn + '</span>';
   } else {
-    document.getElementById('scoreBig').textContent = '— / 4';
+    document.getElementById('scoreBig').textContent = '— / 8';
     document.getElementById('scoreMsg').innerHTML = '<span class="jp">問題を先に解いてからこのページを見ると、スコアが表示されます</span><span class="en">Complete the practice first, then your score will appear here</span>';
-    for(let i=1;i<=4;i++) document.getElementById('q'+i+'user').style.display='none';
+    for(let i=1;i<=8;i++){ var u=document.getElementById('q'+i+'user'); if(u) u.style.display='none'; }
   }
 }
 render();

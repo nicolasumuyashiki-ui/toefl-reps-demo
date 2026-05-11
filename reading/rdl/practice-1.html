@@ -90,6 +90,18 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 .review-dot.answered{background:#48bb78}
 .review-dot.unanswered{background:#e2e8f0}
 .review-link{color:#4a90d9;cursor:pointer;text-decoration:underline}
+
+/* PAGE INDICATOR (which passage we're on) */
+.page-indicator{display:inline-block;background:#ebf4ff;color:#4a90d9;font-family:Manrope,system-ui,sans-serif;font-size:.72em;font-weight:700;letter-spacing:.08em;padding:3px 12px;border-radius:10px;margin-bottom:10px;text-transform:uppercase}
+
+/* EMAIL (passage 2) */
+.email-container{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:22px 24px;box-shadow:0 1px 4px rgba(0,0,0,.04);max-width:560px}
+.email-subject{font-weight:700;font-size:1em;color:#0F1511;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #edf2f7}
+.email-meta{display:flex;flex-direction:column;gap:3px;font-size:.82em;color:#5A6861;margin-bottom:14px;line-height:1.5}
+.email-meta strong{color:#0F1511;font-weight:600;min-width:48px;display:inline-block}
+.email-body{font-size:.92em;color:#0F1511;line-height:1.75}
+.email-body p{margin-bottom:10px}
+.email-body p:last-child{margin-bottom:0}
 </style>
 </head>
 <body data-lang="jp">
@@ -98,7 +110,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 <!-- TOP NAV -->
 <div class="top-nav">
   <div class="top-nav-left">
-    <span>Question <span id="qLabel"><strong>1</strong></span> of 1</span>
+    <span>Question <span id="qLabel"><strong>1</strong></span> of 4</span>
     <span>|</span>
     <span><span class="jp">リーディング</span><span class="en">Reading</span></span>
   </div>
@@ -111,12 +123,13 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 </div>
 
 <!-- PROGRESS BAR -->
-<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:50%"></div></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
 
-<!-- SPLIT LAYOUT -->
-<div class="split-main">
+<!-- ========== PAGE 1: Passage 1 — Text Messages (Q1, Q2) ========== -->
+<div class="split-main" id="passagePage1">
   <!-- LEFT: PASSAGE -->
   <div class="passage-panel">
+    <div class="page-indicator">Page 1 of 2</div>
     <div class="instruction">Read a chain of text messages.</div>
     <div class="phone-frame">
       <div class="phone-screen">
@@ -193,13 +206,127 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
       </div>
     </div>
 
+    <!-- Q2: Detail -->
+    <div class="question-page" id="page2">
+      <div class="question-text">
+        <span class="question-number">2.</span>According to the messages, what time will the sender meet Kate?
+      </div>
+      <div class="options">
+        <div class="option" data-q="2" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q2" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">9:12 AM</span>
+        </div>
+        <div class="option" data-q="2" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q2" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">9:18 AM</span>
+        </div>
+        <div class="option" data-q="2" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q2" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">8:30 AM</span>
+        </div>
+        <div class="option" data-q="2" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q2" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">11:00 AM</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== PAGE 2: Passage 2 — Library Email (Q3, Q4) ========== -->
+<div class="split-main" id="passagePage2" style="display:none">
+  <!-- LEFT: PASSAGE -->
+  <div class="passage-panel">
+    <div class="page-indicator">Page 2 of 2</div>
+    <div class="instruction">Read an email.</div>
+    <div class="email-container">
+      <div class="email-subject">Subject: New Quiet Floor Policy — Effective October 1</div>
+      <div class="email-meta">
+        <span><strong>From:</strong> Sarah Chen, Head Librarian &lt;s.chen@riverside.edu&gt;</span>
+        <span><strong>To:</strong> All Library Users</span>
+        <span><strong>Date:</strong> September 22, 2025</span>
+      </div>
+      <div class="email-body">
+        <p>Dear students and faculty,</p>
+        <p>Starting October 1, the third and fourth floors of the Main Library will be designated <strong>silent study zones</strong>. No talking, phone calls, or group work will be permitted on these floors. Group discussion and collaborative study should take place on the first floor in the Café Annex, which now offers extended hours until 11 PM Sunday through Thursday.</p>
+        <p>To help maintain the new policy, we will install noise-level sensors on the silent floors beginning November 1. These sensors will trigger a soft chime if voices rise above a quiet conversational level. Repeated alerts may result in a temporary loss of library access.</p>
+        <p>If you require group study space outside the Café Annex's hours, the Student Union meeting rooms remain available by reservation through the library website.</p>
+        <p>Best regards,<br>Sarah Chen<br>Head Librarian, Riverside University</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: QUESTIONS -->
+  <div class="question-panel">
+    <!-- Q3: Main Purpose -->
+    <div class="question-page" id="page3">
+      <div class="question-text">
+        <span class="question-number">3.</span>What is the main purpose of this email?
+      </div>
+      <div class="options">
+        <div class="option" data-q="3" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q3" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">To announce extended hours at the Café Annex</span>
+        </div>
+        <div class="option" data-q="3" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q3" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">To inform library users of a new silent-floor policy</span>
+        </div>
+        <div class="option" data-q="3" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q3" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">To request student feedback on library design</span>
+        </div>
+        <div class="option" data-q="3" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q3" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">To advertise new study furniture in the Student Union</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4: Inference -->
+    <div class="question-page" id="page4">
+      <div class="question-text">
+        <span class="question-number">4.</span>What can be inferred about library users who repeatedly trigger the noise sensors?
+      </div>
+      <div class="options">
+        <div class="option" data-q="4" data-v="A" onclick="selectOption(this)">
+          <input type="radio" name="q4" value="A">
+          <span class="option-label">A</span>
+          <span class="option-text">They will receive a written warning by mail.</span>
+        </div>
+        <div class="option" data-q="4" data-v="B" onclick="selectOption(this)">
+          <input type="radio" name="q4" value="B">
+          <span class="option-label">B</span>
+          <span class="option-text">They may temporarily lose access to the library.</span>
+        </div>
+        <div class="option" data-q="4" data-v="C" onclick="selectOption(this)">
+          <input type="radio" name="q4" value="C">
+          <span class="option-label">C</span>
+          <span class="option-text">They will be reported to academic services.</span>
+        </div>
+        <div class="option" data-q="4" data-v="D" onclick="selectOption(this)">
+          <input type="radio" name="q4" value="D">
+          <span class="option-label">D</span>
+          <span class="option-text">They must attend a workshop on library etiquette.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- FOOTER NAV -->
 <div class="reading-footer">
   <button class="btn-nav btn-back" id="btnBack" onclick="changePage(-1)" disabled>‹ Back</button>
-  <button class="btn-nav btn-next" id="btnNext" onclick="goNext()"><span class="jp">終了 ›</span><span class="en">Finish ›</span></button>
+  <button class="btn-nav btn-next" id="btnNext" onclick="changePage(1)"><span class="jp">次へ ›</span><span class="en">Next ›</span></button>
 </div>
 
 <!-- REVIEW OVERLAY -->
@@ -213,12 +340,15 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#fff;min
 
 <script>
 var currentPage = 1;
-var totalPages = 1;
+var totalPages = 4;
 var startQ = 1;
 var userAnswers = {};
 var timerVisible = true;
 var timeLeft = 1500;
 var timerInterval;
+
+// Questions 1-2 live in passage 1 (text messages); 3-4 in passage 2 (library email).
+function getPassagePage(q){ return q <= 2 ? 1 : 2; }
 
 function selectOption(el){
   var q = el.getAttribute('data-q');
@@ -236,15 +366,24 @@ function selectOption(el){
 function changePage(dir){
   var next = currentPage + dir;
   if(next < 1 || next > totalPages) return;
+  var oldPassage = getPassagePage(currentPage);
+  var newPassage = getPassagePage(next);
   document.getElementById('page'+currentPage).classList.remove('active');
   currentPage = next;
   document.getElementById('page'+currentPage).classList.add('active');
+  if(oldPassage !== newPassage){
+    document.getElementById('passagePage'+oldPassage).style.display = 'none';
+    document.getElementById('passagePage'+newPassage).style.display = 'flex';
+  }
   document.getElementById('qLabel').innerHTML = '<strong>'+(startQ + currentPage - 1)+'</strong>';
   document.getElementById('btnBack').disabled = (currentPage === 1);
+  var btnNext = document.getElementById('btnNext');
   if(currentPage === totalPages){
-    document.getElementById('btnNext').onclick = function(){ goNext(); };
+    btnNext.onclick = function(){ goNext(); };
+    btnNext.innerHTML = '<span class="jp">終了 ›</span><span class="en">Finish ›</span>';
   } else {
-    document.getElementById('btnNext').onclick = function(){ changePage(1); };
+    btnNext.onclick = function(){ changePage(1); };
+    btnNext.innerHTML = '<span class="jp">次へ ›</span><span class="en">Next ›</span>';
   }
   updateProgress();
 }
