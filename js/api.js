@@ -1,7 +1,7 @@
 /* ============================================================
-   TOEFL Reps Demo — API client
+   TCK Reps Demo — API client
    ============================================================
-   Talks to the shared TOEFL Reps GAS backend, but only against the
+   Talks to the shared TCK Reps GAS backend, but only against the
    trial-tier endpoints (signupTrial / loginTrial / recoverTrialPass)
    which write/read the USERS_TRIAL sheet. The full app's endpoints
    are not used here so the demo cannot accidentally pollute paid-tier

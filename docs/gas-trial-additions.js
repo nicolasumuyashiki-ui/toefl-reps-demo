@@ -1,7 +1,7 @@
 /**
- * TOEFL Reps Demo — GAS additions
+ * TCK Reps Demo — GAS additions
  *
- * Add these blocks to the existing TOEFL Reps backend GAS project.
+ * Add these blocks to the existing TCK Reps backend GAS project.
  * They write/read against a NEW sheet called USERS_TRIAL (you've
  * already created the tab) and DON'T touch the paid-tier USERS sheet.
  *
@@ -18,7 +18,7 @@
  *
  * INSTALLATION
  * ============
- * 1. Open the existing TOEFL Reps GAS project.
+ * 1. Open the existing TCK Reps GAS project.
  * 2. Add three new lines to the doGet() routing block:
  *      if (action === 'signupTrial')      return handleSignupTrial_(e, callback);
  *      if (action === 'loginTrial')       return handleLoginTrial_(e, callback);
@@ -144,10 +144,10 @@ function handleRecoverTrialPass_(e, callback) {
     sh.getRange(i + 1, 2).setValue(tempPass);            // overwrite pass
     sh.getRange(i + 1, 7).setValue(now).setNumberFormat(DATETIME_FMT); // pass_temp_at
 
-    var subject = 'TOEFL Reps Demo — 仮パスワードのお知らせ';
+    var subject = 'TCK Reps Demo — 仮パスワードのお知らせ';
     var html =
       '<p>' + escapeHtml_(userName) + ' 様</p>' +
-      '<p>TOEFL Reps Demo の仮パスワードを発行しました。</p>' +
+      '<p>TCK Reps Demo の仮パスワードを発行しました。</p>' +
       '<table style="border-collapse:collapse;margin:12px 0">' +
         '<tr><td style="padding:4px 12px 4px 0;color:#5A6861">User ID</td>' +
             '<td style="padding:4px 0;font-weight:700">' + escapeHtml_(userId) + '</td></tr>' +
@@ -155,7 +155,7 @@ function handleRecoverTrialPass_(e, callback) {
             '<td style="padding:4px 0;font-weight:700;font-family:monospace">' + tempPass + '</td></tr>' +
       '</table>' +
       '<p style="color:#8A6D2A">※ 24時間以内にログイン後、パスワードを変更してください。期限を過ぎると無効になります。</p>' +
-      '<p style="margin-top:24px">— TCK Workshop · TOEFL Reps Demo</p>';
+      '<p style="margin-top:24px">— TCK Workshop · TCK Reps Demo</p>';
 
     try {
       // === Default: MailApp.sendEmail ===
@@ -169,7 +169,7 @@ function handleRecoverTrialPass_(e, callback) {
       //    GmailApp.sendEmail(email, subject, '', {
       //      htmlBody: html,
       //      from: 'noreply@tckworkshop.co.jp',
-      //      name: 'TCK Workshop · TOEFL Reps Demo'
+      //      name: 'TCK Workshop · TCK Reps Demo'
       //    });
     } catch (mailErr) {
       return jsonpResponse_(callback, { success: false, error: 'mail_failed', detail: String(mailErr) });

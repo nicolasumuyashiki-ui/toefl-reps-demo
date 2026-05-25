@@ -1,9 +1,9 @@
 /* ============================================================
-   TOEFL Reps Demo — Trial Auth
+   TCK Reps Demo — Trial Auth
    ============================================================
    Demo-tier auth: signupTrial / loginTrial / recoverTrialPass
    endpoints write/read against the USERS_TRIAL sheet on the
-   shared TOEFL Reps GAS backend. Sessions are stored in
+   shared TCK Reps GAS backend. Sessions are stored in
    sessionStorage under tck_demo_user, separate from the
    production-tier kickstart_user key so that running both apps
    in the same browser doesn't cross-contaminate.
