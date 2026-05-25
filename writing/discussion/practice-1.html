@@ -287,7 +287,7 @@ function finishWriting(method){
   document.getElementById('previewText').textContent=text||'(No response written)';
 
   // Save to sessionStorage
-  sessionStorage.setItem('discussionResponse', JSON.stringify({text:text, words:wc, time:m+':'+String(s).padStart(2,'0')})); if(typeof Api!="undefined"&&Api.saveAnswers){try{Api.saveAnswers("Discussion P1",{text:text,words:wc,time:m+":"+String(s).padStart(2,"0")},0,{attemptNumber:1});}catch(e){}} if(window.Review){Review.markDone("discussion",1);Review.saveAttempt("discussion",1,{text:text, words:wc, time:m+':'+String(s);} 
+  sessionStorage.setItem('discussionResponse', JSON.stringify({text:text, words:wc, time:m+':'+String(s).padStart(2,'0')})); if(typeof Api!="undefined"&&Api.saveAnswers){try{Api.saveAnswers("Discussion P1",{text:text,words:wc,time:m+":"+String(s).padStart(2,"0")},0,{attemptNumber:1});}catch(e){}} if(window.Review){Review.markDone("discussion",1);Review.saveAttempt("discussion",1,{text:text, words:wc, time:m+':'+String(s).padStart(2,'0')});} 
 
   document.getElementById('writingPage').style.display='none';
   document.getElementById('completionPage').style.display='flex';
