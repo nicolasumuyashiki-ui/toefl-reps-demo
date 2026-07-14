@@ -57,6 +57,16 @@ var Auth = {
     el.innerHTML =
       '<span class="avatar">' + (u.userName || '?').charAt(0).toUpperCase() + '</span>' +
       '<span>' + (u.userName || u.userId) + '</span>';
+  },
+
+  completeSet: function(setNum) {
+    var c = JSON.parse(sessionStorage.getItem('kickstart_completed') || '[]');
+    if (c.indexOf(setNum) === -1) c.push(setNum);
+    sessionStorage.setItem('kickstart_completed', JSON.stringify(c));
+  },
+
+  getCompletedSets: function() {
+    return JSON.parse(sessionStorage.getItem('kickstart_completed') || '[]');
   }
 };
 
