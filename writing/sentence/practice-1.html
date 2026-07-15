@@ -163,12 +163,12 @@ const questions=[
 {id:2,prompt:"Did you enjoy the book I recommended?",gender:"male",fixedStart:"Yes,",fixedEnd:".",blanks:["it","was","one of","the best","books","I have read"],answer:["it","was","one of","the best","books","I have read"]},
 {id:3,prompt:"Why didn't you come to class yesterday?",gender:"female",fixedStart:"I",fixedEnd:".",blanks:["had","a doctor's","appointment","that","I could not","reschedule"],answer:["had","a doctor's","appointment","that","I could not","reschedule"]},
 {id:4,prompt:"Have you decided what to major in yet?",gender:"male",fixedStart:"",fixedEnd:"yet.",blanks:["I","have not","made","a final","decision"],answer:["I","have not","made","a final","decision"]},
-{id:5,prompt:"What did you think of the guest speaker?",gender:"female",fixedStart:"The",fixedEnd:"interesting.",blanks:["examples","she","used","to explain","the topic","were really"],answer:["examples","she","used","to explain","the topic","were really"]},
+{id:5,prompt:"What did you think of the guest speaker?",gender:"female",fixedStart:"The",fixedEnd:"interesting.",blanks:["examples","she","used","to explain","the topic","were","really"],answer:["examples","she","used","to explain","the topic","were","really"],decoys:["was"]},
 {id:6,prompt:"Can you help me move this weekend?",gender:"male",fixedStart:"Sure,",fixedEnd:".",blanks:["just","let me","know","what time","works best"],answer:["just","let me","know","what time","works best"]},
 {id:7,prompt:"How was your job interview this morning?",gender:"female",fixedStart:"I",fixedEnd:"well.",blanks:["was","nervous","at first,","but","it","went"],answer:["was","nervous","at first,","but","it","went"]},
 {id:8,prompt:"Do you know where the nearest post office is?",gender:"male",fixedStart:"",fixedEnd:".",blanks:["There is","one","right across","the street","from the library"],answer:["There is","one","right across","the street","from the library"]},
 {id:9,prompt:"What are you planning to do after graduation?",gender:"female",fixedStart:"I",fixedEnd:"abroad.",blanks:["am","thinking","about","applying","for","a job"],answer:["am","thinking","about","applying","for","a job"]},
-{id:10,prompt:"Why do you always take the bus instead of driving?",gender:"male",fixedStart:"",fixedEnd:"traffic.",blanks:["Taking the bus","is","much cheaper","and","I can avoid"],answer:["Taking the bus","is","much cheaper","and","I can avoid"]}
+{id:10,prompt:"Why do you always take the bus instead of driving?",gender:"male",fixedStart:"",fixedEnd:"traffic.",blanks:["Taking the bus","is","much cheaper","and","I can avoid"],answer:["Taking the bus","is","much cheaper","and","I can avoid"],decoys:["are"]}
 ];
 
 // Shuffle word banks
@@ -213,7 +213,7 @@ function renderQ(idx){
   currentQ=idx;
   const q=questions[idx];
   const ua=userAnswers[idx];
-  const wb=shuffle(q.blanks);
+  const wb=shuffle(q.blanks.concat(q.decoys||[]));
 
   let html='<div class="prompt-section"><img class="speaker-avatar" src="'+imgAssign[idx]+'" alt="Speaker"><div class="prompt-bubble">'+q.prompt+'</div></div>';
   
