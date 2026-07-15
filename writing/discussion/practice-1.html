@@ -51,6 +51,11 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 .post-card{background:#fff;border-radius:8px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
 .post-card.professor{border-left:3px solid #4a90d9;}
 .post-card.student{border-left:3px solid #81d4d4;}
+.task-directions{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#4a5568;line-height:1.6;}
+.task-directions p{margin-bottom:8px;}
+.task-directions ul{margin:0 0 8px 20px;padding:0;}
+.task-directions li{margin-bottom:4px;}
+.task-directions strong{color:#0F1511;}
 .post-author{font-weight:700;font-size:14px;color:#0F1511;margin-bottom:6px;}
 .post-author.prof{color:#4a90d9;}
 .post-body{font-size:13px;color:#4a5568;line-height:1.7;}
@@ -140,6 +145,16 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
   <div class="writing-page" id="writingPage">
     <div class="writing-split">
       <div class="left-panel">
+        <div class="task-directions">
+          <p>Your professor is teaching a class on <strong>Urban Planning</strong>. Write a post responding to the professor's question.</p>
+          <p>In your response, you should do the following.</p>
+          <ul>
+            <li>Express and support your opinion.</li>
+            <li>Make a contribution to the discussion in your own words.</li>
+          </ul>
+          <p>An effective response will contain at least 100 words.</p>
+        </div>
+
         <div class="discussion-header"><span class="jp">ディスカッション掲示板</span><span class="en">Discussion Board</span></div>
 
         <div class="post-card professor">
@@ -161,7 +176,6 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
       <div class="right-panel">
         <div class="response-header">
           <h3><span class="jp">あなたの解答</span><span class="en">Your Response</span></h3>
-          <p>Express and support your opinion. At least 100 words.</p>
         </div>
         <div class="toolbar">
           <button class="tool-btn" onclick="doCut()"><span class="jp">切り取り</span><span class="en">Cut</span></button>
