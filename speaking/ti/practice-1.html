@@ -196,12 +196,22 @@ function playQuestion(qNum) {
 }
 
 function playAudioFile(src, onEnd) {
-  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+  // iOS Safari only allows programmatic play() on an <audio> element unlocked
+  // by a user gesture. The first clip (narrator) starts inside the Start tap;
+  // REUSING that same unlocked element for every later clip (instead of
+  // `new Audio()` per clip, which iOS blocks from timer/ended callbacks) lets
+  // the interview questions play on iPhone/iPad too.
   try {
-    currentAudio = new Audio(src);
-    currentAudio.onended = onEnd;
+    if (!currentAudio) currentAudio = new Audio();
+    currentAudio.pause();
+    currentAudio.onended = function() { if (onEnd) onEnd(); };
     currentAudio.onerror = function() { setTimeout(onEnd, 3000); };
-    currentAudio.play().catch(function() { setTimeout(onEnd, 3000); });
+    currentAudio.src = src;
+    currentAudio.load();
+    var p = currentAudio.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(function() { setTimeout(onEnd, 3000); });
+    }
   } catch(e) { setTimeout(onEnd, 3000); }
 }
 

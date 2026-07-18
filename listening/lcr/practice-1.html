@@ -16,6 +16,8 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 
 /* TOP NAV */
 .top-nav{background:#0F1511;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 24px;font-size:14px;}
+/* Keep the global language pill clear of the dark nav's timer/badge cluster */
+.tck-lang-toggle{top:56px !important;}
 .nav-left{display:flex;align-items:center;gap:12px;}
 .nav-left .q-num{font-weight:700;font-size:15px;}
 .nav-left .divider{color:#718096;}
@@ -114,14 +116,14 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <!-- MAIN -->
 <div class="main-content">
 <div class="speaker-area">
-<img class="speaker-img" id="speakerImg" src="" alt="Speaker">
+<img class="speaker-img" id="speakerImg" src="" alt="Speaker" style="display:none" onerror="this.style.display='none'">
 <div class="audio-indicator" id="audioIndicator">
 <div class="wave-bars"><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div></div>
 <span>Playing audio...</span>
 </div>
 <button class="retry-btn" id="retryBtn" onclick="retryAudio()">▶ Play Audio</button>
 </div>
-<div class="choices-area">
+<div class="choices-area" id="choicesArea" style="display:none">
 <h2>Choose the best response:</h2>
 <p class="prompt-text">Listen to the audio, then select your answer.</p>
 <div class="options-container" id="optionsContainer"></div>
@@ -271,6 +273,7 @@ let started = false;
     if(params.get('play') === '1'){
         document.getElementById('startOverlay').style.display='none';
         started = true;
+        document.getElementById('audioIndicator').classList.add('active');
         const instAudio = new Audio(instructionAudio);
         instAudio.addEventListener('ended', () => {
             setTimeout(() => { loadQuestion(0); }, 1500);
@@ -284,6 +287,8 @@ let started = false;
 function startQuiz(){
     document.getElementById('startOverlay').style.display='none';
     started = true;
+    // Show the "audio playing" indicator while the instruction audio plays
+    document.getElementById('audioIndicator').classList.add('active');
     // Play instruction audio first, then load Q1 after it ends
     const instAudio = new Audio(instructionAudio);
     instAudio.addEventListener('ended', () => {
@@ -304,9 +309,13 @@ function loadQuestion(idx){
     document.getElementById('qNum').innerHTML = 'Question <strong>'+(idx+1)+'</strong> of 8';
     document.getElementById('progressFill').style.width = (((idx+1)/8)*100)+'%';
 
+    // Reveal the question layout (hidden during the instruction phase)
+    document.getElementById('choicesArea').style.display='';
+
     // Image
     const img = document.getElementById('speakerImg');
     img.src = speakerImages[q.imageKey][q.imageIdx];
+    img.style.display='';
 
     // Reset
     document.getElementById('audioIndicator').classList.remove('active');
