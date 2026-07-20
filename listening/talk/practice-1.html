@@ -95,7 +95,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;
 <div class="start-overlay" id="startOverlay">
 <div class="start-card">
 <h2>🎓 Listen to an Academic Talk</h2>
-<p>You will hear a short academic lecture.<br>After the talk, you will answer 4 questions.<br><br>You have <strong>20 seconds</strong> per question.<br>You will only hear the talk <strong>once</strong>.</p>
+<p>You will hear a short academic lecture.<br>After the talk, you will answer 4 questions.<br><br>You have <strong>30 seconds</strong> per question.<br>You will only hear the talk <strong>once</strong>.</p>
 <p style="margin-top:12px;padding:10px 14px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px;font-size:13px;color:#78350f;text-align:left">
 <span class="jp"><strong>体験版:</strong> 1 talk のみ収録。本サブスクでは <strong>+1 talk</strong>（Harder Module）が追加されます。</span>
 <span class="en"><strong>Demo:</strong> 1 talk included. Full subscription adds <strong>+1 talk</strong> (Harder Module).</span>
@@ -232,7 +232,7 @@ function showQuestion(qIdx){
   });
 
   document.getElementById('btnNext').classList.remove('active');
-  startTimer(20);
+  startTimer(30);
 }
 
 function startTimer(secs){
@@ -336,5 +336,6 @@ function showCompletion(){
 </script>
 
 <p class="tm-disclaimer" style="margin:0;padding:14px 20px;font-size:11px;line-height:1.65;color:#8a948f;text-align:center"><span class="jp">TOEFLはEducational Testing Service（ETS）の登録商標です。このウェブサイトはETSによって承認または推奨されたものではありません。</span><span class="en">TOEFL is a registered trademark of Educational Testing Service (ETS). This website is not endorsed or approved by ETS.</span></p>
+<script src="../../js/back-button.js"></script>
 </body>
 </html>
